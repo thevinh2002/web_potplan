@@ -1,36 +1,35 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Menu, X, Search, User, ShoppingBag, Leaf } from 'lucide-react'
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navLinks = [
-    { href: '#products', label: 'PRODUCTS' },
-    { href: '#offer', label: 'WHAT WE OFFER' },
-    { href: '#process', label: 'PROCESS' },
-    { href: '#materials', label: 'MATERIALS' },
-    { href: '#about', label: 'ABOUT US' },
-    { href: '#blogs', label: 'BLOGS' },
+    { to: '/', label: 'HOME' },
+    { to: '/introduction', label: 'INTRODUCTION' },
+    { to: '/production', label: 'PRODUCTION' },
+    { to: '/contact', label: 'CONTACT' },
   ]
 
   return (
     <nav className="sticky top-0 z-50 bg-white shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <div className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <Leaf className="w-8 h-8 text-[#8b6914]" />
             <span className="text-2xl font-bold text-[#5c4a3d]">AURORA POTS</span>
-          </div>
+          </Link>
 
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
+              <Link
+                key={link.to}
+                to={link.to}
                 className="text-[#5c4a3d] hover:text-[#8b6914] font-medium transition-colors"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -66,13 +65,14 @@ export default function Navigation() {
         <div className="lg:hidden bg-white border-t">
           <div className="px-4 py-4 space-y-3">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
+              <Link
+                key={link.to}
+                to={link.to}
                 className="block text-[#5c4a3d] py-2"
+                onClick={() => setIsMenuOpen(false)}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>

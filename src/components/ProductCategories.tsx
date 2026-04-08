@@ -1,33 +1,35 @@
+import { Link } from 'react-router-dom';
+
 const productCategories = [
   {
+    id: 'fiberglass-planter',
     name: 'Fiberglass Planter',
     image: 'https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=400',
-    link: '#',
   },
   {
+    id: 'fiberstone-planter',
     name: 'Fiberstone Planter',
     image: 'https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400',
-    link: '#',
   },
   {
+    id: 'fibercement-planter',
     name: 'Fibercement Planter',
     image: 'https://images.unsplash.com/photo-1509423350716-97f9360b4e09?w=400',
-    link: '#',
   },
   {
+    id: 'basic-outdoor-pottery',
     name: 'Basic Outdoor Pottery',
     image: 'https://images.unsplash.com/photo-1562690868-60bbe7293e94?w=400',
-    link: '#',
   },
   {
+    id: 'premium-outdoor-pottery',
     name: 'Premium Outdoor Pottery',
     image: 'https://images.unsplash.com/photo-1518882605630-8eb565f5e673?w=400',
-    link: '#',
   },
   {
+    id: 'indoor-ceramic-planter',
     name: 'Indoor Ceramic Planter',
     image: 'https://images.unsplash.com/photo-1459156212016-c812468e2115?w=400',
-    link: '#',
   },
 ]
 
@@ -39,10 +41,10 @@ export default function ProductCategories() {
           PRODUCTS
         </h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {productCategories.map((cat, idx) => (
-            <a
-              key={idx}
-              href={cat.link}
+          {productCategories.map((cat) => (
+            <Link
+              key={cat.id}
+              to={`/product/${cat.id}`}
               className="group relative overflow-hidden rounded-lg aspect-[4/3]"
             >
               <img
@@ -57,7 +59,7 @@ export default function ProductCategories() {
                   See now
                 </span>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
