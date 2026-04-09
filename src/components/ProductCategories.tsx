@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const productCategories = [
   {
@@ -44,7 +44,7 @@ export default function ProductCategories() {
           {productCategories.map((cat) => (
             <Link
               key={cat.id}
-              to={`/product/${cat.id}`}
+              href={`/product/${cat.id}`}
               className="group relative overflow-hidden rounded-lg aspect-[4/3]"
             >
               <img
