@@ -1,5 +1,6 @@
 import TopBar from '../src/components/TopBar'
 import Navigation from '../src/components/Navigation'
+import Breadcrumb from '../src/components/Breadcrumb'
 import HeroSection from '../src/components/HeroSection'
 import ProductCategories from '../src/components/ProductCategories'
 import NewArrivals from '../src/components/NewArrivals'
@@ -17,6 +18,7 @@ export default function Home() {
     <div className="min-h-screen bg-[#faf8f5]">
       <TopBar />
       <Navigation />
+      <Breadcrumb />
       <HeroSection />
       <ProductCategories />
       <NewArrivals />

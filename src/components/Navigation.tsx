@@ -50,7 +50,7 @@ export default function Navigation() {
             </button>
           </div>
 
-          <button
+          <button 
             type="button"
             className="lg:hidden p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}

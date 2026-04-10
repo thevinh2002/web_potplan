@@ -10,9 +10,10 @@ interface Product {
   id: string
   name: string
   productCode: string
-  ingredient: string
-  color: string
-  size: string
+  category: string
+  rating: number
+  reviews: number
+  isNew: boolean
   images: string[]
   description: string
 }
@@ -89,24 +90,35 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
               </div>
             </div>
             <div className="flex flex-col justify-center">
+              <div className="flex items-center gap-3 mb-4">
+                {product.isNew && (
+                  <span className="bg-[#8b6914] text-white text-xs font-bold px-3 py-1 rounded-full">
+                    NEW
+                  </span>
+                )}
+                <span className="text-sm text-gray-500 uppercase tracking-wide">{product.category}</span>
+              </div>
+
               <h1 className="text-4xl font-bold text-[#5c4a3d] mb-4">{product.name}</h1>
+
+              {/* Rating */}
+              <div className="flex items-center gap-2 mb-6">
+                <div className="flex items-center gap-1">
+                  <span className="text-yellow-500 text-lg">★</span>
+                  <span className="font-semibold text-[#5c4a3d]">{product.rating}</span>
+                </div>
+                <span className="text-gray-400">|</span>
+                <span className="text-gray-500">{product.reviews} reviews</span>
+              </div>
 
               <div className="space-y-3 mb-6">
                 <div className="flex">
-                  <span className="w-40 font-semibold text-[#5c4a3d]">Product Code:</span>
+                  <span className="w-32 font-semibold text-[#5c4a3d]">Product Code:</span>
                   <span className="text-[#5c4a3d]">{product.productCode}</span>
                 </div>
                 <div className="flex">
-                  <span className="w-40 font-semibold text-[#5c4a3d]">Ingredient:</span>
-                  <span className="text-[#5c4a3d]">{product.ingredient}</span>
-                </div>
-                <div className="flex">
-                  <span className="w-40 font-semibold text-[#5c4a3d]">Color:</span>
-                  <span className="text-red-600">{product.color}</span>
-                </div>
-                <div className="flex">
-                  <span className="w-40 font-semibold text-[#5c4a3d]">Size:</span>
-                  <span className="text-red-600">{product.size}</span>
+                  <span className="w-32 font-semibold text-[#5c4a3d]">Category:</span>
+                  <span className="text-[#5c4a3d] capitalize">{product.category}</span>
                 </div>
               </div>
 
