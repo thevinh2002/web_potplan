@@ -2,6 +2,7 @@
 
 import Breadcrumb from "@/src/components/common/Breadcrumb";
 import { MapPin, Phone, Mail, Building2, Sparkles } from "lucide-react";
+import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Map from "@/src/components/common/Map";
 
@@ -180,6 +181,28 @@ export default function Contact() {
                         vietanhdungpottery@gmail.com
                       </a>
                     </div>
+                  </div>
+
+                  {/* Social Media */}
+                  <div className="flex gap-3">
+                    <a
+                      href="https://www.facebook.com/profile.php?id=61580656365193"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Facebook"
+                      className="w-10 h-10 bg-[#faf8f5] rounded-full flex items-center justify-center shrink-0 hover:bg-[#8b6914] group transition-colors"
+                    >
+                      <FaFacebookF className="w-5 h-5 text-[#8b6914] group-hover:text-white transition-colors" />
+                    </a>
+                    <a
+                      href="https://www.instagram.com/vietanhdungpottery/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Instagram"
+                      className="w-10 h-10 bg-[#faf8f5] rounded-full flex items-center justify-center shrink-0 hover:bg-[#8b6914] group transition-colors"
+                    >
+                      <FaInstagram className="w-5 h-5 text-[#8b6914] group-hover:text-white transition-colors" />
+                    </a>
                   </div>
                 </div>
               </motion.div>

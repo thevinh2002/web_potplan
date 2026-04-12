@@ -126,7 +126,7 @@ export default function ProductDetailClient({
               </div>
 
               <a
-                href="tel:+84987654123"
+                href="/contact"
                 className="bg-[#8b6914] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#7a5c12] transition-colors mb-6 w-fit"
               >
                 Contact us

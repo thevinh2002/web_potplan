@@ -2,7 +2,8 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Menu, X, Search, User, ShoppingBag, Leaf } from 'lucide-react'
+import Image from 'next/image'
+import { Menu, X, Search, User, ShoppingBag } from 'lucide-react'
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -19,8 +20,14 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center gap-2">
-            <Leaf className="w-8 h-8 text-[#8b6914]" />
-            <span className="text-2xl font-bold text-[#5c4a3d]">AURORA POTS</span>
+            <Image
+              src="/pictures/logo/logo.png"
+              alt="AURORA POTS Logo"
+              width={32}
+              height={32}
+              className="w-8 h-8 object-contain"
+            />
+            <span className="text-2xl font-bold text-[#5c4a3d]">VIETANHDUNGPOTTERY</span>
           </Link>
 
           <div className="hidden lg:flex items-center gap-8">
