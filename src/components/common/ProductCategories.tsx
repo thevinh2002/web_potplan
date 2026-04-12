@@ -1,63 +1,65 @@
 "use client";
 
-import Link from 'next/link';
-import { motion } from 'framer-motion';
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { HomeProductCategories } from "@/src/types/home";
 
-const productCategories = [
+const productCategories: HomeProductCategories[] = [
   {
-    id: 'fiberglass-planter',
-    name: 'Fiberglass Planter',
-    image: 'https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=400',
+    id: "fiberglass-planter",
+    name: "Fiberglass Planter",
+    image: "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=400",
   },
   {
-    id: 'fiberstone-planter',
-    name: 'Fiberstone Planter',
-    image: 'https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400',
+    id: "fiberstone-planter",
+    name: "Fiberstone Planter",
+    image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400",
   },
   {
-    id: 'fibercement-planter',
-    name: 'Fibercement Planter',
-    image: 'https://images.unsplash.com/photo-1509423350716-97f9360b4e09?w=400',
+    id: "fibercement-planter",
+    name: "Fibercement Planter",
+    image: "https://images.unsplash.com/photo-1509423350716-97f9360b4e09?w=400",
   },
   {
-    id: 'basic-outdoor-pottery',
-    name: 'Basic Outdoor Pottery',
-    image: 'https://images.unsplash.com/photo-1562690868-60bbe7293e94?w=400',
+    id: "basic-outdoor-pottery",
+    name: "Basic Outdoor Pottery",
+    image: "https://images.unsplash.com/photo-1562690868-60bbe7293e94?w=400",
   },
   {
-    id: 'premium-outdoor-pottery',
-    name: 'Premium Outdoor Pottery',
-    image: 'https://images.unsplash.com/photo-1518882605630-8eb565f5e673?w=400',
+    id: "premium-outdoor-pottery",
+    name: "Premium Outdoor Pottery",
+    image: "https://images.unsplash.com/photo-1518882605630-8eb565f5e673?w=400",
   },
   {
-    id: 'indoor-ceramic-planter',
-    name: 'Indoor Ceramic Planter',
-    image: 'https://images.unsplash.com/photo-1459156212016-c812468e2115?w=400',
+    id: "indoor-ceramic-planter",
+    name: "Indoor Ceramic Planter",
+    image: "https://images.unsplash.com/photo-1459156212016-c812468e2115?w=400",
   },
-]
+];
 
 export default function ProductCategories() {
   return (
     <section id="products" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-3xl font-bold text-center text-[#5c4a3d] mb-12">
+          className="text-3xl font-bold text-center text-[#5c4a3d] mb-12"
+        >
           PRODUCTS
         </motion.h2>
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           variants={{
             visible: {
               transition: {
-                staggerChildren: 0.15
-              }
-            }
+                staggerChildren: 0.15,
+              },
+            },
           }}
           className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
@@ -66,7 +68,12 @@ export default function ProductCategories() {
               key={cat.id}
               variants={{
                 hidden: { opacity: 0, scale: 0.9, y: 30 },
-                visible: { opacity: 1, scale: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 15 } }
+                visible: {
+                  opacity: 1,
+                  scale: 1,
+                  y: 0,
+                  transition: { type: "spring", stiffness: 100, damping: 15 },
+                },
               }}
             >
               <Link
@@ -80,7 +87,9 @@ export default function ProductCategories() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <h3 className="text-white text-xl font-bold mb-2">{cat.name}</h3>
+                  <h3 className="text-white text-xl font-bold mb-2">
+                    {cat.name}
+                  </h3>
                   <span className="text-[#c9a87c] text-sm font-medium group-hover:underline">
                     See now
                   </span>
@@ -91,5 +100,5 @@ export default function ProductCategories() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

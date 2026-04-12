@@ -1,14 +1,13 @@
-import AboutAndBlogs from "@/src/components/AboutAndBlogs";
-import Breadcrumb from "@/src/components/Breadcrumb";
-import HeroSection from "@/src/components/HeroSection";
-import Materials from "@/src/components/Materials";
-import NewArrivals from "@/src/components/NewArrivals";
-import Newsletter from "@/src/components/Newsletter";
-import OEMSection from "@/src/components/OEMSection";
-import OrderingProcess from "@/src/components/OrderingProcess";
-import ProductCategories from "@/src/components/ProductCategories";
-import SuitableFor from "@/src/components/SuitableFor";
-import TopProducts from "@/src/components/TopProducts";
+import AboutAndBlogs from "@/src/components/common/AboutAndBlogs";
+import HeroSection from "@/src/components/common/HeroSection";
+import Materials from "@/src/components/common/Materials";
+import NewArrivals from "@/src/components/common/NewArrivals";
+import Newsletter from "@/src/components/common/Newsletter";
+import OEMSection from "@/src/components/common/OEMSection";
+import OrderingProcess from "@/src/components/common/OrderingProcess";
+import ProductCategories from "@/src/components/common/ProductCategories";
+import SuitableFor from "@/src/components/common/SuitableFor";
+import TopProducts from "@/src/components/common/TopProducts";
 
 export default function Home() {
   return (

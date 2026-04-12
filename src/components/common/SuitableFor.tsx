@@ -1,16 +1,24 @@
-import { Home, Building, Trees, UtensilsCrossed, Stethoscope, School } from 'lucide-react'
+import {
+  Home,
+  Building,
+  Trees,
+  UtensilsCrossed,
+  Stethoscope,
+  School,
+} from "lucide-react";
+import { HomeSuitableFor } from "@/src/types/home";
 
-const suitableItems = [
-  { Icon: Home, name: 'Houses' },
-  { Icon: Trees, name: 'Gardens' },
-  { Icon: Building, name: 'Offices' },
-  { Icon: Building, name: 'Hotels' },
-  { Icon: Trees, name: 'Resorts' },
-  { Icon: Building, name: 'Mixed-use' },
-  { Icon: UtensilsCrossed, name: 'Restaurants' },
-  { Icon: Stethoscope, name: 'Healthcare' },
-  { Icon: School, name: 'Schools' },
-]
+const suitableItems: HomeSuitableFor[] = [
+  { Icon: Home, name: "Houses" },
+  { Icon: Trees, name: "Gardens" },
+  { Icon: Building, name: "Offices" },
+  { Icon: Building, name: "Hotels" },
+  { Icon: Trees, name: "Resorts" },
+  { Icon: Building, name: "Mixed-use" },
+  { Icon: UtensilsCrossed, name: "Restaurants" },
+  { Icon: Stethoscope, name: "Healthcare" },
+  { Icon: School, name: "Schools" },
+];
 
 export default function SuitableFor() {
   return (
@@ -35,5 +43,5 @@ export default function SuitableFor() {
         </div>
       </div>
     </section>
-  )
+  );
 }

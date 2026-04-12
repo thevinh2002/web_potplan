@@ -1,47 +1,46 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
-
-interface Product {
-  id: string
-  name: string
-  productCode: string
-  category: string
-  rating: number
-  reviews: number
-  isNew: boolean
-  images: string[]
-  description: string
-}
+import { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ProductDetail } from "@/src/types/product";
 
 interface ProductDetailClientProps {
-  product: Product | undefined
+  product: ProductDetail | undefined;
 }
 
-export default function ProductDetailClient({ product }: ProductDetailClientProps) {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+export default function ProductDetailClient({
+  product,
+}: ProductDetailClientProps) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   if (!product) {
     return (
       <div className="min-h-screen bg-[#faf8f5]">
         <div className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-4xl font-bold text-[#5c4a3d] mb-8">Product Not Found</h1>
-            <p className="text-lg text-[#5c4a3d]">The product you are looking for does not exist.</p>
+            <h1 className="text-4xl font-bold text-[#5c4a3d] mb-8">
+              Product Not Found
+            </h1>
+            <p className="text-lg text-[#5c4a3d]">
+              The product you are looking for does not exist.
+            </p>
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   const handlePrevImage = () => {
-    setCurrentImageIndex((prev) => (prev === 0 ? product.images.length - 1 : prev - 1))
-  }
+    setCurrentImageIndex((prev) =>
+      prev === 0 ? product.images.length - 1 : prev - 1,
+    );
+  };
 
   const handleNextImage = () => {
-    setCurrentImageIndex((prev) => (prev === product.images.length - 1 ? 0 : prev + 1))
-  }
+    setCurrentImageIndex((prev) =>
+      prev === product.images.length - 1 ? 0 : prev + 1,
+    );
+  };
 
   return (
     <div className="min-h-screen bg-[#faf8f5]">
@@ -68,7 +67,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                   {product.images.map((_, idx) => (
                     <div
                       key={idx}
-                      className={`w-3 h-3 rounded-full ${idx === currentImageIndex ? 'bg-[#8b6914]' : 'bg-gray-300'}`}
+                      className={`w-3 h-3 rounded-full ${idx === currentImageIndex ? "bg-[#8b6914]" : "bg-gray-300"}`}
                     ></div>
                   ))}
                 </div>
@@ -88,16 +87,22 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                     NEW
                   </span>
                 )}
-                <span className="text-sm text-gray-500 uppercase tracking-wide">{product.category}</span>
+                <span className="text-sm text-gray-500 uppercase tracking-wide">
+                  {product.category}
+                </span>
               </div>
 
-              <h1 className="text-4xl font-bold text-[#5c4a3d] mb-4">{product.name}</h1>
+              <h1 className="text-4xl font-bold text-[#5c4a3d] mb-4">
+                {product.name}
+              </h1>
 
               {/* Rating */}
               <div className="flex items-center gap-2 mb-6">
                 <div className="flex items-center gap-1">
                   <span className="text-yellow-500 text-lg">★</span>
-                  <span className="font-semibold text-[#5c4a3d]">{product.rating}</span>
+                  <span className="font-semibold text-[#5c4a3d]">
+                    {product.rating}
+                  </span>
                 </div>
                 <span className="text-gray-400">|</span>
                 <span className="text-gray-500">{product.reviews} reviews</span>
@@ -105,18 +110,27 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
               <div className="space-y-3 mb-6">
                 <div className="flex">
-                  <span className="w-32 font-semibold text-[#5c4a3d]">Product Code:</span>
+                  <span className="w-32 font-semibold text-[#5c4a3d]">
+                    Product Code:
+                  </span>
                   <span className="text-[#5c4a3d]">{product.productCode}</span>
                 </div>
                 <div className="flex">
-                  <span className="w-32 font-semibold text-[#5c4a3d]">Category:</span>
-                  <span className="text-[#5c4a3d] capitalize">{product.category}</span>
+                  <span className="w-32 font-semibold text-[#5c4a3d]">
+                    Category:
+                  </span>
+                  <span className="text-[#5c4a3d] capitalize">
+                    {product.category}
+                  </span>
                 </div>
               </div>
 
-              <button className="bg-[#8b6914] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#7a5c12] transition-colors mb-6 w-fit">
+              <a
+                href="tel:+84987654123"
+                className="bg-[#8b6914] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#7a5c12] transition-colors mb-6 w-fit"
+              >
                 Contact us
-              </button>
+              </a>
 
               <p className="text-lg text-[#5c4a3d] leading-relaxed">
                 {product.description}
@@ -126,5 +140,5 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
         </div>
       </div>
     </div>
-  )
+  );
 }

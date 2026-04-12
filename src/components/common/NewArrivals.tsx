@@ -1,29 +1,31 @@
-const newArrivals = [
+import { HomeNewArrivals } from "@/src/types/home";
+
+const newArrivals: HomeNewArrivals[] = [
   {
-    name: 'Antique Ceramic Amphora Planter',
-    code: 'AUV114',
-    price: '$45.00',
-    image: 'https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=300',
+    name: "Antique Ceramic Amphora Planter",
+    code: "AUV114",
+    price: "$45.00",
+    image: "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=300",
   },
   {
-    name: 'Bubble Cylinder Atlantic Planter',
-    code: 'AUV026',
-    price: '$38.00',
-    image: 'https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=300',
+    name: "Bubble Cylinder Atlantic Planter",
+    code: "AUV026",
+    price: "$38.00",
+    image: "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=300",
   },
   {
-    name: 'Big Round Brown Rustic Bowl',
-    code: 'AUP051',
-    price: '$52.00',
-    image: 'https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=300',
+    name: "Big Round Brown Rustic Bowl",
+    code: "AUP051",
+    price: "$52.00",
+    image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=300",
   },
   {
-    name: 'Bamboo Pendant Lampshade',
-    code: 'AUW038',
-    price: '$28.00',
-    image: 'https://images.unsplash.com/photo-1509423350716-97f9360b4e09?w=300',
+    name: "Bamboo Pendant Lampshade",
+    code: "AUW038",
+    price: "$28.00",
+    image: "https://images.unsplash.com/photo-1509423350716-97f9360b4e09?w=300",
   },
-]
+];
 
 export default function NewArrivals() {
   return (
@@ -60,5 +62,5 @@ export default function NewArrivals() {
         </div>
       </div>
     </section>
-  )
+  );
 }
