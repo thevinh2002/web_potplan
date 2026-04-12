@@ -2,9 +2,6 @@
 
 import { useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import TopBar from '../../../src/components/TopBar'
-import Navigation from '../../../src/components/Navigation'
-import Footer from '../../../src/components/Footer'
 
 interface Product {
   id: string
@@ -28,15 +25,12 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
   if (!product) {
     return (
       <div className="min-h-screen bg-[#faf8f5]">
-        <TopBar />
-        <Navigation />
         <div className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="text-4xl font-bold text-[#5c4a3d] mb-8">Product Not Found</h1>
             <p className="text-lg text-[#5c4a3d]">The product you are looking for does not exist.</p>
           </div>
         </div>
-        <Footer />
       </div>
     )
   }
@@ -51,8 +45,6 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
   return (
     <div className="min-h-screen bg-[#faf8f5]">
-      <TopBar />
-      <Navigation />
       <div className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12">
@@ -133,7 +125,6 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   )
 }

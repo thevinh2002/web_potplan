@@ -1,10 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import TopBar from '../../src/components/TopBar'
-import Navigation from '../../src/components/Navigation'
-import Footer from '../../src/components/Footer'
-import Breadcrumb from '../../src/components/Breadcrumb'
+import Breadcrumb from '@/src/components/Breadcrumb'
 import Link from 'next/link'
 import { Search, Filter, Grid3X3, List, ChevronDown, SlidersHorizontal } from 'lucide-react'
 
@@ -155,8 +152,8 @@ export default function Production() {
   const filteredProducts = products.filter((product) => {
     const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory
     const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         product.code.toLowerCase().includes(searchQuery.toLowerCase())
-    
+      product.code.toLowerCase().includes(searchQuery.toLowerCase())
+
     return matchesCategory && matchesSearch
   })
 
@@ -169,8 +166,6 @@ export default function Production() {
 
   return (
     <div className="min-h-screen bg-[#faf8f5]">
-      <TopBar />
-      <Navigation />
       <Breadcrumb />
 
       {/* Hero Section */}
@@ -262,11 +257,10 @@ export default function Production() {
                       type="button"
                       key={category.id}
                       onClick={() => setSelectedCategory(category.id)}
-                      className={`w-full flex items-center justify-between py-2 px-3 rounded-lg text-left transition-colors ${
-                        selectedCategory === category.id
-                          ? 'bg-[#8b6914] text-white'
-                          : 'hover:bg-gray-100 text-gray-600'
-                      }`}
+                      className={`w-full flex items-center justify-between py-2 px-3 rounded-lg text-left transition-colors ${selectedCategory === category.id
+                        ? 'bg-[#8b6914] text-white'
+                        : 'hover:bg-gray-100 text-gray-600'
+                        }`}
                     >
                       <span>{category.name}</span>
                       <span className={`text-sm ${selectedCategory === category.id ? 'text-white/80' : 'text-gray-400'}`}>
@@ -294,22 +288,20 @@ export default function Production() {
                 <p className="text-gray-500">Try adjusting your search or filters</p>
               </div>
             ) : (
-              <div className={viewMode === 'grid' 
-                ? 'grid sm:grid-cols-2 lg:grid-cols-3 gap-6' 
+              <div className={viewMode === 'grid'
+                ? 'grid sm:grid-cols-2 lg:grid-cols-3 gap-6'
                 : 'space-y-4'
               }>
                 {sortedProducts.map((product) => (
                   <Link
                     key={product.id}
                     href={`/product/${String(product.id)}`}
-                    className={`bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group ${
-                      viewMode === 'list' ? 'flex' : ''
-                    }`}
+                    className={`bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group ${viewMode === 'list' ? 'flex' : ''
+                      }`}
                   >
                     {/* Image */}
-                    <div className={`relative overflow-hidden bg-gray-100 ${
-                      viewMode === 'list' ? 'w-48 h-48 shrink-0' : 'aspect-square'
-                    }`}>
+                    <div className={`relative overflow-hidden bg-gray-100 ${viewMode === 'list' ? 'w-48 h-48 shrink-0' : 'aspect-square'
+                      }`}>
                       <img
                         src={product.image}
                         alt={product.name}
@@ -347,39 +339,39 @@ export default function Production() {
             {sortedProducts.length > 0 && (
               <div className="mt-12 flex justify-center">
                 <div className="flex items-center gap-2">
-                  <button 
+                  <button
                     type="button"
                     className="px-4 py-2 border rounded-lg hover:bg-gray-50 text-gray-600 disabled:opacity-50"
                     disabled
                   >
                     Previous
                   </button>
-                  <button 
+                  <button
                     type="button"
                     className="w-10 h-10 rounded-lg bg-[#8b6914] text-white font-medium"
                   >
                     1
                   </button>
-                  <button 
+                  <button
                     type="button"
                     className="w-10 h-10 rounded-lg border hover:bg-gray-50 text-gray-600"
                   >
                     2
                   </button>
-                  <button 
+                  <button
                     type="button"
                     className="w-10 h-10 rounded-lg border hover:bg-gray-50 text-gray-600"
                   >
                     3
                   </button>
                   <span className="text-gray-400">...</span>
-                  <button 
+                  <button
                     type="button"
                     className="w-10 h-10 rounded-lg border hover:bg-gray-50 text-gray-600"
                   >
                     8
                   </button>
-                  <button 
+                  <button
                     type="button"
                     className="px-4 py-2 border rounded-lg hover:bg-gray-50 text-gray-600"
                   >
@@ -392,7 +384,6 @@ export default function Production() {
         </div>
       </div>
 
-      <Footer />
     </div>
   )
 }

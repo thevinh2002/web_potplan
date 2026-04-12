@@ -1,14 +1,9 @@
-import TopBar from '../../src/components/TopBar'
-import Navigation from '../../src/components/Navigation'
-import Footer from '../../src/components/Footer'
-import Breadcrumb from '../../src/components/Breadcrumb'
+import Breadcrumb from '@/src/components/Breadcrumb'
 import { MapPin, Phone, Mail, Building2, Sparkles } from 'lucide-react'
 
 export default function Contact() {
   return (
     <div className="min-h-screen bg-[#faf8f5]">
-      <TopBar />
-      <Navigation />
       <Breadcrumb />
 
       {/* Hero Section with Slogan */}
@@ -152,8 +147,6 @@ export default function Contact() {
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   )
 }

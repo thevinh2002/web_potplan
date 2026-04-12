@@ -1,4 +1,7 @@
+"use client";
+
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 const productCategories = [
   {
@@ -37,31 +40,55 @@ export default function ProductCategories() {
   return (
     <section id="products" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-center text-[#5c4a3d] mb-12">
+        <motion.h2 
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl font-bold text-center text-[#5c4a3d] mb-12">
           PRODUCTS
-        </h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        </motion.h2>
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={{
+            visible: {
+              transition: {
+                staggerChildren: 0.15
+              }
+            }
+          }}
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
           {productCategories.map((cat) => (
-            <Link
+            <motion.div
               key={cat.id}
-              href={`/product/${cat.id}`}
-              className="group relative overflow-hidden rounded-lg aspect-[4/3]"
+              variants={{
+                hidden: { opacity: 0, scale: 0.9, y: 30 },
+                visible: { opacity: 1, scale: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 15 } }
+              }}
             >
-              <img
-                src={cat.image}
-                alt={cat.name}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <h3 className="text-white text-xl font-bold mb-2">{cat.name}</h3>
-                <span className="text-[#c9a87c] text-sm font-medium group-hover:underline">
-                  See now
-                </span>
-              </div>
-            </Link>
+              <Link
+                href={`/product/${cat.id}`}
+                className="block group relative overflow-hidden rounded-lg aspect-[4/3] h-full"
+              >
+                <img
+                  src={cat.image}
+                  alt={cat.name}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <h3 className="text-white text-xl font-bold mb-2">{cat.name}</h3>
+                  <span className="text-[#c9a87c] text-sm font-medium group-hover:underline">
+                    See now
+                  </span>
+                </div>
+              </Link>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

@@ -1,5 +1,5 @@
 import ProductDetailClient from './ProductDetailClient'
-import Breadcrumb from '../../../src/components/Breadcrumb'
+import Breadcrumb from '@/src/components/Breadcrumb'
 
 const productCategories = [
   {

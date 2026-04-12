@@ -1,55 +1,56 @@
-'use client'
+"use client";
 
-import { usePathname } from 'next/navigation'
-import Link from 'next/link'
-import { ChevronRight, Home } from 'lucide-react'
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+import { ChevronRight, Home } from "lucide-react";
+import { motion } from "framer-motion";
 
 const pathNames: Record<string, string> = {
-  'introduction': 'Introduction',
-  'production': 'Products',
-  'contact': 'Contact',
-}
+  introduction: "Introduction",
+  production: "Products",
+  contact: "Contact",
+};
 
 export default function Breadcrumb() {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
-  if (pathname === '/') return null
+  if (pathname === "/") return null;
 
-  const segments = pathname.split('/').filter(Boolean)
+  const segments = pathname.split("/").filter(Boolean);
 
   // Build breadcrumbs array
-  const breadcrumbs: { href: string; name: string; isLast: boolean }[] = []
+  const breadcrumbs: { href: string; name: string; isLast: boolean }[] = [];
 
   for (let i = 0; i < segments.length; i++) {
-    const segment = segments[i]
-    const isLast = i === segments.length - 1
+    const segment = segments[i];
+    const isLast = i === segments.length - 1;
 
     // Handle product detail page: /product/[id]
-    if (segment === 'product') {
+    if (segment === "product") {
       // Add "Products" link pointing to /production
       breadcrumbs.push({
-        href: '/production',
-        name: 'Products',
+        href: "/production",
+        name: "Products",
         isLast: false,
-      })
+      });
       // Skip the 'product' segment itself in output
-      continue
+      continue;
     }
 
     // Handle product ID (number after 'product')
-    if (i > 0 && segments[i - 1] === 'product') {
+    if (i > 0 && segments[i - 1] === "product") {
       breadcrumbs.push({
-        href: '/' + segments.slice(0, i + 1).join('/'),
-        name: 'Product Detail',
+        href: "/" + segments.slice(0, i + 1).join("/"),
+        name: "Product Detail",
         isLast: true,
-      })
-      continue
+      });
+      continue;
     }
 
-    const href = '/' + segments.slice(0, i + 1).join('/')
-    const name = pathNames[segment] || segment
+    const href = "/" + segments.slice(0, i + 1).join("/");
+    const name = pathNames[segment] || segment;
 
-    breadcrumbs.push({ href, name, isLast })
+    breadcrumbs.push({ href, name, isLast });
   }
 
   return (
@@ -82,5 +83,5 @@ export default function Breadcrumb() {
         </nav>
       </div>
     </div>
-  )
+  );
 }
