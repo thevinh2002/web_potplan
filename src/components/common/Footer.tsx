@@ -1,4 +1,4 @@
-import { Leaf } from "lucide-react";
+import Image from 'next/image'
 
 export default function Footer() {
   return (
@@ -7,8 +7,14 @@ export default function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <Leaf className="w-6 h-6 text-[#c9a87c]" />
-              <span className="text-xl font-bold">AURORA POTS</span>
+              <Image
+                            src="/pictures/logo/logo.png"
+                            alt="AURORA POTS Logo"
+                            width={24}
+                            height={24}
+                            className="w-8 h-8 object-contain"
+                          />
+              <span className="text-xl font-bold">AVIETANHDUNGPOTTERY</span>
             </div>
             <p className="text-gray-400 text-sm">
               Vietnam Pottery Manufacturer & Exporter with over 15 years of
@@ -69,14 +75,14 @@ export default function Footer() {
             <h4 className="font-bold mb-4">Contact</h4>
             <ul className="space-y-2 text-gray-400 text-sm">
               <li>Vietnam</li>
-              <li>info@aurorapots.com</li>
-              <li>+84 XXX XXX XXX</li>
+              <li>vietanhdungpottery@gmail.com </li>
+              <li>(+84) 855632984</li>
             </ul>
           </div>
         </div>
-        <div className="border-t border-gray-600 mt-8 pt-8 text-center text-gray-400 text-sm">
+        {/* <div className="border-t border-gray-600 mt-8 pt-8 text-center text-gray-400 text-sm">
           © 2024 Aurora Pots. All rights reserved.
-        </div>
+        </div> */}
       </div>
     </footer>
   );
