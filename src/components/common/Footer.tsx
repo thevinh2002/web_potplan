@@ -1,6 +1,8 @@
-import Image from 'next/image'
+import { useTranslations } from "next-intl";
+import Image from "next/image";
 
 export default function Footer() {
+  const t = useTranslations("common.footer");
   return (
     <footer className="bg-[#3d3229] text-white py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -8,75 +10,72 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Image
-                            src="/pictures/logo/logo.png"
-                            alt="AURORA POTS Logo"
-                            width={24}
-                            height={24}
-                            className="w-8 h-8 object-contain"
-                          />
-              <span className="text-xl font-bold">AVIETANHDUNGPOTTERY</span>
+                src="/pictures/logo/logo.png"
+                alt="AURORA POTS Logo"
+                width={24}
+                height={24}
+                className="w-8 h-8 object-contain"
+              />
+              <span className="text-xl font-bold">{t("brandName")}</span>
             </div>
-            <p className="text-gray-400 text-sm">
-              Vietnam Pottery Manufacturer & Exporter with over 15 years of
-              experience.
-            </p>
+            <p className="text-gray-400 text-sm">{t("description")}</p>
           </div>
           <div>
-            <h4 className="font-bold mb-4">Products</h4>
+            <h4 className="font-bold mb-4">{t("products.title")}</h4>
             <ul className="space-y-2 text-gray-400 text-sm">
               <li>
                 <a href="#" className="hover:text-[#c9a87c] transition-colors">
-                  Fiberglass Planter
+                  {t("products.items.fiberglass")}
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-[#c9a87c] transition-colors">
-                  Fiberstone Planter
+                  {t("products.items.fiberstone")}
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-[#c9a87c] transition-colors">
-                  Ceramic Planter
+                  {t("products.items.ceramic")}
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-[#c9a87c] transition-colors">
-                  Terracotta Products
+                  {t("products.items.terracotta")}
                 </a>
               </li>
             </ul>
           </div>
           <div>
-            <h4 className="font-bold mb-4">Company</h4>
+            <h4 className="font-bold mb-4">{t("company.title")}</h4>
             <ul className="space-y-2 text-gray-400 text-sm">
               <li>
                 <a href="#" className="hover:text-[#c9a87c] transition-colors">
-                  About Us
+                  {t("company.items.aboutUs")}
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-[#c9a87c] transition-colors">
-                  Factory Tour
+                  {t("company.items.factoryTour")}
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-[#c9a87c] transition-colors">
-                  Quality Control
+                  {t("company.items.qualityControl")}
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-[#c9a87c] transition-colors">
-                  Contact
+                  {t("company.items.contact")}
                 </a>
               </li>
             </ul>
           </div>
           <div>
-            <h4 className="font-bold mb-4">Contact</h4>
+            <h4 className="font-bold mb-4">{t("contactInfo.title")}</h4>
             <ul className="space-y-2 text-gray-400 text-sm">
-              <li>Vietnam</li>
-              <li>vietanhdungpottery@gmail.com </li>
-              <li>(+84) 855632984</li>
+              <li>{t("contactInfo.location")}</li>
+              <li>{t("contactInfo.email")}</li>
+              <li>{t("contactInfo.phone")}</li>
             </ul>
           </div>
         </div>

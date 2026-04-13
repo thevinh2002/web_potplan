@@ -93,6 +93,35 @@
       "production": "Sản phẩm",
       "productDetail": "Chi tiết sản phẩm",
       "contact": "Liên hệ"
+    },
+    "footer": {
+      "brandName": "VIETANHDUNGPOTTERY",
+      "description": "Nhà sản xuất & Xuất khẩu Gốm sứ Việt Nam với hơn 15 năm kinh nghiệm.",
+      "products": {
+        "title": "Sản phẩm",
+        "items": {
+          "fiberglass": "Chậu Composite",
+          "fiberstone": "Chậu xi măng đá mài",
+          "ceramic": "Chậu gốm sứ",
+          "terracotta": "Sản phẩm đất nung"
+        }
+      },
+      "company": {
+        "title": "Công ty",
+        "items": {
+          "aboutUs": "Về chúng tôi",
+          "factoryTour": "Tham quan nhà máy",
+          "qualityControl": "Kiểm soát chất lượng",
+          "contact": "Liên hệ"
+        }
+      },
+      "contactInfo": {
+        "title": "Liên hệ",
+        "location": "Việt Nam",
+        "email": "vietanhdungpottery@gmail.com",
+        "phone": "(+84) 855632984"
+      },
+      "copyright": "© 2024 Aurora Pots. Bảo lưu mọi quyền."
     }
   },
   "introduction": {
@@ -333,6 +362,51 @@
     "pagination": {
       "pre": "Trước",
       "next": "Sau"
+    }
+  },
+  "contact": {
+    "hero": {
+      "values": "Giá Trị Của Chúng Tôi",
+      "slogan": "Thấu Hiểu • Trách Nhiệm • Đổi Mới"
+    },
+    "section": {
+      "title": "Liên Hệ Với Chúng Tôi",
+      "subtitle": "Chúng tôi rất mong nhận được phản hồi từ bạn. Hãy ghé thăm showroom của chúng tôi hoặc liên hệ để biết thêm thông tin về sản phẩm."
+    },
+    "map": {
+      "title": "Tìm Chúng Tôi Trên Bản Đồ"
+    },
+    "info": {
+      "title": "Thông Tin Liên Hệ",
+      "items": {
+        "showroom": {
+          "title": "Showroom & Nhà Máy",
+          "content": "Đường Mỹ Phước Tân Vạn, Tân Định, Phường Bến Cát, TP. Hồ Chí Minh, Việt Nam"
+        },
+        "office": {
+          "title": "Văn Phòng Việt Nam",
+          "content": "2/25 Ấp Bình Thuận, Đường Bình Nhâm 03, Phường Lái Thiêu, TP. Hồ Chí Minh, Việt Nam"
+        },
+        "phone": {
+          "title": "Điện thoại"
+        },
+        "email": {
+          "title": "Email"
+        }
+      }
+    },
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram"
+    },
+    "businessHours": {
+      "title": "Giờ Làm Việc",
+      "mondayFriday": "Thứ Hai - Thứ Sáu",
+      "saturday": "Thứ Bảy",
+      "sunday": "Chủ Nhật",
+      "weekdayHours": "8:00 SA - 6:00 CH",
+      "saturdayHours": "8:00 SA - 12:00 CH",
+      "closed": "Đóng cửa"
     }
   }
 }

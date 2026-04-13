@@ -8,48 +8,49 @@ import Map from "@/src/components/common/Map";
 import ContactInfoItem from "@/src/components/common/ContactInfoItem";
 import SocialIconLink from "@/src/components/ui/SocialIconLink";
 import { ContactInfoItemProps, SocialIconLinkProps } from "@/src/types/contact";
-
-const contactInfoData: ContactInfoItemProps[] = [
-  {
-    icon: MapPin,
-    title: "Showroom & Manufacture",
-    content:
-      "My Phuoc Tan Van Street, Tan Dinh, Ben Cat Ward, Ho Chi Minh City, Viet Nam",
-  },
-  {
-    icon: Building2,
-    title: "Vietnam Office",
-    content:
-      "2/25 Binh Thuan Hamlet, Binh Nham 03 Street, Lai Thieu Ward, Ho Chi Minh City, Viet Nam",
-  },
-  {
-    icon: Phone,
-    title: "Phone",
-    content: "(+84) 855632984",
-    href: "tel:+84855632984",
-  },
-  {
-    icon: Mail,
-    title: "Email",
-    content: "vietanhdungpottery@gmail.com",
-    href: "mailto:vietanhdungpottery@gmail.com",
-  },
-];
-
-const socialLinksData: SocialIconLinkProps[] = [
-  {
-    href: "https://www.facebook.com/profile.php?id=61580656365193",
-    title: "Facebook",
-    icon: FaFacebookF,
-  },
-  {
-    href: "https://www.instagram.com/vietanhdungpottery/",
-    title: "Instagram",
-    icon: FaInstagram,
-  },
-];
+import { useTranslations } from "next-intl";
 
 export default function Contact() {
+  const t = useTranslations("contact");
+
+  const contactInfoData: ContactInfoItemProps[] = [
+    {
+      icon: MapPin,
+      title: t("info.items.showroom.title"),
+      content: t("info.items.showroom.content"),
+    },
+    {
+      icon: Building2,
+      title: t("info.items.office.title"),
+      content: t("info.items.office.content"),
+    },
+    {
+      icon: Phone,
+      title: t("info.items.phone.title"),
+      content: "(+84) 855632984",
+      href: "tel:+84855632984",
+    },
+    {
+      icon: Mail,
+      title: t("info.items.email.title"),
+      content: "vietanhdungpottery@gmail.com",
+      href: "mailto:vietanhdungpottery@gmail.com",
+    },
+  ];
+
+  const socialLinksData: SocialIconLinkProps[] = [
+    {
+      href: "https://www.facebook.com/profile.php?id=61580656365193",
+      title: t("social.facebook"),
+      icon: FaFacebookF,
+    },
+    {
+      href: "https://www.instagram.com/vietanhdungpottery/",
+      title: t("social.instagram"),
+      icon: FaInstagram,
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-[#faf8f5] overflow-x-hidden">
       {/* Hero Section with Slogan */}
@@ -65,7 +66,7 @@ export default function Contact() {
           >
             <Sparkles className="w-6 h-6 text-[#8b6914]" />
             <span className="text-[#8b6914] font-semibold tracking-wider uppercase text-sm">
-              Our Values
+              {t("hero.values")}
             </span>
             <Sparkles className="w-6 h-6 text-[#8b6914]" />
           </motion.div>
@@ -76,8 +77,7 @@ export default function Contact() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="text-2xl md:text-4xl font-bold text-white"
           >
-            Understanding <span className="text-[#8b6914]">•</span>{" "}
-            Responsibility <span className="text-[#8b6914]">•</span> Innovation
+            {t("hero.slogan")}
           </motion.h2>
         </div>
       </div>
@@ -94,12 +94,11 @@ export default function Contact() {
             className="text-center mb-6"
           >
             <h3 className="text-3xl md:text-4xl font-bold text-[#5c4a3d] mb-4">
-              Get In Touch
+              {t("section.title")}
             </h3>
             <div className="w-24 h-1 bg-[#8b6914] mx-auto rounded-full" />
             <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-              We&apos;d love to hear from you. Visit our showroom or reach out
-              to us for any inquiries about our products.
+              {t("section.subtitle")}
             </p>
           </motion.div>
 
@@ -116,7 +115,7 @@ export default function Contact() {
                 <div className="bg-[#8b6914] px-6 py-4">
                   <div className="flex items-center gap-2 text-white">
                     <MapPin className="w-5 h-5" />
-                    <span className="font-semibold">Find Us on Map</span>
+                    <span className="font-semibold">{t("map.title")}</span>
                   </div>
                 </div>
                 <div className="p-4 h-[600px]">
@@ -137,7 +136,7 @@ export default function Contact() {
                 <div className="bg-gradient-to-r from-[#8b6914] to-[#a07c2a] px-6 py-4">
                   <h4 className="text-xl font-bold text-white flex items-center gap-2">
                     <Building2 className="w-5 h-5" />
-                    Contact Information
+                    {t("info.title")}
                   </h4>
                 </div>
                 <div className="p-6 space-y-5">
@@ -176,19 +175,19 @@ export default function Contact() {
                 transition={{ type: "spring", bounce: 0.3, duration: 0.8 }}
                 className="bg-gradient-to-br from-[#5c4a3d] to-[#6b5a4d] rounded-2xl p-6 text-white"
               >
-                <h4 className="text-lg font-bold mb-3">Business Hours</h4>
+                <h4 className="text-lg font-bold mb-3">{t("businessHours.title")}</h4>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-gray-300">Monday - Friday</span>
-                    <span>8:00 AM - 6:00 PM</span>
+                    <span className="text-gray-300">{t("businessHours.mondayFriday")}</span>
+                    <span>{t("businessHours.weekdayHours")}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-300">Saturday</span>
-                    <span>8:00 AM - 12:00 PM</span>
+                    <span className="text-gray-300">{t("businessHours.saturday")}</span>
+                    <span>{t("businessHours.saturdayHours")}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-300">Sunday</span>
-                    <span>Closed</span>
+                    <span className="text-gray-300">{t("businessHours.sunday")}</span>
+                    <span>{t("businessHours.closed")}</span>
                   </div>
                 </div>
               </motion.div>

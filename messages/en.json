@@ -93,6 +93,35 @@
       "production": "Production",
       "productDetail": "Product Detail",
       "contact": "Contact"
+    },
+    "footer": {
+      "brandName": "VIETANHDUNGPOTTERY",
+      "description": "Vietnam Pottery Manufacturer & Exporter with over 15 years of experience.",
+      "products": {
+        "title": "Products",
+        "items": {
+          "fiberglass": "Fiberglass Planter",
+          "fiberstone": "Fiberstone Planter",
+          "ceramic": "Ceramic Planter",
+          "terracotta": "Terracotta Products"
+        }
+      },
+      "company": {
+        "title": "Company",
+        "items": {
+          "aboutUs": "About Us",
+          "factoryTour": "Factory Tour",
+          "qualityControl": "Quality Control",
+          "contact": "Contact"
+        }
+      },
+      "contactInfo": {
+        "title": "Contact",
+        "location": "Vietnam",
+        "email": "vietanhdungpottery@gmail.com",
+        "phone": "(+84) 855632984"
+      },
+      "copyright": "© 2024 Aurora Pots. All rights reserved."
     }
   },
   "introduction": {
@@ -333,6 +362,51 @@
     "pagination": {
       "pre": "Previous",
       "next": "Next"
+    }
+  },
+  "contact": {
+    "hero": {
+      "values": "Our Values",
+      "slogan": "Understanding • Responsibility • Innovation"
+    },
+    "section": {
+      "title": "Contact Us",
+      "subtitle": "We'd love to hear from you. Visit our showroom or reach out to us for any inquiries about our products."
+    },
+    "map": {
+      "title": "Find Us on Map"
+    },
+    "info": {
+      "title": "Contact Information",
+      "items": {
+        "showroom": {
+          "title": "Showroom & Manufacture",
+          "content": "My Phuoc Tan Van Street, Tan Dinh, Ben Cat Ward, Ho Chi Minh City, Viet Nam"
+        },
+        "office": {
+          "title": "Vietnam Office",
+          "content": "2/25 Binh Thuan Hamlet, Binh Nham 03 Street, Lai Thieu Ward, Ho Chi Minh City, Viet Nam"
+        },
+        "phone": {
+          "title": "Phone"
+        },
+        "email": {
+          "title": "Email"
+        }
+      }
+    },
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram"
+    },
+    "businessHours": {
+      "title": "Business Hours",
+      "mondayFriday": "Monday - Friday",
+      "saturday": "Saturday",
+      "sunday": "Sunday",
+      "weekdayHours": "8:00 AM - 6:00 PM",
+      "saturdayHours": "8:00 AM - 12:00 PM",
+      "closed": "Closed"
     }
   }
 }
