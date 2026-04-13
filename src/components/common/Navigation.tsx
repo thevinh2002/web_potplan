@@ -1,19 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import { Link } from "@/src/i18n/routing";
 import Image from "next/image";
-import { Menu, X, Search, User, ShoppingBag } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const t = useTranslations("common.navigation");
 
   const navLinks = [
-    { href: "/", label: "HOME" },
-    { href: "/introduction", label: "INTRODUCTION" },
-    { href: "/production", label: "PRODUCTION" },
-    { href: "/contact", label: "CONTACT" },
+    { href: "/", label: t("home") },
+    { href: "/introduction", label: t("introduction") },
+    { href: "/production", label: t("production") },
+    { href: "/contact", label: t("contact") },
   ];
 
   return (
@@ -46,30 +48,6 @@ export default function Navigation() {
                 {link.label}
               </Link>
             ))}
-          </div>
-
-          <div className="hidden lg:flex items-center gap-4">
-            <button
-              type="button"
-              className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-            >
-              <Search className="w-5 h-5 text-[#5c4a3d]" />
-            </button>
-            <button
-              type="button"
-              className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-            >
-              <User className="w-5 h-5 text-[#5c4a3d]" />
-            </button>
-            <button
-              type="button"
-              className="p-2 hover:bg-gray-100 rounded-full transition-colors relative"
-            >
-              <ShoppingBag className="w-5 h-5 text-[#5c4a3d]" />
-              <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#8b6914] text-white text-xs rounded-full flex items-center justify-center">
-                0
-              </span>
-            </button>
           </div>
 
           <button

@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import Breadcrumb from "@/src/components/common/Breadcrumb";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import StatItem from "@/src/components/common/StatItem";
@@ -15,6 +14,7 @@ import {
   StatItemProps,
 } from "@/src/types/introduction";
 import ContactButton from "@/src/components/ui/ContactButton";
+import { useTranslations } from "next-intl";
 
 const factoryImages: FactoryImageProps[] = [
   {
@@ -35,59 +35,13 @@ const factoryImages: FactoryImageProps[] = [
   },
 ];
 
-const statsData: StatItemProps[] = [
-  { value: "20+", label: "Years Experience", delay: 0.1 },
-  { value: "500+", label: "Products", delay: 0.2 },
-  { value: "50+", label: "Export Markets", delay: 0.3 },
-  { value: "100%", label: "Quality Assurance", delay: 0.4 },
-];
-
-const coreValuesData: CoreValueItemProps[] = [
-  {
-    title: "Understanding",
-    description:
-      "We always listen to and prioritize your requirements regarding the shape, proportions, and surface finish of our plant pots. Our technical team collaborates closely with you to develop prototypes that perfectly align with your vision. Samples are ready to be dispatched as soon as we reach an agreement.",
-    imageSrc:
-      "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=600&h=400&fit=crop",
-    imageAlt: "Understanding - Crafting pots",
-    reverse: false,
-  },
-  {
-    title: "Responsibility",
-    description:
-      "Our responsibility is to provide customers with a sense of security regarding quality and delivery time, and to build long-term relationships with them.",
-    imageSrc:
-      "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=600&h=400&fit=crop",
-    imageAlt: "Responsibility - Quality pots",
-    reverse: true,
-  },
-  {
-    title: "Innovation",
-    description:
-      "We are constantly researching new trends to develop new designs, optimize processes, and update according to customer requirements. Our goal is to provide you with the best possible experience.",
-    imageSrc:
-      "https://images.unsplash.com/photo-1518882605630-8eb565f5e673?w=600&h=400&fit=crop",
-    imageAlt: "Innovation - Modern designs",
-    reverse: false,
-  },
-];
-
-const chooseUsList: ListItemProps[] = [
-  { label: "Direct Manufacturer" },
-  { label: "Superior Craftsmanship" },
-];
-
-const requestList: ListItemProps[] = [
-  { label: "Freedom in size, color, etc." },
-  { label: "Custom design" },
-  {
-    label: "Flexible minimum order quantity",
-  },
-  { label: "Other requests" },
-];
-
 export default function Introduction() {
   const [currentImage, setCurrentImage] = useState(0);
+  const t = useTranslations("introduction");
+  const chooseUsList: ListItemProps[] = t.raw("whyChoose.list");
+  const requestList: ListItemProps[] = t.raw("whyChoose.requestList");
+  const coreValuesList: CoreValueItemProps[] = t.raw("coreValues.items");
+  const statsData: StatItemProps[] = t.raw("stats");
 
   const nextImage = () => {
     setCurrentImage((prev) => (prev + 1) % factoryImages.length);
@@ -110,8 +64,6 @@ export default function Introduction() {
 
   return (
     <div className="min-h-screen bg-[#faf8f5] overflow-x-hidden">
-      <Breadcrumb />
-
       {/* Hero Section - About Us */}
       <section className="py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -192,33 +144,26 @@ export default function Introduction() {
             >
               <div>
                 <h1 className="text-4xl lg:text-5xl font-bold text-[#5c4a3d] leading-tight mb-4">
-                  Vietnam Composite
+                  {t("hero.title1")}
                   <br />
-                  <span className="text-[#8b6914]">Pots Manufacturer</span>
+                  <span className="text-[#8b6914]">{t("hero.title2")}</span>
                 </h1>
                 <div className="w-20 h-1 bg-[#8b6914] rounded-full" />
               </div>
 
               <p className="text-lg text-[#5c4a3d] leading-relaxed">
-                Established in the early 2000s, Viet Anh Dung Enterprise (VAD
-                Pottery) began its journey as a dedicated cement pot
-                manufacturer. Through years of continuous growth and a steadfast
-                commitment to quality, we have successfully expanded our
-                expertise into the premium Composite pot market.
+                {t("hero.desc1")}
               </p>
 
               <p className="text-lg text-[#5c4a3d] leading-relaxed">
-                With products crafted to meet rigorous international export
-                standards, we aim to provide both domestic and global customers
-                with a truly unique experience.
+                {t("hero.desc2")}
               </p>
 
               <p className="text-[#c53030] font-semibold italic">
-                High Quality - True Value - Constant Innovation - Punctual
-                Delivery - Customer Respect
+                {t("hero.highlight")}
               </p>
 
-              <ContactButton text="Contact Us" showIcon={true} />
+              <ContactButton text={t("hero.contact")} showIcon={true} />
             </motion.div>
           </div>
         </div>
@@ -248,14 +193,11 @@ export default function Introduction() {
               className="space-y-6"
             >
               <h2 className="text-3xl font-bold text-[#5c4a3d]">
-                Why Choose Our Products?
+                {t("whyChoose.title")}
               </h2>
 
               <p className="text-[#5c4a3d] leading-relaxed">
-                We specialize in manufacturing composite pots that balance
-                strength with lightweight functionality. Built to withstand the
-                elements and styled for contemporary spaces, our planters offer
-                a reliable solution for both indoor and outdoor settings.
+                {t("whyChoose.desc")}
               </p>
 
               <ul className="space-y-3 text-sm italic text-[#5c4a3d]">
@@ -271,7 +213,7 @@ export default function Introduction() {
 
               <div className="pt-4 border-t border-gray-100">
                 <h3 className="font-semibold text-[#5c4a3d] mb-4">
-                  You are free to request the following when you come to us:
+                  {t("whyChoose.requestTitle")}
                 </h3>
                 <ul className="space-y-3">
                   {requestList.map((item, index) => (
@@ -317,12 +259,12 @@ export default function Introduction() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl lg:text-4xl font-bold text-[#5c4a3d] mb-4">
-              Our Core Values
+              {t("coreValues.title")}
             </h2>
             <div className="w-24 h-1 bg-[#8b6914] mx-auto rounded-full" />
           </motion.div>
 
-          {coreValuesData.map((item, index) => (
+          {coreValuesList.map((item, index) => (
             <CoreValueItem
               key={index}
               title={item.title}
@@ -330,7 +272,7 @@ export default function Introduction() {
               imageSrc={item.imageSrc}
               imageAlt={item.imageAlt}
               reverse={item.reverse}
-              isLast={index === coreValuesData.length - 1}
+              isLast={index === coreValuesList.length - 1}
             />
           ))}
         </div>

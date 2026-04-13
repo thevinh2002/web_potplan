@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { HomeTopProducts } from "@/src/types/home";
+import { useTranslations } from "next-intl";
 
 const topProducts: HomeTopProducts[] = [
   {
@@ -31,8 +32,10 @@ const topProducts: HomeTopProducts[] = [
 ];
 
 export default function TopProducts() {
+  const t = useTranslations("home.topProducts");
+
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-[#f5f2ed]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-8">
           <motion.h2
@@ -42,7 +45,7 @@ export default function TopProducts() {
             transition={{ duration: 0.6 }}
             className="text-2xl font-bold text-[#5c4a3d]"
           >
-            TOP PRODUCT
+            {t("title")}
           </motion.h2>
           <motion.a
             initial={{ opacity: 0, x: 20 }}
@@ -52,7 +55,7 @@ export default function TopProducts() {
             href="#"
             className="text-[#8b6914] hover:underline font-medium"
           >
-            View All
+            {t("viewAll")}
           </motion.a>
         </div>
 
@@ -99,7 +102,7 @@ export default function TopProducts() {
               <div className="aspect-square overflow-hidden relative">
                 <img
                   src={product.image}
-                  alt={product.name}
+                  alt={t(`items.${product.code}`)}
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
@@ -107,7 +110,7 @@ export default function TopProducts() {
                 <div>
                   <p className="text-xs text-gray-500 mb-1">{product.code}</p>
                   <h3 className="font-medium text-[#5c4a3d] mb-2 line-clamp-2">
-                    {product.name}
+                    {t(`items.${product.code}`)}
                   </h3>
                 </div>
                 <p className="text-[#8b6914] font-bold">{product.price}</p>

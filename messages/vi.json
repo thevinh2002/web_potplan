@@ -1,0 +1,338 @@
+{
+  "home": {
+    "hero": {
+      "subtitle": "NHÀ SẢN XUẤT & XUẤT KHẨU GỐM SỨ B2B VIỆT NAM",
+      "title": "AURORA POTS",
+      "description": "Với hơn 15 năm kinh nghiệm trong sản xuất và xuất khẩu gốm sứ và chậu cây chất lượng cao trên toàn cầu. Xuất thân từ một xưởng gốm thủ công khiêm tốn, chúng tôi tiếp nối nghề thủ công truyền thống đồng thời áp dụng thiết kế hiện đại.",
+      "viewMore": "XEM THÊM",
+      "features": {
+        "care": "Được chế tác tỉ mỉ và chính xác về kỹ thuật",
+        "heritage": "Lấy cảm hứng từ di sản gốm sứ Việt Nam",
+        "design": "Phát triển truyền thống thành thiết kế đương đại"
+      }
+    },
+    "categories": {
+      "title": "SẢN PHẨM",
+      "viewDetails": "Xem ngay",
+      "items": {
+        "fiberglass-planter": "Chậu sợi thủy tinh",
+        "fiberstone-planter": "Chậu Đá Fiberstone",
+        "fibercement-planter": "Chậu xi măng vân đá",
+        "basic-outdoor-pottery": "Gốm sứ ngoài trời cơ bản",
+        "premium-outdoor-pottery": "Gốm sứ ngoài trời cao cấp",
+        "indoor-ceramic-planter": "Chậu gốm trong nhà"
+      }
+    },
+    "topProducts": {
+      "title": "SẢN PHẨM NỔI BẬT",
+      "viewAll": "Xem tất cả",
+      "items": {
+        "AUP050": "Bình gốm nâu mộc Big Round",
+        "AUM007": "Chậu thép không gỉ Brushed",
+        "AUD079": "Ghế đôn gốm trang trí",
+        "AUT022": "Chậu đất nung truyền thống"
+      }
+    },
+    "oem": {
+      "title": "CÁC DỰ ÁN OEM/ODM LUÔN ĐƯỢC CHÀO ĐÓN",
+      "description1": "Với 3 nhà máy và công suất tối đa 60 container mỗi tháng, chúng tôi cung cấp năng lực sản xuất mạnh mẽ để hỗ trợ nhu cầu OEM của bạn. Đội ngũ thiết kế và kỹ sư giàu kinh nghiệm của chúng tôi luôn hợp tác chặt chẽ với các đối tác để biến ý tưởng thành những sản phẩm chất lượng cao, sẵn sàng cho thị trường.",
+      "description2": "Các giải pháp sản xuất gốm sứ OEM, ODM và theo yêu cầu, hãy cùng chúng tôi hiện thực hóa ý tưởng của bạn.",
+      "contactUs": "LIÊN HỆ VỚI CHÚNG TÔI"
+    },
+    "suitableFor": {
+      "title": "SẢN PHẨM CỦA CHÚNG TÔI PHÙ HỢP CHO",
+      "items": {
+        "houses": "Nhà ở",
+        "gardens": "Sân vườn",
+        "offices": "Văn phòng",
+        "hotels": "Khách sạn",
+        "resorts": "Khu nghỉ dưỡng",
+        "mixed-use": "Đa năng",
+        "restaurants": "Nhà hàng",
+        "healthcare": "Y tế",
+        "schools": "Trường học"
+      }
+    },
+    "aboutBlogs": {
+      "about": {
+        "title": "Về chúng tôi",
+        "description": "Aurora Pots là một trong những nhà sản xuất gốm sứ hàng đầu Việt Nam, với hơn 15 năm kinh nghiệm trong sản xuất và xuất khẩu chậu cây chất lượng cao trên toàn cầu. Xuất thân từ một xưởng gốm thủ công gia đình, chúng tôi đã không ngừng mở rộng dòng sản phẩm của mình.",
+        "learnMore": "Tìm hiểu thêm"
+      },
+      "blogs": {
+        "title": "Tin tức",
+        "posts": {
+          "manufacturing": {
+            "title": "Sản xuất gốm sứ: Kỹ thuật thủ công tinh xảo",
+            "description": "Khám phá các phương pháp truyền thống đằng sau gốm sứ thủ công của chúng tôi..."
+          },
+          "choosingPlanter": {
+            "title": "Chọn chậu cây phù hợp cho không gian của bạn",
+            "description": "Hướng dẫn toàn diện để chọn chậu cây hoàn hảo..."
+          }
+        }
+      }
+    },
+    "newsletter": {
+      "title": "Đăng ký nhận bản tin của chúng tôi",
+      "description": "Luôn cập nhật các sản phẩm mới nhất, ưu đãi và ghé thăm showroom của chúng tôi.",
+      "placeholder": "Nhập email của bạn",
+      "button": "Đăng ký"
+    }
+  },
+  "common": {
+    "navigation": {
+      "home": "Trang chủ",
+      "introduction": "Giới thiệu",
+      "production": "Sản phẩm",
+      "contact": "Liên hệ"
+    },
+    "breadcrumb": {
+      "home": "Trang chủ",
+      "introduction": "Giới thiệu",
+      "production": "Sản phẩm",
+      "productDetail": "Chi tiết sản phẩm",
+      "contact": "Liên hệ"
+    }
+  },
+  "introduction": {
+    "hero": {
+      "title1": "Nhà Sản Xuất Chậu",
+      "title2": "Composite Việt Nam",
+      "desc1": "Được thành lập vào đầu những năm 2000, Doanh nghiệp Việt Anh Dũng (VAD Pottery) bắt đầu hành trình với tư cách là nhà sản xuất chậu xi măng chuyên nghiệp. Qua nhiều năm phát triển không ngừng và cam kết bền vững về chất lượng, chúng tôi đã mở rộng thành công sang thị trường chậu Composite cao cấp.",
+      "desc2": "Với các sản phẩm được chế tác đạt tiêu chuẩn xuất khẩu quốc tế nghiêm ngặt, chúng tôi hướng đến mang lại trải nghiệm thực sự độc đáo cho khách hàng trong và ngoài nước.",
+      "highlight": "Chất Lượng Cao - Giá Trị Thực - Đổi Mới Không Ngừng - Giao Hàng Đúng Hạn - Tôn Trọng Khách Hàng",
+      "contact": "Liên Hệ Với Chúng Tôi"
+    },
+
+    "whyChoose": {
+      "title": "Tại Sao Chọn Sản Phẩm Của Chúng Tôi?",
+      "desc": "Chúng tôi chuyên sản xuất chậu composite kết hợp giữa độ bền và tính năng nhẹ. Được thiết kế để chịu đựng thời tiết khắc nghiệt và phù hợp với không gian hiện đại, các chậu cây của chúng tôi mang lại giải pháp đáng tin cậy cho cả không gian trong nhà lẫn ngoài trời.",
+      "list": [
+        {
+          "label": "Nhà Sản Xuất Trực Tiếp"
+        },
+        {
+          "label": "Tay Nghề Vượt Trội"
+        }
+      ],
+      "requestTitle": "Quý khách hoàn toàn có thể yêu cầu những điều sau khi đến với chúng tôi:",
+      "requestList": [
+        {
+          "label": "Tự do về kích thước, màu sắc, v.v."
+        },
+        {
+          "label": "Thiết kế theo yêu cầu"
+        },
+        {
+          "label": "Số lượng đặt hàng tối thiểu linh hoạt"
+        },
+        {
+          "label": "Các yêu cầu khác"
+        }
+      ]
+    },
+
+    "stats": [
+      { "value": "20+", "label": "Năm Kinh Nghiệm" },
+      { "value": "500+", "label": "Sản Phẩm" },
+      { "value": "50+", "label": "Thị Trường Xuất Khẩu" },
+      { "value": "100%", "label": "Đảm Bảo Chất Lượng" }
+    ],
+
+    "coreValues": {
+      "title": "Giá Trị Cốt Lõi Của Chúng Tôi",
+      "items": [
+        {
+          "title": "Thấu Hiểu",
+          "description": "Chúng tôi luôn lắng nghe và ưu tiên các yêu cầu của bạn về hình dạng, tỷ lệ và bề mặt hoàn thiện của chậu cây. Đội ngũ kỹ thuật của chúng tôi phối hợp chặt chẽ với bạn để phát triển các mẫu thử hoàn toàn phù hợp với tầm nhìn của bạn. Mẫu sẽ được gửi đi ngay khi chúng ta đạt được thỏa thuận.",
+          "imageSrc": "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=600&h=400&fit=crop",
+          "imageAlt": "Thấu Hiểu - Chế tác chậu",
+          "reverse": false
+        },
+        {
+          "title": "Trách Nhiệm",
+          "description": "Trách nhiệm của chúng tôi là mang lại cho khách hàng sự an tâm về chất lượng và thời gian giao hàng, đồng thời xây dựng mối quan hệ lâu dài với họ.",
+          "imageSrc": "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=600&h=400&fit=crop",
+          "imageAlt": "Trách Nhiệm - Chậu chất lượng",
+          "reverse": true
+        },
+        {
+          "title": "Đổi Mới",
+          "description": "Chúng tôi không ngừng nghiên cứu các xu hướng mới để phát triển thiết kế mới, tối ưu hóa quy trình và cập nhật theo yêu cầu của khách hàng. Mục tiêu của chúng tôi là mang lại cho bạn trải nghiệm tốt nhất có thể.",
+          "imageSrc": "https://images.unsplash.com/photo-1518882605630-8eb565f5e673?w=600&h=400&fit=crop",
+          "imageAlt": "Đổi Mới - Thiết kế hiện đại",
+          "reverse": false
+        }
+      ]
+    }
+  },
+  "production": {
+    "hero": {
+      "title": "Sản Phẩm",
+      "description": "Khám phá bộ sưu tập chậu cây đa dạng của chúng tôi, được chế tác tỉ mỉ để phù hợp với mọi không gian."
+    },
+    "search": {
+      "placeholder": "Tìm kiếm sản phẩm theo tên hoặc mã..."
+    },
+    "sort": {
+      "filter": "Bộ lọc",
+      "options": [
+        { "id": "newest", "name": "Mới nhất" },
+        { "id": "name", "name": "Tên: A đến Z" }
+      ]
+    },
+    "filter": {
+      "title": "Bộ lọc",
+      "categories": [
+        { "id": "all", "name": "Tất cả sản phẩm", "count": 48 },
+        { "id": "planters", "name": "Chậu & Bồn", "count": 16 },
+        { "id": "vases", "name": "Bình & Lọ", "count": 12 },
+        { "id": "lamps", "name": "Đèn & Chiếu sáng", "count": 8 },
+        { "id": "bowls", "name": "Bát & Đĩa", "count": 7 },
+        { "id": "stools", "name": "Ghế đẩu & Ghế ngồi", "count": 5 }
+      ]
+    },
+    "products": [
+      {
+        "id": 1,
+        "name": "Chậu Amphora Gốm Cổ Điển",
+        "code": "AUV114",
+        "category": "planters",
+        "image": "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=400",
+        "isNew": true,
+        "new": "Mới",
+        "rating": 4.8,
+        "reviews": 24
+      },
+      {
+        "id": 2,
+        "name": "Chậu Trụ Tròn Bubble Atlantic",
+        "code": "AUV026",
+        "category": "planters",
+        "image": "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=400",
+        "isNew": true,
+        "new": "Mới",
+        "rating": 4.6,
+        "reviews": 18
+      },
+      {
+        "id": 3,
+        "name": "Bát Tròn Nâu Phong Cách Rustic",
+        "code": "AUP051",
+        "category": "bowls",
+        "image": "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400",
+        "isNew": false,
+        "rating": 4.9,
+        "reviews": 32
+      },
+      {
+        "id": 4,
+        "name": "Chao Đèn Tre Treo Trần",
+        "code": "AUW038",
+        "category": "lamps",
+        "image": "https://images.unsplash.com/photo-1509423350716-97f9360b4e09?w=400",
+        "isNew": true,
+        "new": "Mới",
+        "rating": 4.5,
+        "reviews": 15
+      },
+      {
+        "id": 5,
+        "name": "Lọ Tròn Nâu Phong Cách Rustic",
+        "code": "AUP050",
+        "category": "vases",
+        "image": "https://images.unsplash.com/photo-1562690868-60bbe7293e94?w=400",
+        "isNew": false,
+        "rating": 4.7,
+        "reviews": 28
+      },
+      {
+        "id": 6,
+        "name": "Chậu Inox Đánh Bóng Mờ",
+        "code": "AUM007",
+        "category": "planters",
+        "image": "https://images.unsplash.com/photo-1518882605630-8eb565f5e673?w=400",
+        "isNew": false,
+        "rating": 4.8,
+        "reviews": 21
+      },
+      {
+        "id": 7,
+        "name": "Ghế Đôn Gốm Trang Trí",
+        "code": "AUD079",
+        "category": "stools",
+        "image": "https://images.unsplash.com/photo-1459156212016-c812468e2115?w=400",
+        "isNew": false,
+        "rating": 4.9,
+        "reviews": 45
+      },
+      {
+        "id": 8,
+        "name": "Chậu Đất Nung Cổ Điển",
+        "code": "AUT022",
+        "category": "planters",
+        "image": "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=400",
+        "isNew": false,
+        "rating": 4.4,
+        "reviews": 56
+      },
+      {
+        "id": 9,
+        "name": "Giỏ Đựng Đan Tay Từ Tre",
+        "code": "AUB092",
+        "category": "bowls",
+        "image": "https://images.unsplash.com/photo-1595265677860-9a316d8457d6?w=400",
+        "isNew": true,
+        "new": "Mới",
+        "rating": 4.7,
+        "reviews": 19
+      },
+      {
+        "id": 10,
+        "name": "Bình Hoa Đất Sét Phong Cách Rustic",
+        "code": "AUV203",
+        "category": "vases",
+        "image": "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=400",
+        "isNew": false,
+        "rating": 4.6,
+        "reviews": 23
+      },
+      {
+        "id": 11,
+        "name": "Bộ Chậu Hình Học Hiện Đại",
+        "code": "AUP167",
+        "category": "planters",
+        "image": "https://images.unsplash.com/photo-1509423350716-97f9360b4e09?w=400",
+        "isNew": true,
+        "new": "Mới",
+        "rating": 4.8,
+        "reviews": 12
+      },
+      {
+        "id": 12,
+        "name": "Đèn Treo Đan Lát Phong Cách Vintage",
+        "code": "AUW089",
+        "category": "lamps",
+        "image": "https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=400",
+        "isNew": false,
+        "rating": 4.9,
+        "reviews": 34
+      }
+    ],
+    "results": {
+      "showing": "Hiển thị",
+      "to": "đến",
+      "of": "của",
+      "products": "sản phẩm"
+    },
+    "empty": {
+      "title": "Không tìm thấy sản phẩm",
+      "desc": "Thử điều chỉnh tìm kiếm hoặc bộ lọc"
+    },
+    "pagination": {
+      "pre": "Trước",
+      "next": "Sau"
+    }
+  }
+}

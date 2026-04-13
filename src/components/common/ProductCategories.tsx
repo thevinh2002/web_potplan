@@ -1,8 +1,9 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/src/i18n/routing";
 import { motion } from "framer-motion";
 import { HomeProductCategories } from "@/src/types/home";
+import { useTranslations } from "next-intl";
 
 const productCategories: HomeProductCategories[] = [
   {
@@ -38,6 +39,8 @@ const productCategories: HomeProductCategories[] = [
 ];
 
 export default function ProductCategories() {
+  const t = useTranslations("home.categories");
+
   return (
     <section id="products" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -48,7 +51,7 @@ export default function ProductCategories() {
           transition={{ duration: 0.6 }}
           className="text-3xl font-bold text-center text-[#5c4a3d] mb-12"
         >
-          PRODUCTS
+          {t("title")}
         </motion.h2>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -79,16 +82,16 @@ export default function ProductCategories() {
               >
                 <img
                   src={cat.image}
-                  alt={cat.name}
+                  alt={t(`items.${cat.id}`)}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <h3 className="text-white text-xl font-bold mb-2">
-                    {cat.name}
+                    {t(`items.${cat.id}`)}
                   </h3>
                   <span className="text-[#c9a87c] text-sm font-medium group-hover:underline">
-                    See now
+                    {t("viewDetails")}
                   </span>
                 </div>
               </Link>
@@ -99,3 +102,4 @@ export default function ProductCategories() {
     </section>
   );
 }
+

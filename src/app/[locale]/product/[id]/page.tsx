@@ -1,6 +1,5 @@
 import { ProductDetail } from "@/src/types/product";
 import ProductDetailClient from "./ProductDetailClient";
-import Breadcrumb from "@/src/components/common/Breadcrumb";
 
 const productCategories: ProductDetail[] = [
   {
@@ -199,7 +198,6 @@ export default function ProductDetailPage({ params }: PageProps) {
   const product = productCategories.find((p) => p.id === params.id);
   return (
     <>
-      <Breadcrumb />
       <ProductDetailClient product={product} />
     </>
   );

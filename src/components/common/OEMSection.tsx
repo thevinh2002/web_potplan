@@ -2,10 +2,14 @@
 
 import { ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
+import { Link } from "@/src/i18n/routing";
 
 export default function OEMSection() {
+  const t = useTranslations("home.oem");
+
   return (
-    <section id="offer" className="py-20 bg-[#f5f2ed] overflow-hidden">
+    <section id="offer" className="py-20 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -23,7 +27,7 @@ export default function OEMSection() {
               }}
               className="text-3xl font-bold text-[#5c4a3d] mb-6"
             >
-              OEM/ODM PROJECTS ARE WARMLY WELCOMED
+              {t("title")}
             </motion.h2>
             <motion.p
               variants={{
@@ -32,10 +36,7 @@ export default function OEMSection() {
               }}
               className="text-gray-600 mb-6 leading-relaxed"
             >
-              With 3 factories and a maximum output of 60 containers per month,
-              we offer strong production capacity to support your OEM needs. Our
-              experienced team of designers and engineers works closely with
-              partners to turn ideas into high-quality, market-ready products.
+              {t("description1")}
             </motion.p>
             <motion.p
               variants={{
@@ -44,22 +45,22 @@ export default function OEMSection() {
               }}
               className="text-[#8b6914] font-medium mb-8"
             >
-              OEM, ODM, and custom ceramic manufacturing solutions, let's bring
-              your ideas to life.
+              {t("description2")}
             </motion.p>
-            <motion.a
+            <motion.div
               variants={{
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
               }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-[#5c4a3d] text-white px-8 py-4 font-bold hover:bg-[#4a3d32] transition-colors"
             >
-              CONTACT US
-              <ChevronRight className="w-5 h-5" />
-            </motion.a>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 bg-[#5c4a3d] text-white px-8 py-4 font-bold hover:bg-[#4a3d32] transition-colors"
+              >
+                {t("contactUs")}
+                <ChevronRight className="w-5 h-5" />
+              </Link>
+            </motion.div>
           </motion.div>
           <motion.div
             initial="hidden"

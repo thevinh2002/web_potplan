@@ -1,13 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useLanguageSwitcher } from "@/src/hooks/useLanguageSwitcher";
 
 export default function TopBar() {
-  const [lang, setLang] = useState("ENG");
+  const { currentLocale, switchLanguage, isPending } = useLanguageSwitcher();
 
   const languages = [
     {
-      code: "VIE",
+      code: "vi",
       label: "VIE",
       flag: (
         <svg viewBox="0 0 30 20" className="w-5 h-3.5 shadow-sm">
@@ -20,7 +20,7 @@ export default function TopBar() {
       ),
     },
     {
-      code: "ENG",
+      code: "en",
       label: "ENG",
       flag: (
         <svg viewBox="0 0 60 30" className="w-5 h-3.5 shadow-sm">
@@ -57,12 +57,13 @@ export default function TopBar() {
           {languages.map((l) => (
             <button
               key={l.code}
-              onClick={() => setLang(l.code)}
+              onClick={() => switchLanguage(l.code)}
+              disabled={isPending}
               className={`flex items-center gap-2 transition-all hover:opacity-80 py-1 px-2 rounded ${
-                lang === l.code
+                currentLocale === l.code
                   ? "bg-white/10 ring-1 ring-white/20"
                   : "opacity-60"
-              }`}
+              } ${isPending ? "cursor-wait opacity-40" : ""}`}
             >
               {l.flag}
               <span className="hidden md:inline font-medium">{l.label}</span>

@@ -6,6 +6,7 @@ interface SidebarFilterProps {
   selectedCategory: string;
   setSelectedCategory: (category: string) => void;
   isMobileFilterOpen: boolean;
+  title: string;
 }
 
 export default function SidebarFilter({
@@ -13,6 +14,7 @@ export default function SidebarFilter({
   selectedCategory,
   setSelectedCategory,
   isMobileFilterOpen,
+  title,
 }: SidebarFilterProps) {
   return (
     <aside
@@ -23,7 +25,7 @@ export default function SidebarFilter({
         <div>
           <h3 className="font-bold text-[#5c4a3d] mb-4 flex items-center gap-2">
             <Filter className="w-4 h-4" />
-            Categories
+            {title}
           </h3>
           <div className="space-y-2">
             {categories.map((category) => (

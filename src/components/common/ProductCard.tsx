@@ -1,12 +1,17 @@
-import Link from "next/link";
+import { Link } from "@/src/i18n/routing";
 import { Product } from "@/src/types/production";
 
 interface ProductCardProps {
   product: Product;
   viewMode: "grid" | "list";
+  newLabel?: string;
 }
 
-export default function ProductCard({ product, viewMode }: ProductCardProps) {
+export default function ProductCard({
+  product,
+  viewMode,
+  newLabel,
+}: ProductCardProps) {
   return (
     <Link
       href={`/product/${String(product.id)}`}
@@ -27,7 +32,7 @@ export default function ProductCard({ product, viewMode }: ProductCardProps) {
         />
         {product.isNew && (
           <span className="absolute top-3 left-3 bg-[#8b6914] text-white text-xs font-bold px-3 py-1 rounded-full">
-            NEW
+            {newLabel}
           </span>
         )}
       </div>
