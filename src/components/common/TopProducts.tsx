@@ -55,22 +55,14 @@ export default function TopProducts() {
             View All
           </motion.a>
         </div>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={{
-            visible: {
-              transition: {
-                staggerChildren: 0.2,
-              },
-            },
-          }}
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 perspective-[1000px]"
-        >
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 perspective-[1000px]">
           {topProducts.map((product, idx) => (
             <motion.div
               key={idx}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2, margin: "-50px" }}
               variants={{
                 hidden: {
                   opacity: 0,
@@ -94,6 +86,7 @@ export default function TopProducts() {
                     stiffness: 70,
                     damping: 8,
                     mass: 0.8,
+                    delay: (idx % 4) * 0.2,
                   },
                 },
               }}
@@ -121,7 +114,7 @@ export default function TopProducts() {
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

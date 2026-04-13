@@ -50,29 +50,26 @@ export default function ProductCategories() {
         >
           PRODUCTS
         </motion.h2>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={{
-            visible: {
-              transition: {
-                staggerChildren: 0.15,
-              },
-            },
-          }}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {productCategories.map((cat) => (
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {productCategories.map((cat, index) => (
             <motion.div
               key={cat.id}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2, margin: "-50px" }}
               variants={{
                 hidden: { opacity: 0, scale: 0.9, y: 30 },
                 visible: {
                   opacity: 1,
                   scale: 1,
                   y: 0,
-                  transition: { type: "spring", stiffness: 100, damping: 15 },
+                  transition: {
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 15,
+                    delay: (index % 3) * 0.15,
+                  },
                 },
               }}
             >
@@ -97,7 +94,7 @@ export default function ProductCategories() {
               </Link>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

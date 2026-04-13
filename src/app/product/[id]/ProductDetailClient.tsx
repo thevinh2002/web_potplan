@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { ProductDetail } from "@/src/types/product";
+import ContactButton from "@/src/components/ui/ContactButton";
 
 interface ProductDetailClientProps {
   product: ProductDetail | undefined;
@@ -125,12 +126,7 @@ export default function ProductDetailClient({
                 </div>
               </div>
 
-              <a
-                href="/contact"
-                className="bg-[#8b6914] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#7a5c12] transition-colors mb-6 w-fit"
-              >
-                Contact us
-              </a>
+              <ContactButton text="Contact us" className="mb-6 w-fit px-8" />
 
               <p className="text-lg text-[#5c4a3d] leading-relaxed">
                 {product.description}
