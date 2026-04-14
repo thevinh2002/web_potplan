@@ -590,5 +590,15 @@
     "review": "reviews",
     "category": "Category",
     "contact": "Contact us"
+  },
+  "metadata": {
+    "introduction": {
+      "title": "Introduction - Viet Anh Dung",
+      "description": "Learn about the history, mission, and core values of Viet Anh Dung - a leading company in the field of manufacturing and supplying ceramic pots."
+    },
+    "contact": {
+      "title": "Contact Us - Viet Anh Dung",
+      "description": "Get in touch with Viet Anh Dung for inquiries, support, or partnership opportunities. We'd love to hear from you."
+    }
   }
 }

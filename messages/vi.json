@@ -589,5 +589,15 @@
     "review": "đánh giá",
     "category": "Danh mục",
     "contact": "Liên hệ"
+  },
+  "metadata": {
+    "introduction": {
+      "title": "Giới thiệu - Việt Anh Dũng",
+      "description": "Tìm hiểu về lịch sử, sứ mệnh và các giá trị cốt lõi của Việt Anh Dũng - công ty hàng đầu trong lĩnh vực sản xuất và cung cấp chậu cây."
+    },
+    "contact": {
+      "title": "Liên hệ - Việt Anh Dũng",
+      "description": "Liên hệ với Việt Anh Dũng để được tư vấn, hỗ trợ hoặc hợp tác. Chúng tôi luôn sẵn sàng lắng nghe bạn."
+    }
   }
 }
