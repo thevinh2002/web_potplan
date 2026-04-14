@@ -408,5 +408,186 @@
       "saturdayHours": "8:00 SA - 12:00 CH",
       "closed": "Đóng cửa"
     }
+  },
+  "product": {
+    "productsDetail": [
+      {
+        "id": "1",
+        "name": "Chậu trồng cây gốm cổ điển kiểu Amphora",
+        "productCode": "AUV114",
+        "category": "chậu cây",
+        "rating": 4.8,
+        "reviews": 24,
+        "isNew": true,
+        "new": "MỚI",
+        "images": [
+          "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=400",
+          "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=400&blur=100"
+        ],
+        "description": "Chậu gốm kiểu amphora mang phong cách cổ điển, được chế tác tinh xảo, hoàn hảo để tạo điểm nhấn sang trọng cho khu vườn hoặc không gian trong nhà."
+      },
+      {
+        "id": "2",
+        "name": "Chậu trụ bong bóng màu xanh Atlantic",
+        "productCode": "AUV026",
+        "category": "chậu cây",
+        "rating": 4.6,
+        "reviews": 18,
+        "isNew": true,
+        "new": "MỚI",
+        "images": [
+          "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=400",
+          "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=400&blur=100"
+        ],
+        "description": "Thiết kế hình trụ bong bóng hiện đại với lớp hoàn thiện màu xanh Atlantic. Phù hợp cho trang trí nội thất và không gian ngoài trời."
+      },
+      {
+        "id": "3",
+        "name": "Bát tròn lớn phong cách mộc màu nâu",
+        "productCode": "AUP051",
+        "category": "bát",
+        "rating": 4.9,
+        "reviews": 32,
+        "isNew": false,
+        "images": [
+          "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400",
+          "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400&blur=100"
+        ],
+        "description": "Bát thủ công với lớp hoàn thiện màu nâu mộc mạc. Phù hợp để sử dụng hoặc làm vật trang trí trung tâm."
+      },
+      {
+        "id": "4",
+        "name": "Đèn thả trần bằng tre",
+        "productCode": "AUW038",
+        "category": "đèn",
+        "rating": 4.5,
+        "reviews": 15,
+        "isNew": true,
+        "new": "MỚI",
+        "images": [
+          "https://images.unsplash.com/photo-1509423350716-97f9360b4e09?w=400",
+          "https://images.unsplash.com/photo-1509423350716-97f9360b4e09?w=400&blur=100"
+        ],
+        "description": "Đèn thả bằng tre thân thiện với môi trường, mang lại ánh sáng ấm áp và tự nhiên cho mọi không gian."
+      },
+      {
+        "id": "5",
+        "name": "Bình gốm tròn lớn phong cách mộc màu nâu",
+        "productCode": "AUP050",
+        "category": "bình hoa",
+        "rating": 4.7,
+        "reviews": 28,
+        "isNew": false,
+        "images": [
+          "https://images.unsplash.com/photo-1562690868-60bbe7293e94?w=400",
+          "https://images.unsplash.com/photo-1562690868-60bbe7293e94?w=400&blur=100"
+        ],
+        "description": "Bình gốm lớn với lớp hoàn thiện màu nâu cổ điển. Phù hợp cho lưu trữ hoặc trang trí."
+      },
+      {
+        "id": "6",
+        "name": "Chậu cây thép không gỉ xước",
+        "productCode": "AUM007",
+        "category": "chậu cây",
+        "rating": 4.8,
+        "reviews": 21,
+        "isNew": false,
+        "images": [
+          "https://images.unsplash.com/photo-1518882605630-8eb565f5e673?w=400",
+          "https://images.unsplash.com/photo-1518882605630-8eb565f5e673?w=400&blur=100"
+        ],
+        "description": "Chậu cây bằng thép không gỉ với bề mặt xước, mang phong cách công nghiệp hiện đại, bền bỉ và chống chịu thời tiết."
+      },
+      {
+        "id": "7",
+        "name": "Ghế đôn gốm trang trí",
+        "productCode": "AUD079",
+        "category": "ghế đôn",
+        "rating": 4.9,
+        "reviews": 45,
+        "isNew": false,
+        "images": [
+          "https://images.unsplash.com/photo-1459156212016-c812468e2115?w=400",
+          "https://images.unsplash.com/photo-1459156212016-c812468e2115?w=400&blur=100"
+        ],
+        "description": "Ghế đôn gốm độc đáo có thể dùng như vật trang trí. Được chế tác thủ công với hoa văn tinh xảo."
+      },
+      {
+        "id": "8",
+        "name": "Chậu đất nung cổ điển",
+        "productCode": "AUT022",
+        "category": "chậu cây",
+        "rating": 4.4,
+        "reviews": 56,
+        "isNew": false,
+        "images": [
+          "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=400",
+          "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=400&blur=100"
+        ],
+        "description": "Chậu đất nung truyền thống dành cho người yêu làm vườn. Thoáng khí, tốt cho sự phát triển của cây."
+      },
+      {
+        "id": "9",
+        "name": "Giỏ tre đan thủ công",
+        "productCode": "AUB092",
+        "category": "bát",
+        "rating": 4.7,
+        "reviews": 19,
+        "isNew": true,
+        "new": "MỚI",
+        "images": [
+          "https://images.unsplash.com/photo-1595265677860-9a316d8457d6?w=400",
+          "https://images.unsplash.com/photo-1595265677860-9a316d8457d6?w=400&blur=100"
+        ],
+        "description": "Giỏ tre đan thủ công bền vững, phù hợp để lưu trữ và trang trí trong mọi không gian."
+      },
+      {
+        "id": "10",
+        "name": "Bình hoa đất sét phong cách mộc",
+        "productCode": "AUV203",
+        "category": "bình hoa",
+        "rating": 4.6,
+        "reviews": 23,
+        "isNew": false,
+        "images": [
+          "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=400",
+          "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=400&blur=100"
+        ],
+        "description": "Bình hoa đất sét với kết cấu tự nhiên, phù hợp cho hoa tươi hoặc hoa khô."
+      },
+      {
+        "id": "11",
+        "name": "Bộ chậu cây hình học hiện đại",
+        "productCode": "AUP167",
+        "category": "chậu cây",
+        "rating": 4.8,
+        "reviews": 12,
+        "isNew": true,
+        "new": "MỚI",
+        "images": [
+          "https://images.unsplash.com/photo-1509423350716-97f9360b4e09?w=400",
+          "https://images.unsplash.com/photo-1509423350716-97f9360b4e09?w=400&blur=100"
+        ],
+        "description": "Bộ chậu cây thiết kế hình học hiện đại với đường nét tối giản, mang phong cách đương đại."
+      },
+      {
+        "id": "12",
+        "name": "Đèn thả tre đan phong cách vintage",
+        "productCode": "AUW089",
+        "category": "đèn",
+        "rating": 4.9,
+        "reviews": 34,
+        "isNew": false,
+        "images": [
+          "https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=400",
+          "https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=400&blur=100"
+        ],
+        "description": "Đèn thả tre đan phong cách vintage, tạo điểm nhấn và mang lại ánh sáng ấm cúng cho không gian."
+      }
+    ],
+    "code": "Mã sản phẩm",
+    "review": "đánh giá",
+    "category": "Danh mục",
+    "contact": "Liên hệ"
   }
 }

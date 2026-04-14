@@ -6,10 +6,18 @@ import { ProductDetail } from "@/src/types/product";
 import ContactButton from "@/src/components/ui/ContactButton";
 
 interface ProductDetailClientProps {
+  codeText: string;
+  reviewText: string;
+  categoryText: string;
+  contactText: string;
   product: ProductDetail | undefined;
 }
 
 export default function ProductDetailClient({
+  codeText,
+  reviewText,
+  categoryText,
+  contactText,
   product,
 }: ProductDetailClientProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -85,7 +93,7 @@ export default function ProductDetailClient({
               <div className="flex items-center gap-3 mb-4">
                 {product.isNew && (
                   <span className="bg-[#8b6914] text-white text-xs font-bold px-3 py-1 rounded-full">
-                    NEW
+                    {product.new}
                   </span>
                 )}
                 <span className="text-sm text-gray-500 uppercase tracking-wide">
@@ -106,19 +114,21 @@ export default function ProductDetailClient({
                   </span>
                 </div>
                 <span className="text-gray-400">|</span>
-                <span className="text-gray-500">{product.reviews} reviews</span>
+                <span className="text-gray-500">
+                  {product.reviews} {reviewText}
+                </span>
               </div>
 
               <div className="space-y-3 mb-6">
                 <div className="flex">
                   <span className="w-32 font-semibold text-[#5c4a3d]">
-                    Product Code:
+                    {codeText}
                   </span>
                   <span className="text-[#5c4a3d]">{product.productCode}</span>
                 </div>
                 <div className="flex">
                   <span className="w-32 font-semibold text-[#5c4a3d]">
-                    Category:
+                    {categoryText}
                   </span>
                   <span className="text-[#5c4a3d] capitalize">
                     {product.category}
@@ -126,7 +136,7 @@ export default function ProductDetailClient({
                 </div>
               </div>
 
-              <ContactButton text="Contact us" className="mb-6 w-fit px-8" />
+              <ContactButton text={contactText} className="mb-6 w-fit px-8" />
 
               <p className="text-lg text-[#5c4a3d] leading-relaxed">
                 {product.description}
