@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import Image from 'next/image'
-=======
 import { useTranslations } from "next-intl";
 import Image from "next/image";
->>>>>>> f02fbb6a409cc1fe2c54c39c0a3d3ab82a82c06b
 
 export default function Footer() {
   const t = useTranslations("common.footer");
@@ -14,15 +10,6 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Image
-<<<<<<< HEAD
-                            src="/pictures/logo/logo.png"
-                            alt="AURORA POTS Logo"
-                            width={24}
-                            height={24}
-                            className="w-8 h-8 object-contain"
-                          />
-              <span className="text-xl font-bold">AVIETANHDUNGPOTTERY</span>
-=======
                 src="/pictures/logo/logo.png"
                 alt="AURORA POTS Logo"
                 width={24}
@@ -30,7 +17,6 @@ export default function Footer() {
                 className="w-8 h-8 object-contain"
               />
               <span className="text-xl font-bold">{t("brandName")}</span>
->>>>>>> f02fbb6a409cc1fe2c54c39c0a3d3ab82a82c06b
             </div>
             <p className="text-gray-400 text-sm">{t("description")}</p>
           </div>
@@ -87,15 +73,9 @@ export default function Footer() {
           <div>
             <h4 className="font-bold mb-4">{t("contactInfo.title")}</h4>
             <ul className="space-y-2 text-gray-400 text-sm">
-<<<<<<< HEAD
-              <li>Vietnam</li>
-              <li>vietanhdungpottery@gmail.com </li>
-              <li>(+84) 855632984</li>
-=======
               <li>{t("contactInfo.location")}</li>
               <li>{t("contactInfo.email")}</li>
               <li>{t("contactInfo.phone")}</li>
->>>>>>> f02fbb6a409cc1fe2c54c39c0a3d3ab82a82c06b
             </ul>
           </div>
         </div>

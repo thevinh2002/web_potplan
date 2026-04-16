@@ -175,21 +175,21 @@
         {
           "title": "Understanding",
           "description": "We always listen to and prioritize your requirements regarding the shape, proportions, and surface finish of our plant pots. Our technical team collaborates closely with you to develop prototypes that perfectly align with your vision. Samples are ready to be dispatched as soon as we reach an agreement.",
-          "imageSrc": "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=600&h=400&fit=crop",
+          "imageSrc": "/pictures/core_values/p1.png",
           "imageAlt": "Understanding - Crafting pots",
           "reverse": false
         },
         {
           "title": "Responsibility",
           "description": "Our responsibility is to provide customers with a sense of security regarding quality and delivery time, and to build long-term relationships with them.",
-          "imageSrc": "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=600&h=400&fit=crop",
+          "imageSrc": "/pictures/core_values/p2.png",
           "imageAlt": "Responsibility - Quality pots",
           "reverse": true
         },
         {
           "title": "Innovation",
           "description": "We are constantly researching new trends to develop new designs, optimize processes, and update according to customer requirements. Our goal is to provide you with the best possible experience.",
-          "imageSrc": "https://images.unsplash.com/photo-1518882605630-8eb565f5e673?w=600&h=400&fit=crop",
+          "imageSrc": "/pictures/core_values/p3.jpg",
           "imageAlt": "Innovation - Modern designs",
           "reverse": false
         }

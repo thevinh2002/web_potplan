@@ -1,18 +1,11 @@
 "use client";
 
-<<<<<<< HEAD
-import { useState } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { Menu, X, Search, User, ShoppingBag } from 'lucide-react'
-=======
 import { useState } from "react";
 import { Link } from "@/src/i18n/routing";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
->>>>>>> f02fbb6a409cc1fe2c54c39c0a3d3ab82a82c06b
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,16 +30,12 @@ export default function Navigation() {
               height={32}
               className="w-8 h-8 object-contain"
             />
-<<<<<<< HEAD
-            <span className="text-2xl font-bold text-[#5c4a3d]">VIETANHDUNGPOTTERY</span>
-=======
             <span className="text-2xl font-bold text-[#5c4a3d] lg:block hidden">
               VIETANHDUNGPOTTERY
             </span>
             <span className="text-2xl font-bold text-[#5c4a3d] lg:hidden block">
               VAD POTTERY
             </span>
->>>>>>> f02fbb6a409cc1fe2c54c39c0a3d3ab82a82c06b
           </Link>
 
           <div className="hidden lg:flex items-center gap-8">

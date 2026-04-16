@@ -136,16 +136,7 @@ export default function ProductDetailClient({
                 </div>
               </div>
 
-<<<<<<< HEAD:src/app/product/[id]/ProductDetailClient.tsx
-              <a
-                href="/contact"
-                className="bg-[#8b6914] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#7a5c12] transition-colors mb-6 w-fit"
-              >
-                Contact us
-              </a>
-=======
               <ContactButton text={contactText} className="mb-6 w-fit px-8" />
->>>>>>> f02fbb6a409cc1fe2c54c39c0a3d3ab82a82c06b:src/app/[locale]/product/[id]/ProductDetailClient.tsx
 
               <p className="text-lg text-[#5c4a3d] leading-relaxed">
                 {product.description}

@@ -4,7 +4,7 @@ import { ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Link } from "@/src/i18n/routing";
-
+import Image from "next/image";
 export default function OEMSection() {
   const t = useTranslations("home.oem");
 
@@ -97,7 +97,7 @@ export default function OEMSection() {
                   transition: { duration: 0.8, ease: "easeOut" },
                 },
               }}
-              src="https://images.unsplash.com/photo-1562690868-60bbe7293e94?w=400"
+              src="/pictures/2.jpg"
               alt="Pottery"
               className="rounded-lg mt-8"
             />
