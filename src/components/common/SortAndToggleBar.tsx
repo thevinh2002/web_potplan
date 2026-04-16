@@ -9,6 +9,7 @@ interface SortAndToggleBarProps {
   sortOptions: Sort[];
   viewMode: "grid" | "list";
   setViewMode: (mode: "grid" | "list") => void;
+  titleMobile?: string;
 }
 
 export default function SortAndToggleBar({
@@ -19,6 +20,7 @@ export default function SortAndToggleBar({
   sortOptions,
   viewMode,
   setViewMode,
+  titleMobile,
 }: SortAndToggleBarProps) {
   return (
     <div className="flex gap-3">
@@ -29,7 +31,7 @@ export default function SortAndToggleBar({
         className="lg:hidden flex items-center gap-2 px-4 py-3 bg-white border rounded-lg hover:bg-gray-50"
       >
         <SlidersHorizontal className="w-5 h-5" />
-        <span>Filters</span>
+        <span>{titleMobile}</span>
       </button>
 
       {/* Sort Dropdown */}

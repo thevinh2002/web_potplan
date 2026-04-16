@@ -1,0 +1,604 @@
+{
+  "home": {
+    "hero": {
+      "subtitle": "B2B VIETNAM POTTERY MANUFACTURER & EXPORTER",
+      "title": "AURORA POTS",
+      "description": "With over 15 years of experience in producing and exporting high quality pottery and planters globally. Originating from a humble handcrafted pottery workshop, we carry forward traditional craftsmanship while embracing modern design.",
+      "viewMore": "VIEW MORE",
+      "features": {
+        "care": "Crafted with care and technical accuracy",
+        "heritage": "Inspired by Vietnam's ceramic heritage",
+        "design": "Evolving tradition into contemporary design"
+      }
+    },
+    "categories": {
+      "title": "PRODUCTS",
+      "viewDetails": "See now",
+      "items": {
+        "fiberglass-planter": "Fiberglass Planter",
+        "fiberstone-planter": "Fiberstone Planter",
+        "fibercement-planter": "Fibercement Planter",
+        "basic-outdoor-pottery": "Basic Outdoor Pottery",
+        "premium-outdoor-pottery": "Premium Outdoor Pottery",
+        "indoor-ceramic-planter": "Indoor Ceramic Planter"
+      }
+    },
+    "topProducts": {
+      "title": "TOP PRODUCT",
+      "viewAll": "View All",
+      "items": {
+        "AUP050": "Big Round Brown Rustic Jar",
+        "AUM007": "Brushed Stainless Steel Planter",
+        "AUD079": "Ceramic Decorative Stool",
+        "AUT022": "Classic Terracotta Pots"
+      }
+    },
+    "oem": {
+      "title": "OEM/ODM PROJECTS ARE WARMLY WELCOMED",
+      "description1": "With 3 factories and a maximum output of 60 containers per month, we offer strong production capacity to support your OEM needs. Our experienced team of designers and engineers works closely with partners to turn ideas into high-quality, market-ready products.",
+      "description2": "OEM, ODM, and custom ceramic manufacturing solutions, let's bring your ideas to life.",
+      "contactUs": "CONTACT US"
+    },
+    "suitableFor": {
+      "title": "OUR PRODUCTS ARE SUITABLE FOR",
+      "items": {
+        "houses": "Houses",
+        "gardens": "Gardens",
+        "offices": "Offices",
+        "hotels": "Hotels",
+        "resorts": "Resorts",
+        "mixed-use": "Mixed-use",
+        "restaurants": "Restaurants",
+        "healthcare": "Healthcare",
+        "schools": "Schools"
+      }
+    },
+    "aboutBlogs": {
+      "about": {
+        "title": "About Us",
+        "description": "Aurora Pots is one of the leading Vietnam pottery manufacturers, with over 15 years of experience in producing and exporting high-quality planters worldwide. Originating as a family-owned workshop specializing in handmade pottery, we have steadily expanded our product lines.",
+        "learnMore": "Learn More"
+      },
+      "blogs": {
+        "title": "BLOGS",
+        "posts": {
+          "manufacturing": {
+            "title": "Pottery Manufacturing: Exquisite Handcrafted Techniques",
+            "description": "Discover the traditional methods behind our handcrafted pottery..."
+          },
+          "choosingPlanter": {
+            "title": "Choosing the Right Planter for Your Space",
+            "description": "A comprehensive guide to selecting the perfect planter..."
+          }
+        }
+      }
+    },
+    "newsletter": {
+      "title": "Subscribe to Our Newsletter",
+      "description": "Stay updated with our latest products, offers, and visit us at our showroom.",
+      "placeholder": "Enter your email",
+      "button": "Subscribe"
+    }
+  },
+  "common": {
+    "navigation": {
+      "home": "Home",
+      "introduction": "Introduction",
+      "production": "Production",
+      "contact": "Contact"
+    },
+    "breadcrumb": {
+      "home": "Home",
+      "introduction": "Introduction",
+      "production": "Production",
+      "productDetail": "Product Detail",
+      "contact": "Contact"
+    },
+    "footer": {
+      "brandName": "VIETANHDUNGPOTTERY",
+      "description": "Vietnam Pottery Manufacturer & Exporter with over 15 years of experience.",
+      "products": {
+        "title": "Products",
+        "items": {
+          "fiberglass": "Fiberglass Planter",
+          "fiberstone": "Fiberstone Planter",
+          "ceramic": "Ceramic Planter",
+          "terracotta": "Terracotta Products"
+        }
+      },
+      "company": {
+        "title": "Company",
+        "items": {
+          "aboutUs": "About Us",
+          "factoryTour": "Factory Tour",
+          "qualityControl": "Quality Control",
+          "contact": "Contact"
+        }
+      },
+      "contactInfo": {
+        "title": "Contact",
+        "location": "Vietnam",
+        "email": "vietanhdungpottery@gmail.com",
+        "phone": "(+84) 855632984"
+      },
+      "copyright": "© 2024 Aurora Pots. All rights reserved."
+    }
+  },
+  "introduction": {
+    "hero": {
+      "title1": "Vietnam Composite",
+      "title2": "Pots Manufacturer",
+      "desc1": "Established in the early 2000s, Viet Anh Dung Enterprise (VAD Pottery) began its journey as a dedicated cement pot manufacturer. Through years of continuous growth and a steadfast commitment to quality, we have successfully expanded our expertise into the premium Composite pot market.",
+      "desc2": "With products crafted to meet rigorous international export standards, we aim to provide both domestic and global customers with a truly unique experience.",
+      "highlight": "High Quality - True Value - Constant Innovation - Punctual Delivery - Customer Respect",
+      "contact": "Contact Us"
+    },
+
+    "whyChoose": {
+      "title": "Why Choose Our Products?",
+      "desc": "We specialize in manufacturing composite pots that balance strength with lightweight functionality. Built to withstand the elements and styled for contemporary spaces, our planters offer a reliable solution for both indoor and outdoor settings.",
+      "list": [
+        {
+          "label": "Direct Manufacturer"
+        },
+        {
+          "label": "Superior Craftsmanship"
+        }
+      ],
+      "requestTitle": "You are free to request the following when you come to us:",
+      "requestList": [
+        {
+          "label": "Freedom in size, color, etc."
+        },
+        {
+          "label": "Custom design"
+        },
+        {
+          "label": "Flexible minimum order quantity"
+        },
+        {
+          "label": "Other requests"
+        }
+      ]
+    },
+
+    "stats": [
+      { "value": "20+", "label": "Years Experience" },
+      { "value": "500+", "label": "Products" },
+      { "value": "50+", "label": "Export Markets" },
+      { "value": "100%", "label": "Quality Assurance" }
+    ],
+
+    "coreValues": {
+      "title": "Our Core Values",
+      "items": [
+        {
+          "title": "Understanding",
+          "description": "We always listen to and prioritize your requirements regarding the shape, proportions, and surface finish of our plant pots. Our technical team collaborates closely with you to develop prototypes that perfectly align with your vision. Samples are ready to be dispatched as soon as we reach an agreement.",
+          "imageSrc": "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=600&h=400&fit=crop",
+          "imageAlt": "Understanding - Crafting pots",
+          "reverse": false
+        },
+        {
+          "title": "Responsibility",
+          "description": "Our responsibility is to provide customers with a sense of security regarding quality and delivery time, and to build long-term relationships with them.",
+          "imageSrc": "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=600&h=400&fit=crop",
+          "imageAlt": "Responsibility - Quality pots",
+          "reverse": true
+        },
+        {
+          "title": "Innovation",
+          "description": "We are constantly researching new trends to develop new designs, optimize processes, and update according to customer requirements. Our goal is to provide you with the best possible experience.",
+          "imageSrc": "https://images.unsplash.com/photo-1518882605630-8eb565f5e673?w=600&h=400&fit=crop",
+          "imageAlt": "Innovation - Modern designs",
+          "reverse": false
+        }
+      ]
+    }
+  },
+  "production": {
+    "hero": {
+      "title": "Our Products",
+      "description": "Discover our handcrafted collection of ceramic planters, vases, and home decor items made with love and tradition."
+    },
+    "search": {
+      "placeholder": "Search products by name or code..."
+    },
+    "sort": {
+      "filter": "Filters",
+      "options": [
+        { "id": "newest", "name": "Newest First" },
+        { "id": "name", "name": "Name: A to Z" }
+      ]
+    },
+    "filter": {
+      "title": "Filters",
+      "categories": [
+        { "id": "all", "name": "All Products", "count": 48 },
+        { "id": "planters", "name": "Planters & Pots", "count": 16 },
+        { "id": "vases", "name": "Vases & Jars", "count": 12 },
+        { "id": "lamps", "name": "Lamps & Lighting", "count": 8 },
+        { "id": "bowls", "name": "Bowls & Dishes", "count": 7 },
+        { "id": "stools", "name": "Stools & Seats", "count": 5 }
+      ]
+    },
+    "products": [
+      {
+        "id": 1,
+        "name": "Antique Ceramic Amphora Planter",
+        "code": "AUV114",
+        "category": "planters",
+        "image": "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=400",
+        "isNew": true,
+        "new": "New",
+        "rating": 4.8,
+        "reviews": 24
+      },
+      {
+        "id": 2,
+        "name": "Bubble Cylinder Atlantic Planter",
+        "code": "AUV026",
+        "category": "planters",
+        "image": "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=400",
+        "isNew": true,
+        "new": "New",
+        "rating": 4.6,
+        "reviews": 18
+      },
+      {
+        "id": 3,
+        "name": "Big Round Brown Rustic Bowl",
+        "code": "AUP051",
+        "category": "bowls",
+        "image": "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400",
+        "isNew": false,
+        "rating": 4.9,
+        "reviews": 32
+      },
+      {
+        "id": 4,
+        "name": "Bamboo Pendant Lampshade",
+        "code": "AUW038",
+        "category": "lamps",
+        "image": "https://images.unsplash.com/photo-1509423350716-97f9360b4e09?w=400",
+        "isNew": true,
+        "new": "New",
+        "rating": 4.5,
+        "reviews": 15
+      },
+      {
+        "id": 5,
+        "name": "Big Round Brown Rustic Jar",
+        "code": "AUP050",
+        "category": "vases",
+        "image": "https://images.unsplash.com/photo-1562690868-60bbe7293e94?w=400",
+        "isNew": false,
+        "rating": 4.7,
+        "reviews": 28
+      },
+      {
+        "id": 6,
+        "name": "Brushed Stainless Steel Planter",
+        "code": "AUM007",
+        "category": "planters",
+        "image": "https://images.unsplash.com/photo-1518882605630-8eb565f5e673?w=400",
+        "isNew": false,
+        "rating": 4.8,
+        "reviews": 21
+      },
+      {
+        "id": 7,
+        "name": "Ceramic Decorative Stool",
+        "code": "AUD079",
+        "category": "stools",
+        "image": "https://images.unsplash.com/photo-1459156212016-c812468e2115?w=400",
+        "isNew": false,
+        "rating": 4.9,
+        "reviews": 45
+      },
+      {
+        "id": 8,
+        "name": "Classic Terracotta Pots",
+        "code": "AUT022",
+        "category": "planters",
+        "image": "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=400",
+        "isNew": false,
+        "rating": 4.4,
+        "reviews": 56
+      },
+      {
+        "id": 9,
+        "name": "Handwoven Bamboo Storage Basket",
+        "code": "AUB092",
+        "category": "bowls",
+        "image": "https://images.unsplash.com/photo-1595265677860-9a316d8457d6?w=400",
+        "isNew": true,
+        "new": "New",
+        "rating": 4.7,
+        "reviews": 19
+      },
+      {
+        "id": 10,
+        "name": "Rustic Clay Flower Vase",
+        "code": "AUV203",
+        "category": "vases",
+        "image": "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=400",
+        "isNew": false,
+        "rating": 4.6,
+        "reviews": 23
+      },
+      {
+        "id": 11,
+        "name": "Modern Geometric Planter Set",
+        "code": "AUP167",
+        "category": "planters",
+        "image": "https://images.unsplash.com/photo-1509423350716-97f9360b4e09?w=400",
+        "isNew": true,
+        "new": "New",
+        "rating": 4.8,
+        "reviews": 12
+      },
+      {
+        "id": 12,
+        "name": "Vintage Woven Pendant Light",
+        "code": "AUW089",
+        "category": "lamps",
+        "image": "https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=400",
+        "isNew": false,
+        "rating": 4.9,
+        "reviews": 34
+      }
+    ],
+
+    "results": {
+      "showing": "Showing",
+      "to": "to",
+      "of": "of",
+      "products": "products"
+    },
+    "empty": {
+      "title": "No products found",
+      "desc": "Try adjusting your search or filters"
+    },
+    "pagination": {
+      "pre": "Previous",
+      "next": "Next"
+    }
+  },
+  "contact": {
+    "hero": {
+      "values": "Our Values",
+      "slogan": "Understanding • Responsibility • Innovation"
+    },
+    "section": {
+      "title": "Contact Us",
+      "subtitle": "We'd love to hear from you. Visit our showroom or reach out to us for any inquiries about our products."
+    },
+    "map": {
+      "title": "Find Us on Map"
+    },
+    "info": {
+      "title": "Contact Information",
+      "items": {
+        "showroom": {
+          "title": "Showroom & Manufacture",
+          "content": "My Phuoc Tan Van Street, Tan Dinh, Ben Cat Ward, Ho Chi Minh City, Viet Nam"
+        },
+        "office": {
+          "title": "Vietnam Office",
+          "content": "2/25 Binh Thuan Hamlet, Binh Nham 03 Street, Lai Thieu Ward, Ho Chi Minh City, Viet Nam"
+        },
+        "phone": {
+          "title": "Phone"
+        },
+        "email": {
+          "title": "Email"
+        }
+      }
+    },
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram"
+    },
+    "businessHours": {
+      "title": "Business Hours",
+      "mondayFriday": "Monday - Friday",
+      "saturday": "Saturday",
+      "sunday": "Sunday",
+      "weekdayHours": "8:00 AM - 6:00 PM",
+      "saturdayHours": "8:00 AM - 12:00 PM",
+      "closed": "Closed"
+    }
+  },
+  "product": {
+    "productsDetail": [
+      {
+        "id": "1",
+        "name": "Antique Ceramic Amphora Planter",
+        "productCode": "AUV114",
+        "category": "planters",
+        "rating": 4.8,
+        "reviews": 24,
+        "isNew": true,
+        "new": "NEW",
+        "images": [
+          "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=400",
+          "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=400&blur=100"
+        ],
+        "description": "A beautifully crafted antique-style ceramic amphora planter, perfect for adding a touch of classical elegance to your garden or indoor space."
+      },
+      {
+        "id": "2",
+        "name": "Bubble Cylinder Atlantic Planter",
+        "productCode": "AUV026",
+        "category": "planters",
+        "rating": 4.6,
+        "reviews": 18,
+        "isNew": true,
+        "new": "NEW",
+        "images": [
+          "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=400",
+          "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=400&blur=100"
+        ],
+        "description": "Modern bubble cylinder design with an Atlantic blue finish. Ideal for contemporary home decor and outdoor spaces."
+      },
+      {
+        "id": "3",
+        "name": "Big Round Brown Rustic Bowl",
+        "productCode": "AUP051",
+        "category": "bowls",
+        "rating": 4.9,
+        "reviews": 32,
+        "isNew": false,
+        "images": [
+          "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400",
+          "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400&blur=100"
+        ],
+        "description": "Handcrafted rustic bowl with a beautiful brown finish. Perfect for serving or as a decorative centerpiece."
+      },
+      {
+        "id": "4",
+        "name": "Bamboo Pendant Lampshade",
+        "productCode": "AUW038",
+        "category": "lamps",
+        "rating": 4.5,
+        "reviews": 15,
+        "isNew": true,
+        "new": "NEW",
+        "images": [
+          "https://images.unsplash.com/photo-1509423350716-97f9360b4e09?w=400",
+          "https://images.unsplash.com/photo-1509423350716-97f9360b4e09?w=400&blur=100"
+        ],
+        "description": "Eco-friendly bamboo pendant lampshade that brings natural warmth and soft ambient lighting to any room."
+      },
+      {
+        "id": "5",
+        "name": "Big Round Brown Rustic Jar",
+        "productCode": "AUP050",
+        "category": "vases",
+        "rating": 4.7,
+        "reviews": 28,
+        "isNew": false,
+        "images": [
+          "https://images.unsplash.com/photo-1562690868-60bbe7293e94?w=400",
+          "https://images.unsplash.com/photo-1562690868-60bbe7293e94?w=400&blur=100"
+        ],
+        "description": "Large rustic jar with a timeless brown finish. A versatile piece for storage or decorative display."
+      },
+      {
+        "id": "6",
+        "name": "Brushed Stainless Steel Planter",
+        "productCode": "AUM007",
+        "category": "planters",
+        "rating": 4.8,
+        "reviews": 21,
+        "isNew": false,
+        "images": [
+          "https://images.unsplash.com/photo-1518882605630-8eb565f5e673?w=400",
+          "https://images.unsplash.com/photo-1518882605630-8eb565f5e673?w=400&blur=100"
+        ],
+        "description": "Sleek brushed stainless steel planter for a modern industrial look. Durable and weather-resistant."
+      },
+      {
+        "id": "7",
+        "name": "Ceramic Decorative Stool",
+        "productCode": "AUD079",
+        "category": "stools",
+        "rating": 4.9,
+        "reviews": 45,
+        "isNew": false,
+        "images": [
+          "https://images.unsplash.com/photo-1459156212016-c812468e2115?w=400",
+          "https://images.unsplash.com/photo-1459156212016-c812468e2115?w=400&blur=100"
+        ],
+        "description": "Unique ceramic stool that doubles as a decorative piece. Handcrafted with intricate details."
+      },
+      {
+        "id": "8",
+        "name": "Classic Terracotta Pots",
+        "productCode": "AUT022",
+        "category": "planters",
+        "rating": 4.4,
+        "reviews": 56,
+        "isNew": false,
+        "images": [
+          "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=400",
+          "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=400&blur=100"
+        ],
+        "description": "Traditional terracotta pots for the classic gardening enthusiast. Breathable and perfect for plant health."
+      },
+      {
+        "id": "9",
+        "name": "Handwoven Bamboo Storage Basket",
+        "productCode": "AUB092",
+        "category": "bowls",
+        "rating": 4.7,
+        "reviews": 19,
+        "isNew": true,
+        "new": "NEW",
+        "images": [
+          "https://images.unsplash.com/photo-1595265677860-9a316d8457d6?w=400",
+          "https://images.unsplash.com/photo-1595265677860-9a316d8457d6?w=400&blur=100"
+        ],
+        "description": "Sustainable handwoven bamboo basket for stylish storage solutions in any room."
+      },
+      {
+        "id": "10",
+        "name": "Rustic Clay Flower Vase",
+        "productCode": "AUV203",
+        "category": "vases",
+        "rating": 4.6,
+        "reviews": 23,
+        "isNew": false,
+        "images": [
+          "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=400",
+          "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=400&blur=100"
+        ],
+        "description": "Charming rustic clay vase with natural textures. Perfect for fresh or dried flower arrangements."
+      },
+      {
+        "id": "11",
+        "name": "Modern Geometric Planter Set",
+        "productCode": "AUP167",
+        "category": "planters",
+        "rating": 4.8,
+        "reviews": 12,
+        "isNew": true,
+        "new": "NEW",
+        "images": [
+          "https://images.unsplash.com/photo-1509423350716-97f9360b4e09?w=400",
+          "https://images.unsplash.com/photo-1509423350716-97f9360b4e09?w=400&blur=100"
+        ],
+        "description": "Contemporary geometric planter set featuring clean lines and modern aesthetics."
+      },
+      {
+        "id": "12",
+        "name": "Vintage Woven Pendant Light",
+        "productCode": "AUW089",
+        "category": "lamps",
+        "rating": 4.9,
+        "reviews": 34,
+        "isNew": false,
+        "images": [
+          "https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=400",
+          "https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=400&blur=100"
+        ],
+        "description": "Vintage-inspired woven pendant light that adds character and warm ambiance to your space."
+      }
+    ],
+    "code": "Product Code",
+    "review": "reviews",
+    "category": "Category",
+    "contact": "Contact us"
+  },
+  "metadata": {
+    "introduction": {
+      "title": "Introduction - Viet Anh Dung",
+      "description": "Learn about the history, mission, and core values of Viet Anh Dung - a leading company in the field of manufacturing and supplying ceramic pots."
+    },
+    "contact": {
+      "title": "Contact Us - Viet Anh Dung",
+      "description": "Get in touch with Viet Anh Dung for inquiries, support, or partnership opportunities. We'd love to hear from you."
+    }
+  }
+}

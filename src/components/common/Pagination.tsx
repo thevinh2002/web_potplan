@@ -6,6 +6,8 @@ interface PaginationProps {
   onPageChange: (page: number) => void;
   onNext: () => void;
   onPrev: () => void;
+  previousText: string;
+  nextText: string;
 }
 
 export default function Pagination({
@@ -14,6 +16,8 @@ export default function Pagination({
   onPageChange,
   onNext,
   onPrev,
+  previousText,
+  nextText,
 }: PaginationProps) {
   if (totalPages <= 1) return null;
 
@@ -37,13 +41,13 @@ export default function Pagination({
           className="w-10 h-10 rounded-lg border hover:bg-gray-50 text-gray-600 transition-colors"
         >
           1
-        </button>
+        </button>,
       );
       if (startPage > 2) {
         pages.push(
           <span key="ellipsis1" className="text-gray-400 px-1">
             ...
-          </span>
+          </span>,
         );
       }
     }
@@ -60,7 +64,7 @@ export default function Pagination({
           }`}
         >
           {i}
-        </button>
+        </button>,
       );
     }
 
@@ -69,7 +73,7 @@ export default function Pagination({
         pages.push(
           <span key="ellipsis2" className="text-gray-400 px-1">
             ...
-          </span>
+          </span>,
         );
       }
       pages.push(
@@ -79,7 +83,7 @@ export default function Pagination({
           className="w-10 h-10 rounded-lg border hover:bg-gray-50 text-gray-600 transition-colors"
         >
           {totalPages}
-        </button>
+        </button>,
       );
     }
 
@@ -95,7 +99,7 @@ export default function Pagination({
           disabled={currentPage === 1}
           className="px-4 py-2 border rounded-lg hover:bg-gray-50 text-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
-          Previous
+          {previousText}
         </button>
 
         {renderPageNumbers()}
@@ -106,7 +110,7 @@ export default function Pagination({
           disabled={currentPage === totalPages}
           className="px-4 py-2 border rounded-lg hover:bg-gray-50 text-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
-          Next
+          {nextText}
         </button>
       </div>
     </div>

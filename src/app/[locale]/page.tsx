@@ -1,4 +1,5 @@
 import AboutAndBlogs from "@/src/components/common/AboutAndBlogs";
+import Breadcrumb from "@/src/components/common/Breadcrumb";
 import HeroSection from "@/src/components/common/HeroSection";
 import Materials from "@/src/components/common/Materials";
 import NewArrivals from "@/src/components/common/NewArrivals";
@@ -14,12 +15,12 @@ export default function Home() {
     <div className="min-h-screen bg-[#faf8f5]">
       <HeroSection />
       <ProductCategories />
-      <NewArrivals />
+      {/* <NewArrivals /> */}
       <TopProducts />
       <SuitableFor />
       <OEMSection />
-      <OrderingProcess />
-      <Materials />
+      {/* <OrderingProcess /> */}
+      {/* <Materials /> */}
       <AboutAndBlogs />
       <Newsletter />
     </div>

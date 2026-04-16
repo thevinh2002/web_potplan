@@ -6,6 +6,7 @@ export interface ProductDetail {
   rating: number;
   reviews: number;
   isNew: boolean;
+  new?: string;
   images: string[];
   description?: string;
 }

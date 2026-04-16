@@ -1,18 +1,18 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-import Link from "next/link";
+import { usePathname, Link } from "@/src/i18n/routing";
 import { ChevronRight, Home } from "lucide-react";
-import { motion } from "framer-motion";
-
-const pathNames: Record<string, string> = {
-  introduction: "Introduction",
-  production: "Products",
-  contact: "Contact",
-};
+import { useTranslations } from "next-intl";
 
 export default function Breadcrumb() {
   const pathname = usePathname();
+  const t = useTranslations("common.breadcrumb");
+
+  const pathNames: Record<string, string> = {
+    introduction: t("introduction"),
+    production: t("production"),
+    contact: t("contact"),
+  };
 
   if (pathname === "/") return null;
 
@@ -27,13 +27,11 @@ export default function Breadcrumb() {
 
     // Handle product detail page: /product/[id]
     if (segment === "product") {
-      // Add "Products" link pointing to /production
       breadcrumbs.push({
         href: "/production",
-        name: "Products",
+        name: t("production"),
         isLast: false,
       });
-      // Skip the 'product' segment itself in output
       continue;
     }
 
@@ -41,7 +39,7 @@ export default function Breadcrumb() {
     if (i > 0 && segments[i - 1] === "product") {
       breadcrumbs.push({
         href: "/" + segments.slice(0, i + 1).join("/"),
-        name: "Product Detail",
+        name: t("productDetail"),
         isLast: true,
       });
       continue;
@@ -62,7 +60,7 @@ export default function Breadcrumb() {
             className="flex items-center gap-1 text-gray-500 hover:text-[#8b6914] transition-colors"
           >
             <Home className="w-4 h-4" />
-            <span>Home</span>
+            <span>{t("home")}</span>
           </Link>
 
           {breadcrumbs.map((crumb) => (

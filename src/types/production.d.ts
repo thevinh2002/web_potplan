@@ -16,6 +16,7 @@ export interface Product {
   category: string;
   image: string;
   isNew: boolean;
+  new: string;
   rating: number;
   reviews: number;
 }
