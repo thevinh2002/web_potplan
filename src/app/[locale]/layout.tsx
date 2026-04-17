@@ -15,8 +15,11 @@ export function generateStaticParams() {
 }
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"),
-  title: "Aurora Pots",
+  title: "VIETANHDUNG POTTERY",
   description: "Premium planters and pottery",
+  icons: {
+    icon: "/pictures/logo/logo.png",
+  },
 };
 
 export default async function RootLayout({

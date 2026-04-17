@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Link } from "@/src/i18n/routing";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
 
@@ -14,7 +14,14 @@ export default function Navigation() {
   const navLinks = [
     { href: "/", label: t("home") },
     { href: "/introduction", label: t("introduction") },
-    { href: "/production", label: t("production") },
+    {
+      href: "/production",
+      label: t("production"),
+      subItems: [
+        { href: "/production", label: "Production" },
+        { href: "/production/colors-surface", label: "Colors/Surface" },
+      ],
+    },
     { href: "/contact", label: t("contact") },
   ];
 
@@ -25,7 +32,7 @@ export default function Navigation() {
           <Link href="/" className="flex items-center gap-2">
             <Image
               src="/pictures/logo/logo.png"
-              alt="AURORA POTS Logo"
+              alt="VIETANHDUNG POTTERY Logo"
               width={32}
               height={32}
               className="w-8 h-8 object-contain"
@@ -40,13 +47,30 @@ export default function Navigation() {
 
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-[#5c4a3d] hover:text-[#8b6914] font-medium transition-colors"
-              >
-                {link.label}
-              </Link>
+              <div key={link.href} className="relative group">
+                <Link
+                  href={link.href}
+                  className="flex items-center gap-1 text-[#5c4a3d] hover:text-[#8b6914] font-medium transition-colors py-2"
+                >
+                  {link.label}
+                  {link.subItems && <ChevronDown className="w-4 h-4" />}
+                </Link>
+                {link.subItems && (
+                  <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                    <div className="bg-white border rounded-lg shadow-lg w-48 py-2">
+                      {link.subItems.map((subItem) => (
+                        <Link
+                          key={subItem.href}
+                          href={subItem.href}
+                          className="block px-4 py-2 text-sm text-[#5c4a3d] hover:text-[#8b6914] hover:bg-[#faf8f5] transition-colors"
+                        >
+                          {subItem.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             ))}
           </div>
 
@@ -83,11 +107,26 @@ export default function Navigation() {
                 >
                   <Link
                     href={link.href}
-                    className="block text-[#5c4a3d] hover:text-[#8b6914] hover:bg-[#faf8f5] py-3 px-2 rounded-lg font-medium transition-colors"
+                    className="flex items-center justify-between text-[#5c4a3d] hover:text-[#8b6914] hover:bg-[#faf8f5] py-3 px-2 rounded-lg font-medium transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    {link.label}
+                    <span>{link.label}</span>
+                    {link.subItems && <ChevronDown className="w-4 h-4" />}
                   </Link>
+                  {link.subItems && (
+                    <div className="pl-6 space-y-1 mt-1">
+                      {link.subItems.map((subItem) => (
+                        <Link
+                          key={subItem.href}
+                          href={subItem.href}
+                          className="block text-sm text-[#5c4a3d] hover:text-[#8b6914] hover:bg-[#faf8f5] py-2 px-2 rounded-lg transition-colors"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {subItem.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                 </motion.div>
               ))}
             </div>
