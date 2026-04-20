@@ -2,8 +2,8 @@
   "home": {
     "hero": {
       "subtitle": "B2B VIETNAM POTTERY MANUFACTURER & EXPORTER",
-      "title": "AURORA POTS",
-      "description": "With over 15 years of experience in producing and exporting high quality pottery and planters globally. Originating from a humble handcrafted pottery workshop, we carry forward traditional craftsmanship while embracing modern design.",
+      "title": "VIETANHDUNG POTTERY",
+      "description": "Established in the early 2000s, Viet Anh Dung Enterprise (VAD Pottery) began its journey as a dedicated cement pot manufacturer. Through years of continuous growth and a steadfast commitment to quality, we have successfully expanded our expertise into the premium Composite pot market",
       "viewMore": "VIEW MORE",
       "features": {
         "care": "Crafted with care and technical accuracy",
@@ -133,7 +133,6 @@
       "highlight": "High Quality - True Value - Constant Innovation - Punctual Delivery - Customer Respect",
       "contact": "Contact Us"
     },
-
     "whyChoose": {
       "title": "Why Choose Our Products?",
       "desc": "We specialize in manufacturing composite pots that balance strength with lightweight functionality. Built to withstand the elements and styled for contemporary spaces, our planters offer a reliable solution for both indoor and outdoor settings.",
@@ -161,35 +160,45 @@
         }
       ]
     },
-
     "stats": [
-      { "value": "20+", "label": "Years Experience" },
-      { "value": "500+", "label": "Products" },
-      { "value": "50+", "label": "Export Markets" },
-      { "value": "100%", "label": "Quality Assurance" }
+      {
+        "value": "20+",
+        "label": "Years Experience"
+      },
+      {
+        "value": "500+",
+        "label": "Products"
+      },
+      {
+        "value": "50+",
+        "label": "Export Markets"
+      },
+      {
+        "value": "100%",
+        "label": "Quality Assurance"
+      }
     ],
-
     "coreValues": {
       "title": "Our Core Values",
       "items": [
         {
           "title": "Understanding",
           "description": "We always listen to and prioritize your requirements regarding the shape, proportions, and surface finish of our plant pots. Our technical team collaborates closely with you to develop prototypes that perfectly align with your vision. Samples are ready to be dispatched as soon as we reach an agreement.",
-          "imageSrc": "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=600&h=400&fit=crop",
+          "imageSrc": "/pictures/core_values/p1.png",
           "imageAlt": "Understanding - Crafting pots",
           "reverse": false
         },
         {
           "title": "Responsibility",
           "description": "Our responsibility is to provide customers with a sense of security regarding quality and delivery time, and to build long-term relationships with them.",
-          "imageSrc": "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=600&h=400&fit=crop",
+          "imageSrc": "/pictures/core_values/p2.png",
           "imageAlt": "Responsibility - Quality pots",
           "reverse": true
         },
         {
           "title": "Innovation",
           "description": "We are constantly researching new trends to develop new designs, optimize processes, and update according to customer requirements. Our goal is to provide you with the best possible experience.",
-          "imageSrc": "https://images.unsplash.com/photo-1518882605630-8eb565f5e673?w=600&h=400&fit=crop",
+          "imageSrc": "/pictures/core_values/p3.jpg",
           "imageAlt": "Innovation - Modern designs",
           "reverse": false
         }
@@ -207,19 +216,49 @@
     "sort": {
       "filter": "Filters",
       "options": [
-        { "id": "newest", "name": "Newest First" },
-        { "id": "name", "name": "Name: A to Z" }
+        {
+          "id": "newest",
+          "name": "Newest First"
+        },
+        {
+          "id": "name",
+          "name": "Name: A to Z"
+        }
       ]
     },
     "filter": {
       "title": "Filters",
       "categories": [
-        { "id": "all", "name": "All Products", "count": 48 },
-        { "id": "planters", "name": "Planters & Pots", "count": 16 },
-        { "id": "vases", "name": "Vases & Jars", "count": 12 },
-        { "id": "lamps", "name": "Lamps & Lighting", "count": 8 },
-        { "id": "bowls", "name": "Bowls & Dishes", "count": 7 },
-        { "id": "stools", "name": "Stools & Seats", "count": 5 }
+        {
+          "id": "all",
+          "name": "All Products",
+          "count": 48
+        },
+        {
+          "id": "planters",
+          "name": "Planters & Pots",
+          "count": 16
+        },
+        {
+          "id": "vases",
+          "name": "Vases & Jars",
+          "count": 12
+        },
+        {
+          "id": "lamps",
+          "name": "Lamps & Lighting",
+          "count": 8
+        },
+        {
+          "id": "bowls",
+          "name": "Bowls & Dishes",
+          "count": 7
+        },
+        {
+          "id": "stools",
+          "name": "Stools & Seats",
+          "count": 5
+        }
       ]
     },
     "products": [
@@ -349,7 +388,6 @@
         "reviews": 34
       }
     ],
-
     "results": {
       "showing": "Showing",
       "to": "to",

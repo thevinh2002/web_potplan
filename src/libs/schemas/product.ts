@@ -21,4 +21,5 @@ export const ProductSchema = z.object({
   }),
 });
 
-export type ProductInput = z.infer<typeof ProductSchema>;
+export type ProductInput = z.input<typeof ProductSchema>;
+export type ProductFormSchema = z.input<typeof ProductSchema>;

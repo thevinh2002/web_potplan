@@ -18,19 +18,19 @@ import { useTranslations } from "next-intl";
 
 const factoryImages: FactoryImageProps[] = [
   {
-    src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=1000&fit=crop",
+    src: "/pictures/VAD/z7286051248710_14377cce669b50e71453fdb4447c2e62.jpg",
     alt: "Viet Anh Dung Factory - Production",
   },
   {
-    src: "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=800&h=1000&fit=crop",
+    src: "/pictures/VAD/z7286111967628_37ade99bd315f00770eb896fbaaaef76.jpg",
     alt: "Viet Anh Dung Factory - Crafting",
   },
   {
-    src: "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=800&h=1000&fit=crop",
+    src: "/pictures/VAD/z7286112036928_3f8bb8f02b536c49bc2ac0609692580d.jpg",
     alt: "Viet Anh Dung Factory - Products",
   },
   {
-    src: "https://images.unsplash.com/photo-1518882605630-8eb565f5e673?w=800&h=1000&fit=crop",
+    src: "/pictures/VAD/z7291759381132_74e50b616429b1f6a20bc2b6ba20b8c4.jpg",
     alt: "Viet Anh Dung Factory - Modern Designs",
   },
 ];

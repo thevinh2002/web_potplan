@@ -2,8 +2,8 @@
   "home": {
     "hero": {
       "subtitle": "NHÀ SẢN XUẤT & XUẤT KHẨU GỐM SỨ B2B VIỆT NAM",
-      "title": "AURORA POTS",
-      "description": "Với hơn 15 năm kinh nghiệm trong sản xuất và xuất khẩu gốm sứ và chậu cây chất lượng cao trên toàn cầu. Xuất thân từ một xưởng gốm thủ công khiêm tốn, chúng tôi tiếp nối nghề thủ công truyền thống đồng thời áp dụng thiết kế hiện đại.",
+      "title": "VIETANHDUNG POTTERY",
+      "description": "Được thành lập vào đầu những năm 2000, Doanh nghiệp Việt Anh Dũng (VAD Pottery) bắt đầu hành trình với tư cách là nhà sản xuất chậu xi măng chuyên nghiệp. Qua nhiều năm phát triển không ngừng và cam kết bền vững về chất lượng, chúng tôi đã mở rộng thành công sang thị trường chậu Composite cao cấp.",
       "viewMore": "XEM THÊM",
       "features": {
         "care": "Được chế tác tỉ mỉ và chính xác về kỹ thuật",
@@ -133,7 +133,6 @@
       "highlight": "Chất Lượng Cao - Giá Trị Thực - Đổi Mới Không Ngừng - Giao Hàng Đúng Hạn - Tôn Trọng Khách Hàng",
       "contact": "Liên Hệ Với Chúng Tôi"
     },
-
     "whyChoose": {
       "title": "Tại Sao Chọn Sản Phẩm Của Chúng Tôi?",
       "desc": "Chúng tôi chuyên sản xuất chậu composite kết hợp giữa độ bền và tính năng nhẹ. Được thiết kế để chịu đựng thời tiết khắc nghiệt và phù hợp với không gian hiện đại, các chậu cây của chúng tôi mang lại giải pháp đáng tin cậy cho cả không gian trong nhà lẫn ngoài trời.",
@@ -161,14 +160,24 @@
         }
       ]
     },
-
     "stats": [
-      { "value": "20+", "label": "Năm Kinh Nghiệm" },
-      { "value": "500+", "label": "Sản Phẩm" },
-      { "value": "50+", "label": "Thị Trường Xuất Khẩu" },
-      { "value": "100%", "label": "Đảm Bảo Chất Lượng" }
+      {
+        "value": "20+",
+        "label": "Năm Kinh Nghiệm"
+      },
+      {
+        "value": "500+",
+        "label": "Sản Phẩm"
+      },
+      {
+        "value": "50+",
+        "label": "Thị Trường Xuất Khẩu"
+      },
+      {
+        "value": "100%",
+        "label": "Đảm Bảo Chất Lượng"
+      }
     ],
-
     "coreValues": {
       "title": "Giá Trị Cốt Lõi Của Chúng Tôi",
       "items": [
@@ -207,19 +216,49 @@
     "sort": {
       "filter": "Bộ lọc",
       "options": [
-        { "id": "newest", "name": "Mới nhất" },
-        { "id": "name", "name": "Tên: A đến Z" }
+        {
+          "id": "newest",
+          "name": "Mới nhất"
+        },
+        {
+          "id": "name",
+          "name": "Tên: A đến Z"
+        }
       ]
     },
     "filter": {
       "title": "Bộ lọc",
       "categories": [
-        { "id": "all", "name": "Tất cả sản phẩm", "count": 48 },
-        { "id": "planters", "name": "Chậu & Bồn", "count": 16 },
-        { "id": "vases", "name": "Bình & Lọ", "count": 12 },
-        { "id": "lamps", "name": "Đèn & Chiếu sáng", "count": 8 },
-        { "id": "bowls", "name": "Bát & Đĩa", "count": 7 },
-        { "id": "stools", "name": "Ghế đẩu & Ghế ngồi", "count": 5 }
+        {
+          "id": "all",
+          "name": "Tất cả sản phẩm",
+          "count": 48
+        },
+        {
+          "id": "planters",
+          "name": "Chậu & Bồn",
+          "count": 16
+        },
+        {
+          "id": "vases",
+          "name": "Bình & Lọ",
+          "count": 12
+        },
+        {
+          "id": "lamps",
+          "name": "Đèn & Chiếu sáng",
+          "count": 8
+        },
+        {
+          "id": "bowls",
+          "name": "Bát & Đĩa",
+          "count": 7
+        },
+        {
+          "id": "stools",
+          "name": "Ghế đẩu & Ghế ngồi",
+          "count": 5
+        }
       ]
     },
     "products": [

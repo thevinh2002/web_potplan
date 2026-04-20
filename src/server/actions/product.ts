@@ -1,13 +1,14 @@
 "use server";
 
+import * as admin from "firebase-admin"; // Bắt buộc import admin để dùng FieldValue.increment
 import { db } from "@/src/libs/firebase-admin";
 import { slugify } from "@/src/libs/utils";
 import { ProductSchema } from "@/src/libs/schemas/product";
 import { revalidatePath } from "next/cache";
 
 const COLLECTION_NAME = "products";
+const CAT_COLLECTION = "categories";
 
-//CREATE
 export async function createProduct(formData: any) {
   const validatedFields = ProductSchema.safeParse(formData);
 
@@ -33,8 +34,20 @@ export async function createProduct(formData: any) {
   try {
     await db.collection(COLLECTION_NAME).add(productData);
 
-    revalidatePath("/dashboard/products", "page");
-    revalidatePath("/production", "page");
+    if (data.category) {
+      const catQuery = await db
+        .collection(CAT_COLLECTION)
+        .where("code", "==", data.category)
+        .get();
+      if (!catQuery.empty) {
+        await catQuery.docs[0].ref.update({
+          count: admin.firestore.FieldValue.increment(1),
+        });
+      }
+    }
+
+    revalidatePath("/admin/dashboard", "page");
+    revalidatePath("/[locale]/production", "page");
 
     return { success: true, message: "Thêm sản phẩm thành công" };
   } catch (error) {
@@ -42,7 +55,6 @@ export async function createProduct(formData: any) {
   }
 }
 
-//UPDATE
 export async function updateProduct(id: string, formData: any) {
   const validatedFields = ProductSchema.safeParse(formData);
 
@@ -65,11 +77,40 @@ export async function updateProduct(id: string, formData: any) {
   };
 
   try {
+    const oldProductSnap = await db.collection(COLLECTION_NAME).doc(id).get();
+    const oldCategoryCode = oldProductSnap.data()?.category;
+    const newCategoryCode = data.category;
+
     await db.collection(COLLECTION_NAME).doc(id).update(productData);
 
-    revalidatePath("/dashboard/products", "page");
+    if (oldCategoryCode !== newCategoryCode) {
+      if (oldCategoryCode) {
+        const oldCatQuery = await db
+          .collection(CAT_COLLECTION)
+          .where("code", "==", oldCategoryCode)
+          .get();
+        if (!oldCatQuery.empty) {
+          await oldCatQuery.docs[0].ref.update({
+            count: admin.firestore.FieldValue.increment(-1),
+          });
+        }
+      }
+      if (newCategoryCode) {
+        const newCatQuery = await db
+          .collection(CAT_COLLECTION)
+          .where("code", "==", newCategoryCode)
+          .get();
+        if (!newCatQuery.empty) {
+          await newCatQuery.docs[0].ref.update({
+            count: admin.firestore.FieldValue.increment(1),
+          });
+        }
+      }
+    }
+
+    revalidatePath("/admin/dashboard", "page");
     revalidatePath("/[locale]/production", "page");
-    revalidatePath("/[locale]product/[slug]", "page");
+    revalidatePath("/[locale]/product/[slug]", "page");
 
     return { success: true, message: "Cập nhật thành công" };
   } catch (error) {
@@ -77,13 +118,30 @@ export async function updateProduct(id: string, formData: any) {
   }
 }
 
-//DELETE
 export async function deleteProduct(id: string) {
   try {
+    const productSnap = await db.collection(COLLECTION_NAME).doc(id).get();
+    if (!productSnap.exists) {
+      return { error: "Không tìm thấy sản phẩm" };
+    }
+    const categoryCode = productSnap.data()?.category;
+
     await db.collection(COLLECTION_NAME).doc(id).delete();
 
-    revalidatePath("/(admin)/(dashboard)/products", "page");
-    revalidatePath("/(public)/production", "page");
+    if (categoryCode) {
+      const catQuery = await db
+        .collection(CAT_COLLECTION)
+        .where("code", "==", categoryCode)
+        .get();
+      if (!catQuery.empty) {
+        await catQuery.docs[0].ref.update({
+          count: admin.firestore.FieldValue.increment(-1),
+        });
+      }
+    }
+
+    revalidatePath("/admin/dashboard", "page");
+    revalidatePath("/[locale]/production", "page");
 
     return { success: true, message: "Xóa sản phẩm thành công" };
   } catch (error) {

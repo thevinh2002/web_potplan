@@ -29,8 +29,8 @@ export default function CoreValueItem({
           src={imageSrc}
           alt={imageAlt}
           width={600}
-          height={400}
-          className="w-full h-[300px] object-cover"
+          height={500}
+          className="w-full h-[400px] object-cover"
         />
       </motion.div>
 
