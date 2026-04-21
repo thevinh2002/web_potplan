@@ -3,10 +3,9 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { Trash2, Image as ImageIcon } from "lucide-react";
 
-import { storage } from "@/src/libs/firebase";
+import { uploadImageToCloudinary } from "@/src/libs/utils";
 import { ProductSchema, ProductInput } from "@/src/libs/schemas/product";
 
 interface ProductModalProps {
@@ -30,6 +29,8 @@ export default function ProductModal({
   const [coverPreviewLocal, setCoverPreviewLocal] = useState<string>("");
   const [imagesPreviewLocal, setImagesPreviewLocal] = useState<string[]>([]);
 
+  const [customFolder, setCustomFolder] = useState<string>("");
+
   const productForm = useForm<ProductInput>({
     resolver: zodResolver(ProductSchema),
     values: editingProduct
@@ -49,9 +50,7 @@ export default function ProductModal({
         },
   });
 
-  const handleCoverUpload = async (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleCoverUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
@@ -60,10 +59,11 @@ export default function ProductModal({
     setIsUploading(true);
 
     try {
-      const uniqueFileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.\-_]/g, "")}`;
-      const storageRef = ref(storage, `products/${uniqueFileName}`);
-      await uploadBytes(storageRef, file);
-      const downloadUrl = await getDownloadURL(storageRef);
+      const folderName = customFolder.trim()
+        ? `products/${customFolder.trim()}`
+        : "products/covers";
+
+      const downloadUrl = await uploadImageToCloudinary(file, folderName);
 
       productForm.setValue("image_cover", downloadUrl, {
         shouldValidate: true,
@@ -71,16 +71,14 @@ export default function ProductModal({
       setCoverPreviewLocal("");
     } catch (error) {
       console.error(error);
-      alert("Lỗi khi tải ảnh lên!");
+      alert("Lỗi khi tải ảnh lên Cloudinary!");
       setCoverPreviewLocal("");
     } finally {
       setIsUploading(false);
     }
   };
 
-  const handleImagesUpload = async (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleImagesUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);
     if (files.length === 0) return;
 
@@ -89,13 +87,14 @@ export default function ProductModal({
     setIsUploading(true);
 
     try {
+      const folderName = customFolder.trim()
+        ? `products/${customFolder.trim()}`
+        : "products/gallery";
+
       const uploadedUrls = await Promise.all(
-        files.map(async (file) => {
-          const uniqueFileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.\-_]/g, "")}`;
-          const storageRef = ref(storage, `products/${uniqueFileName}`);
-          await uploadBytes(storageRef, file);
-          return await getDownloadURL(storageRef);
-        })
+        files.map(
+          async (file) => await uploadImageToCloudinary(file, folderName),
+        ),
       );
 
       const currentImages = productForm.getValues("images") || [];
@@ -105,7 +104,7 @@ export default function ProductModal({
       setImagesPreviewLocal([]);
     } catch (error) {
       console.error(error);
-      alert("Lỗi khi tải ảnh phụ lên!");
+      alert("Lỗi khi tải ảnh phụ lên Cloudinary!");
       setImagesPreviewLocal([]);
     } finally {
       setIsUploading(false);
@@ -117,7 +116,7 @@ export default function ProductModal({
     productForm.setValue(
       "images",
       currentImages.filter((_, i) => i !== indexToRemove),
-      { shouldValidate: true }
+      { shouldValidate: true },
     );
   };
 
@@ -142,17 +141,30 @@ export default function ProductModal({
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="col-span-1 space-y-4">
+              <div className="bg-gray-50 p-3 rounded-lg border border-gray-200">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Thư mục lưu ảnh (Tùy chọn)
+                </label>
+                <input
+                  type="text"
+                  value={customFolder}
+                  onChange={(e) => setCustomFolder(e.target.value)}
+                  placeholder="VD: chau-dat, chau-men..."
+                  className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-[#8b6914] bg-white"
+                />
+                <p className="text-[11px] text-gray-500 mt-1">
+                  Nếu để trống, ảnh sẽ tự động lưu vào <b>products/covers</b>
+                </p>
+              </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Ảnh bìa sản phẩm *
                 </label>
                 <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center hover:bg-gray-50 transition relative overflow-hidden h-40 flex flex-col items-center justify-center group">
-                  {coverPreviewLocal ||
-                  productForm.watch("image_cover") ? (
+                  {coverPreviewLocal || productForm.watch("image_cover") ? (
                     <img
                       src={
-                        coverPreviewLocal ||
-                        productForm.watch("image_cover")
+                        coverPreviewLocal || productForm.watch("image_cover")
                       }
                       alt="Preview Cover"
                       className="absolute inset-0 w-full h-full object-cover"
@@ -164,7 +176,6 @@ export default function ProductModal({
                     />
                   )}
 
-                  {/* Lớp phủ khi đang upload */}
                   {isUploading && coverPreviewLocal && (
                     <div className="absolute inset-0 bg-white/40 flex items-center justify-center backdrop-blur-sm z-10 transition-all">
                       <div className="w-6 h-6 border-2 border-[#8b6914] border-t-transparent rounded-full animate-spin"></div>
@@ -191,10 +202,7 @@ export default function ProductModal({
                   Ảnh phụ (Nhiều ảnh)
                 </label>
                 <div className="border-2 border-dashed border-gray-300 rounded-lg p-3 text-center hover:bg-gray-50 transition relative flex flex-col items-center justify-center h-24">
-                  <ImageIcon
-                    className="mx-auto text-gray-400 mb-1"
-                    size={24}
-                  />
+                  <ImageIcon className="mx-auto text-gray-400 mb-1" size={24} />
                   <span className="text-xs text-gray-500 font-medium">
                     Click để thêm ảnh phụ
                   </span>
@@ -209,29 +217,26 @@ export default function ProductModal({
                 </div>
 
                 <div className="mt-3 grid grid-cols-3 gap-2">
-                  {/* Nút xóa được hiện lên khi hover */}
-                  {(productForm.watch("images") || []).map(
-                    (url, i) => (
-                      <div
-                        key={`img-${i}`}
-                        className="relative h-20 rounded-md border border-gray-200 overflow-hidden group shadow-sm"
+                  {(productForm.watch("images") || []).map((url, i) => (
+                    <div
+                      key={`img-${i}`}
+                      className="relative h-20 rounded-md border border-gray-200 overflow-hidden group shadow-sm"
+                    >
+                      <img
+                        src={url}
+                        className="w-full h-full object-cover"
+                        alt={`phụ-${i}`}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveImage(i)}
+                        className="absolute top-1 right-1 bg-white hover:bg-red-50 text-red-600 rounded-md p-1 opacity-0 group-hover:opacity-100 transition-opacity shadow z-10"
                       >
-                        <img
-                          src={url}
-                          className="w-full h-full object-cover"
-                          alt={`phụ-${i}`}
-                        />
-                        <button
-                          type="button"
-                          onClick={() => handleRemoveImage(i)}
-                          className="absolute top-1 right-1 bg-white hover:bg-red-50 text-red-600 rounded-md p-1 opacity-0 group-hover:opacity-100 transition-opacity shadow z-10"
-                        >
-                          <Trash2 size={14} />
-                        </button>
-                      </div>
-                    )
-                  )}
-                  {/* Preview cục bộ lúc đang tải */}
+                        <Trash2 size={14} />
+                      </button>
+                    </div>
+                  ))}
+
                   {imagesPreviewLocal.map((url, i) => (
                     <div
                       key={`local-${i}`}
@@ -292,7 +297,7 @@ export default function ProductModal({
                 </div>
               </div>
 
-              <div className="flex gap-6 pt-2">
+              {/* <div className="flex gap-6 pt-2">
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input
                     type="checkbox"
@@ -303,7 +308,7 @@ export default function ProductModal({
                     Đánh dấu &quot;Sản phẩm mới&quot;
                   </span>
                 </label>
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -311,9 +316,7 @@ export default function ProductModal({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-blue-50/50 p-4 rounded-lg border border-blue-100">
-              <h3 className="font-bold text-blue-800 mb-4">
-                🇻🇳 Tiếng Việt
-              </h3>
+              <h3 className="font-bold text-blue-800 mb-4">🇻🇳 Tiếng Việt</h3>
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -323,12 +326,11 @@ export default function ProductModal({
                     {...productForm.register("translations.vi.name")}
                     className="w-full px-3 py-2 border rounded-lg focus:border-blue-500 outline-none"
                   />
-                  {productForm.formState.errors.translations?.vi
-                    ?.name && (
+                  {productForm.formState.errors.translations?.vi?.name && (
                     <p className="text-red-500 text-xs mt-1">
                       {
-                        productForm.formState.errors.translations.vi
-                          .name.message
+                        productForm.formState.errors.translations.vi.name
+                          .message
                       }
                     </p>
                   )}
@@ -338,9 +340,7 @@ export default function ProductModal({
                     Mô tả chi tiết
                   </label>
                   <textarea
-                    {...productForm.register(
-                      "translations.vi.description"
-                    )}
+                    {...productForm.register("translations.vi.description")}
                     rows={4}
                     className="w-full px-3 py-2 border rounded-lg focus:border-blue-500 outline-none"
                   />
@@ -349,9 +349,7 @@ export default function ProductModal({
             </div>
 
             <div className="bg-red-50/50 p-4 rounded-lg border border-red-100">
-              <h3 className="font-bold text-red-800 mb-4">
-                🇬🇧 English
-              </h3>
+              <h3 className="font-bold text-red-800 mb-4">🇬🇧 English</h3>
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -361,12 +359,11 @@ export default function ProductModal({
                     {...productForm.register("translations.en.name")}
                     className="w-full px-3 py-2 border rounded-lg focus:border-red-500 outline-none"
                   />
-                  {productForm.formState.errors.translations?.en
-                    ?.name && (
+                  {productForm.formState.errors.translations?.en?.name && (
                     <p className="text-red-500 text-xs mt-1">
                       {
-                        productForm.formState.errors.translations.en
-                          .name.message
+                        productForm.formState.errors.translations.en.name
+                          .message
                       }
                     </p>
                   )}
@@ -376,9 +373,7 @@ export default function ProductModal({
                     Description
                   </label>
                   <textarea
-                    {...productForm.register(
-                      "translations.en.description"
-                    )}
+                    {...productForm.register("translations.en.description")}
                     rows={4}
                     className="w-full px-3 py-2 border rounded-lg focus:border-red-500 outline-none"
                   />
@@ -398,11 +393,11 @@ export default function ProductModal({
             <button
               type="submit"
               disabled={
-                productForm.formState.isSubmitting || isPending
+                productForm.formState.isSubmitting || isPending || isUploading
               }
               className="px-6 py-2 bg-[#8b6914] text-white rounded-lg hover:bg-[#6d5210] disabled:opacity-50"
             >
-              {productForm.formState.isSubmitting || isPending
+              {productForm.formState.isSubmitting || isPending || isUploading
                 ? "Đang xử lý..."
                 : "Lưu Sản Phẩm"}
             </button>

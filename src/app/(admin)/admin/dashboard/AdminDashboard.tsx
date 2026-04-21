@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useState, useTransition, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Plus, Edit2, Trash2, LogOut, Search } from "lucide-react";
+
+import DeleteConfirmModal from "@/src/components/admin/DeleteConfirmModal";
 
 import { logout } from "@/src/server/actions/auth";
 import {
@@ -31,6 +33,14 @@ export default function AdminDashboardClient({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCategoryModalOpen, setIsCategoryModalOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<any | null>(null);
+  const [deleteTarget, setDeleteTarget] = useState<{
+    id: string;
+    name: string;
+  } | null>(null);
+
+  useEffect(() => {
+    setProducts(initialProducts || []);
+  }, [initialProducts]);
 
   const handleAddProduct = () => {
     setEditingProduct(null);
@@ -42,20 +52,25 @@ export default function AdminDashboardClient({
     setIsModalOpen(true);
   };
 
-  const handleDeleteProduct = async (id: string) => {
-    if (
-      confirm(
-        "Bạn có chắc chắn muốn xóa sản phẩm này? Thao tác không thể hoàn tác.",
-      )
-    ) {
-      startTransition(async () => {
-        const result = await deleteProduct(id);
-        if (result.success) {
-          setProducts(products.filter((p: any) => p.id !== id));
-          router.refresh();
-        } else alert(result.error);
-      });
-    }
+  const handleDeleteProduct = (product: any) => {
+    setDeleteTarget({
+      id: product.id,
+      name: product.translations?.vi?.name || product.code || "Sản phẩm",
+    });
+  };
+
+  const confirmDeleteProduct = async () => {
+    if (!deleteTarget) return;
+    startTransition(async () => {
+      const result = await deleteProduct(deleteTarget.id);
+      if (result.success) {
+        setProducts(products.filter((p: any) => p.id !== deleteTarget.id));
+        setDeleteTarget(null);
+        router.refresh();
+      } else {
+        alert(result.error);
+      }
+    });
   };
 
   const onSubmitProduct = async (data: ProductInput) => {
@@ -94,7 +109,7 @@ export default function AdminDashboardClient({
       {/* HEADER */}
       <header className="bg-[#8b6914] text-white shadow-md">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <h1 className="text-2xl font-bold">Admin Dashboard</h1>
+          <h1 className="text-2xl font-bold">VAD Admin Center</h1>
           <button
             onClick={() => logout().then(() => router.push("/admin/login"))}
             className="flex items-center gap-2 bg-white text-[#8b6914] px-4 py-2 rounded-lg hover:bg-gray-100 transition"
@@ -201,7 +216,7 @@ export default function AdminDashboardClient({
                         <Edit2 size={18} />
                       </button>
                       <button
-                        onClick={() => handleDeleteProduct(product.id)}
+                        onClick={() => handleDeleteProduct(product)}
                         className="text-red-600 hover:text-red-900"
                       >
                         <Trash2 size={18} />
@@ -234,6 +249,15 @@ export default function AdminDashboardClient({
         isOpen={isCategoryModalOpen}
         onClose={() => setIsCategoryModalOpen(false)}
         onSubmit={onSubmitCategory}
+        isPending={isPending}
+      />
+
+      <DeleteConfirmModal
+        isOpen={!!deleteTarget}
+        onClose={() => setDeleteTarget(null)}
+        onConfirm={confirmDeleteProduct}
+        title="Xóa sản phẩm"
+        message={`Bạn có chắc chắn muốn xóa sản phẩm "${deleteTarget?.name}"? Thao tác này không thể hoàn tác.`}
         isPending={isPending}
       />
     </div>

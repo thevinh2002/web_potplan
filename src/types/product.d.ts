@@ -9,4 +9,5 @@ export interface ProductDetail {
   new?: string;
   images: string[];
   description?: string;
+  slug: string;
 }
