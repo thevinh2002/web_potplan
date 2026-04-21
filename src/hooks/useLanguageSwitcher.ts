@@ -3,37 +3,35 @@
 import { useLocale } from "next-intl";
 import { useTransition } from "react";
 import { useRouter, usePathname } from "@/src/i18n/routing";
-import { useParams } from "next/navigation";
+import { translateSlugAction } from "@/src/server/actions/translate-slug";
 
 export function useLanguageSwitcher() {
   const currentLocale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
-  const params = useParams();
+
   const [isPending, startTransition] = useTransition();
 
   const switchLanguage = async (newLocale: string) => {
     if (newLocale === currentLocale) return;
 
-    const productSlug = params?.slug as string | undefined;
-    const isProductPage = pathname.startsWith("/products/") && productSlug;
+    if (pathname.startsWith("/product/")) {
+      const currentSlug = pathname.split("/").pop();
 
-    if (isProductPage) {
-      try {
-        const res = await fetch(
-          `/api/translate-slug?slug=${productSlug}&fromLocale=${currentLocale}&toLocale=${newLocale}`,
+      if (currentSlug) {
+        const newSlug = await translateSlugAction(
+          currentSlug,
+          currentLocale,
+          newLocale,
         );
-        const { slug } = await res.json();
 
-        startTransition(() => {
-          router.replace(`/products/${slug}`, { locale: newLocale });
-        });
-      } catch {
-        startTransition(() => {
-          router.replace(pathname, { locale: newLocale });
-        });
+        if (newSlug) {
+          startTransition(() => {
+            router.replace(`/product/${newSlug}`, { locale: newLocale });
+          });
+          return;
+        }
       }
-      return;
     }
 
     startTransition(() => {
@@ -44,6 +42,6 @@ export function useLanguageSwitcher() {
   return {
     currentLocale,
     switchLanguage,
-    isPending,
+    isPending, // Bạn có thể dùng biến này để làm hiệu ứng loading (spinner) cho nút bấm
   };
 }
