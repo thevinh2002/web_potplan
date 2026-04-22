@@ -42,6 +42,6 @@ export function useLanguageSwitcher() {
   return {
     currentLocale,
     switchLanguage,
-    isPending, // Bạn có thể dùng biến này để làm hiệu ứng loading (spinner) cho nút bấm
+    isPending,
   };
 }

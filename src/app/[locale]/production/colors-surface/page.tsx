@@ -80,7 +80,7 @@ const surfaceImages = [
 
 export default function ColorsSurfacePage() {
   const [currentImage, setCurrentImage] = useState(0);
-  const t = useTranslations("common.navigation");
+  const t = useTranslations("colorsSurface");
 
   const nextImage = () => {
     setCurrentImage((prev) => (prev + 1) % surfaceImages.length);
@@ -178,21 +178,17 @@ export default function ColorsSurfacePage() {
             >
               <div>
                 <h1 className="text-4xl lg:text-5xl font-bold text-[#5c4a3d] leading-tight mb-4">
-                  Signature
+                  {t("title1")}
                   <br />
-                  <span className="text-[#8b6914]">Colors & Surfaces</span>
+                  <span className="text-[#8b6914]">{t("title2")}</span>
                 </h1>
                 <div className="w-20 h-1 bg-[#8b6914] rounded-full" />
               </div>
 
               <p className="text-lg text-[#5c4a3d] leading-relaxed">
-                Supported by a team of experienced professionals at every stage,
-                VAD offers a diverse range of unique surface textures and color
-                palettes. We prioritize your vision, actively listening to your
-                suggestions to develop custom finishes that meet your specific
-                aesthetic criteria.
+                {t("description")}
               </p>
-              <ContactButton text="Request Custom Catalog" showIcon={true} />
+              <ContactButton text={t("requestCatalog")} showIcon={true} />
             </motion.div>
           </div>
         </div>

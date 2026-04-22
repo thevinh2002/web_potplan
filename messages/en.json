@@ -629,6 +629,12 @@
     "category": "Category",
     "contact": "Contact us"
   },
+  "colorsSurface": {
+    "title1": "Signature",
+    "title2": "Colors & Surfaces",
+    "description": "Supported by a team of experienced professionals at every stage, VAD offers a diverse range of unique surface textures and color palettes. We prioritize your vision, actively listening to your suggestions to develop custom finishes that meet your specific aesthetic criteria.",
+    "requestCatalog": "Request Custom Catalog"
+  },
   "metadata": {
     "introduction": {
       "title": "Introduction - Viet Anh Dung",
