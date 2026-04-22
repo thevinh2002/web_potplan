@@ -1,414 +1,303 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { useParams } from "next/navigation";
-import { Product } from "@/src/types/production";
-import { Plus, Edit2, Trash2, LogOut, Search } from "lucide-react";
+import {
+  LayoutDashboard,
+  ShoppingCart,
+  Package,
+  Wallet,
+  Receipt,
+  FileMinus,
+} from "lucide-react";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  Cell,
+} from "recharts";
+
+const salesData = [
+  { name: "28 Jan", sales: 40000, purchase: 30000 },
+  { name: "29 Jan", sales: 45000, purchase: 35000 },
+  { name: "30 Jan", sales: 55000, purchase: 40000 },
+  { name: "31 Jan", sales: 60000, purchase: 45000 },
+  { name: "1 Feb", sales: 65000, purchase: 50000 },
+  { name: "2 Feb", sales: 70000, purchase: 55000 },
+  { name: "3 Feb", sales: 55000, purchase: 40000 },
+  { name: "4 Feb", sales: 75000, purchase: 60000 },
+  { name: "5 Feb", sales: 70000, purchase: 55000 },
+];
+
+const customerData = [
+  { name: "First Time", value: 55, color: "#22c55e" },
+  { name: "Return", value: 35, color: "#eab308" },
+  { name: "Inactive", value: 10, color: "#ef4444" },
+];
 
 export default function AdminDashboardPage() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingProduct, setEditingProduct] = useState<Product | null>(null);
-  const router = useRouter();
-  const params = useParams();
-  const locale = (params.locale as string) || "en";
-
-  // Form state
-  const [formData, setFormData] = useState<Partial<Product>>({
-    name: "",
-    code: "",
-    category: "",
-    image: "",
-    isNew: false,
-    new: "",
-    rating: 0,
-    reviews: 0,
-  });
-
-  useEffect(() => {
-    const session = localStorage.getItem("admin_session");
-    if (!session) {
-      router.push(`/${locale}/admin/login`);
-      return;
-    }
-
-    // Load products from localStorage
-    const storedProducts = localStorage.getItem("admin_products");
-    if (storedProducts) {
-      setProducts(JSON.parse(storedProducts));
-    } else {
-      // Sample data if no products exist
-      const sampleProducts: Product[] = [
-        {
-          id: 1,
-          name: "Classic Ceramic Pot",
-          code: "CCP-001",
-          category: "Ceramic",
-          image: "/images/products/pot1.jpg",
-          isNew: true,
-          new: "New",
-          rating: 4.5,
-          reviews: 12,
-        },
-        {
-          id: 2,
-          name: "Modern Terracotta",
-          code: "MT-002",
-          category: "Terracotta",
-          image: "/images/products/pot2.jpg",
-          isNew: false,
-          new: "",
-          rating: 4.2,
-          reviews: 8,
-        },
-      ];
-      setProducts(sampleProducts);
-      localStorage.setItem("admin_products", JSON.stringify(sampleProducts));
-    }
-  }, [router, locale]);
-
-  const handleLogout = () => {
-    localStorage.removeItem("admin_session");
-    router.push(`/${locale}/admin/login`);
-  };
-
-  const saveProducts = (newProducts: Product[]) => {
-    setProducts(newProducts);
-    localStorage.setItem("admin_products", JSON.stringify(newProducts));
-  };
-
-  const handleAdd = () => {
-    setEditingProduct(null);
-    setFormData({
-      name: "",
-      code: "",
-      category: "",
-      image: "",
-      isNew: false,
-      new: "",
-      rating: 0,
-      reviews: 0,
-    });
-    setIsModalOpen(true);
-  };
-
-  const handleEdit = (product: Product) => {
-    setEditingProduct(product);
-    setFormData(product);
-    setIsModalOpen(true);
-  };
-
-  const handleDelete = (id: number) => {
-    if (confirm("Are you sure you want to delete this product?")) {
-      const newProducts = products.filter((p) => p.id !== id);
-      saveProducts(newProducts);
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (editingProduct) {
-      // Update existing product
-      const newProducts = products.map((p) =>
-        p.id === editingProduct.id ? { ...formData, id: p.id } as Product : p
-      );
-      saveProducts(newProducts);
-    } else {
-      // Add new product
-      const newId = products.length > 0 ? Math.max(...products.map((p) => p.id)) + 1 : 1;
-      const newProduct: Product = {
-        ...formData,
-        id: newId,
-      } as Product;
-      saveProducts([...products, newProduct]);
-    }
-    
-    setIsModalOpen(false);
-  };
-
-  const filteredProducts = products.filter(
-    (p) =>
-      p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      p.code.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      p.category.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
   return (
-    <div className="min-h-screen bg-gray-100">
-      {/* Header */}
-      <header className="bg-[#8b6914] text-white shadow-md">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <h1 className="text-2xl font-bold">Admin Dashboard</h1>
-          <div className="flex items-center gap-4">
-            <span className="text-sm">Welcome, admin</span>
-            <button
-              onClick={handleLogout}
-              className="flex items-center gap-2 bg-white text-[#8b6914] px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors"
-            >
-              <LogOut size={18} />
-              Logout
+    <div>
+        {/* Header */}
+        <div className="mb-6">
+          <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
+          <p className="text-sm text-gray-500 mt-1">
+            Your main content goes here...
+          </p>
+        </div>
+
+        {/* Stats Row 1 */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <StatCard
+            icon={ShoppingCart}
+            label="Total Sales"
+            value="$25,000"
+            change="+5%"
+            changeType="positive"
+            bgColor="bg-[#fff5f0]"
+            iconColor="text-[#e85d04]"
+            iconBg="bg-[#e85d04]"
+          />
+          <StatCard
+            icon={Package}
+            label="Total Purchase"
+            value="$18,000"
+            change="+22%"
+            changeType="positive"
+            bgColor="bg-[#f0fdf4]"
+            iconColor="text-[#22c55e]"
+            iconBg="bg-[#22c55e]"
+          />
+          <StatCard
+            icon={Wallet}
+            label="Total Expenses"
+            value="$9,000"
+            change="+10%"
+            changeType="positive"
+            bgColor="bg-[#eff6ff]"
+            iconColor="text-[#3b82f6]"
+            iconBg="bg-[#3b82f6]"
+          />
+          <StatCard
+            icon={Receipt}
+            label="Invoice Due"
+            value="$25,000"
+            change="+5%"
+            changeType="positive"
+            bgColor="bg-[#fefce8]"
+            iconColor="text-[#eab308]"
+            iconBg="bg-[#eab308]"
+          />
+        </div>
+
+        {/* Stats Row 2 */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div className="bg-white rounded-xl p-5 shadow-sm">
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="text-2xl font-bold text-gray-900">$25,458</p>
+                <p className="text-sm text-gray-600 mt-1">Total Profit</p>
+                <p className="text-xs text-[#22c55e] mt-2">+35% vs last month</p>
+              </div>
+              <div className="w-10 h-10 rounded-lg bg-[#fff5f0] flex items-center justify-center">
+                <LayoutDashboard className="w-5 h-5 text-[#e85d04]" />
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-xl p-5 shadow-sm">
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="text-2xl font-bold text-gray-900">$45,458</p>
+                <p className="text-sm text-gray-600 mt-1">Total Payment Returns</p>
+                <p className="text-xs text-[#ef4444] mt-2">-20% vs last Month</p>
+              </div>
+              <div className="w-10 h-10 rounded-lg bg-[#fef2f2] flex items-center justify-center">
+                <FileMinus className="w-5 h-5 text-[#ef4444]" />
+              </div>
+            </div>
+            <button className="text-xs text-[#e85d04] mt-3 font-medium">
+              View
+            </button>
+          </div>
+
+          <div className="bg-white rounded-xl p-5 shadow-sm">
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="text-2xl font-bold text-gray-900">$34,458</p>
+                <p className="text-sm text-gray-600 mt-1">Total Expenses</p>
+                <p className="text-xs text-[#ef4444] mt-2">-30% vs last Month</p>
+              </div>
+              <div className="w-10 h-10 rounded-lg bg-[#fefce8] flex items-center justify-center">
+                <Wallet className="w-5 h-5 text-[#eab308]" />
+              </div>
+            </div>
+            <button className="text-xs text-[#e85d04] mt-3 font-medium">
+              View
             </button>
           </div>
         </div>
-      </header>
 
-      {/* Main Content */}
-      <main className="container mx-auto px-4 py-8">
-        {/* Actions Bar */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-          <div className="relative w-full sm:w-96">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-            <input
-              type="text"
-              placeholder="Search products..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#8b6914]"
-            />
-          </div>
-          <button
-            onClick={handleAdd}
-            className="flex items-center gap-2 bg-[#8b6914] text-white px-4 py-2 rounded-lg hover:bg-[#6d5210] transition-colors"
-          >
-            <Plus size={20} />
-            Add Product
-          </button>
-        </div>
-
-        {/* Products Table */}
-        <div className="bg-white rounded-lg shadow-md overflow-hidden">
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    ID
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Image
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Name
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Code
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Category
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Rating
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    New
-                  </th>
-                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Actions
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                {filteredProducts.map((product) => (
-                  <tr key={product.id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                      {product.id}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        className="w-12 h-12 object-cover rounded"
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' fill='%23ccc'%3E%3Crect width='48' height='48'/%3E%3C/svg%3E";
-                        }}
-                      />
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                      {product.name}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {product.code}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {product.category}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {product.rating} ★ ({product.reviews})
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {product.isNew ? (
-                        <span className="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
-                          Yes
-                        </span>
-                      ) : (
-                        <span className="px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 text-gray-800">
-                          No
-                        </span>
-                      )}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <button
-                        onClick={() => handleEdit(product)}
-                        className="text-blue-600 hover:text-blue-900 mr-3"
-                      >
-                        <Edit2 size={18} />
-                      </button>
-                      <button
-                        onClick={() => handleDelete(product.id)}
-                        className="text-red-600 hover:text-red-900"
-                      >
-                        <Trash2 size={18} />
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          
-          {filteredProducts.length === 0 && (
-            <div className="text-center py-12 text-gray-500">
-              No products found
+        {/* Charts Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Sales vs Purchase Chart */}
+          <div className="bg-white rounded-xl p-5 shadow-sm">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="font-semibold text-gray-900">Sales vs Purchase</h3>
+              <select aria-label="Select year range" className="text-xs text-gray-500 bg-gray-50 border-0 rounded-lg px-3 py-1.5 outline-none cursor-pointer">
+                <option>This year</option>
+                <option>Last year</option>
+              </select>
             </div>
-          )}
-        </div>
-      </main>
-
-      {/* Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-            <div className="p-6 border-b">
-              <h2 className="text-xl font-bold text-[#5c4a3d]">
-                {editingProduct ? "Edit Product" : "Add Product"}
-              </h2>
-            </div>
-            
-            <form onSubmit={handleSubmit} className="p-6 space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Product Name *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#8b6914]"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Product Code *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={formData.code}
-                    onChange={(e) => setFormData({ ...formData, code: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#8b6914]"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Category *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={formData.category}
-                    onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#8b6914]"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Image URL *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={formData.image}
-                    onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#8b6914]"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Rating
-                  </label>
-                  <input
-                    type="number"
-                    min="0"
-                    max="5"
-                    step="0.1"
-                    value={formData.rating}
-                    onChange={(e) => setFormData({ ...formData, rating: parseFloat(e.target.value) })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#8b6914]"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Reviews Count
-                  </label>
-                  <input
-                    type="number"
-                    min="0"
-                    value={formData.reviews}
-                    onChange={(e) => setFormData({ ...formData, reviews: parseInt(e.target.value) })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#8b6914]"
-                  />
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  id="isNew"
-                  checked={formData.isNew}
-                  onChange={(e) => {
-                    const isNew = e.target.checked;
-                    setFormData({ 
-                      ...formData, 
-                      isNew,
-                      new: isNew ? "New" : "" 
-                    });
-                  }}
-                  className="w-4 h-4 text-[#8b6914] border-gray-300 rounded focus:ring-[#8b6914]"
+            <ResponsiveContainer width="100%" height={250}>
+              <BarChart data={salesData} barGap={8}>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
+                <XAxis
+                  dataKey="name"
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fontSize: 11, fill: "#9ca3af" }}
                 />
-                <label htmlFor="isNew" className="text-sm font-medium text-gray-700">
-                  Mark as New Product
-                </label>
+                <YAxis
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fontSize: 11, fill: "#9ca3af" }}
+                  tickFormatter={(value) => `$${value / 1000}k`}
+                />
+                <Tooltip
+                  cursor={{ fill: "#f5f5f5" }}
+                  contentStyle={{
+                    backgroundColor: "#fff",
+                    border: "none",
+                    borderRadius: "8px",
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                  }}
+                />
+                <Bar dataKey="sales" fill="#e85d04" radius={[4, 4, 0, 0]} barSize={20} />
+                <Bar dataKey="purchase" fill="#fdba74" radius={[4, 4, 0, 0]} barSize={20} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+
+          {/* Overall Information */}
+          <div className="bg-white rounded-xl p-5 shadow-sm">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="font-semibold text-gray-900">Overall Information</h3>
+              <select aria-label="Select time period" className="text-xs text-gray-500 bg-gray-50 border-0 rounded-lg px-3 py-1.5 outline-none cursor-pointer">
+                <option>Last 6 Months</option>
+                <option>Last year</option>
+              </select>
+            </div>
+
+            <p className="text-xs text-gray-500 mb-4">Customers Overview</p>
+
+            <div className="flex items-center gap-8">
+              {/* Donut Chart */}
+              <div className="relative w-32 h-32">
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie
+                      data={customerData}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={35}
+                      outerRadius={55}
+                      paddingAngle={2}
+                      dataKey="value"
+                      startAngle={90}
+                      endAngle={-270}
+                    >
+                      {customerData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.color} strokeWidth={0} />
+                      ))}
+                    </Pie>
+                  </PieChart>
+                </ResponsiveContainer>
               </div>
-              
-              <div className="flex justify-end gap-3 pt-4 border-t">
-                <button
-                  type="button"
-                  onClick={() => setIsModalOpen(false)}
-                  className="px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-100 transition-colors"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-[#8b6914] text-white rounded-lg hover:bg-[#6d5210] transition-colors"
-                >
-                  {editingProduct ? "Update" : "Add"}
-                </button>
+
+              {/* Stats */}
+              <div className="flex gap-8">
+                <div>
+                  <p className="text-2xl font-bold text-gray-900">5.5K</p>
+                  <p className="text-xs text-[#22c55e] font-medium">First Time</p>
+                  <span className="inline-flex items-center text-xs text-[#22c55e] bg-[#dcfce7] px-1.5 py-0.5 rounded mt-1">
+                    ↓ 35%
+                  </span>
+                </div>
+                <div>
+                  <p className="text-2xl font-bold text-gray-900">3.5K</p>
+                  <p className="text-xs text-[#eab308] font-medium">Return</p>
+                  <span className="inline-flex items-center text-xs text-[#22c55e] bg-[#dcfce7] px-1.5 py-0.5 rounded mt-1">
+                    ↓ 21%
+                  </span>
+                </div>
               </div>
-            </form>
+            </div>
+
+            {/* Bottom Stats */}
+            <div className="grid grid-cols-3 gap-4 mt-6 pt-6 border-t border-gray-100">
+              <div className="text-center">
+                <p className="text-xl font-bold text-gray-900">6987</p>
+                <p className="text-xs text-gray-500 mt-1">Suppliers</p>
+              </div>
+              <div className="text-center border-l border-gray-100">
+                <p className="text-xl font-bold text-gray-900">4896</p>
+                <p className="text-xs text-gray-500 mt-1">Customers</p>
+              </div>
+              <div className="text-center border-l border-gray-100">
+                <p className="text-xl font-bold text-gray-900">487</p>
+                <p className="text-xs text-gray-500 mt-1">Orders</p>
+              </div>
+            </div>
           </div>
         </div>
-      )}
+    </div>
+  );
+}
+
+interface StatCardProps {
+  icon: React.ElementType;
+  label: string;
+  value: string;
+  change: string;
+  changeType: "positive" | "negative";
+  bgColor: string;
+  iconColor: string;
+  iconBg: string;
+}
+
+function StatCard({
+  icon: Icon,
+  label,
+  value,
+  change,
+  changeType,
+  bgColor,
+  iconColor,
+  iconBg,
+}: StatCardProps) {
+  return (
+    <div className={`${bgColor} rounded-xl p-5`}>
+      <div className="flex items-start justify-between">
+        <div>
+          <p className="text-xs text-gray-600 font-medium">{label}</p>
+          <p className="text-2xl font-bold text-gray-900 mt-2">{value}</p>
+        </div>
+        <div className={`w-10 h-10 rounded-lg ${iconBg} bg-opacity-20 flex items-center justify-center`}>
+          <Icon className={`w-5 h-5 ${iconColor}`} />
+        </div>
+      </div>
+      <p
+        className={`text-xs mt-3 font-medium ${
+          changeType === "positive" ? "text-[#22c55e]" : "text-[#ef4444]"
+        }`}
+      >
+        {change} since last month
+      </p>
     </div>
   );
 }
