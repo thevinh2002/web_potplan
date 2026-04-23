@@ -14,7 +14,7 @@ export default function ProductCard({
 }: ProductCardProps) {
   return (
     <Link
-      href={`/product/${String(product.id)}`}
+      href={`/product/${String(product.slug)}`}
       className={`bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group ${
         viewMode === "list" ? "flex" : ""
       }`}
@@ -26,7 +26,7 @@ export default function ProductCard({
         }`}
       >
         <img
-          src={product.image}
+          src={product.image_cover}
           alt={product.name}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
         />

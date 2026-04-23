@@ -4,88 +4,83 @@ import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import CoreValueItem from "@/src/components/common/CoreValueItem";
-import { CoreValueItemProps } from "@/src/types/introduction";
 import ContactButton from "@/src/components/ui/ContactButton";
 import { useTranslations } from "next-intl";
 
 const surfaceImages = [
   {
-    src: "/pictures/color_surface/z7671208518743_a886d2f37c448faede75dabb94f68da5.jpg",
+    src: "/pictures/color_surface/image1.jpg",
     alt: "Surface 1",
   },
   {
-    src: "/pictures/color_surface/z7671208522747_80a7b0f9d67358473c2dd1e7571629fa.jpg",
+    src: "/pictures/color_surface/image2.jpg",
     alt: "Surface 2",
   },
   {
-    src: "/pictures/color_surface/z7671208526332_22075d2ad90fdd5dd0b948451c11742d.jpg",
+    src: "/pictures/color_surface/image3.jpg",
     alt: "Surface 3",
   },
   {
-    src: "/pictures/color_surface/z7671208535867_23c803469e1ae4942b6ba57e1ccf8922.jpg",
+    src: "/pictures/color_surface/image4.jpg",
     alt: "Surface 4",
   },
   {
-    src: "/pictures/color_surface/z7671208542023_5d183e8cecba3cf5ac0b137d45a0d194.jpg",
+    src: "/pictures/color_surface/image5.jpg",
     alt: "Surface 5",
   },
   {
-    src: "/pictures/color_surface/z7671208550956_c14056d1c5dc16df5511be7f122da4c5.jpg",
+    src: "/pictures/color_surface/image6.jpg",
     alt: "Surface 6",
   },
   {
-    src: "/pictures/color_surface/z7671208559889_5c2a5c82de50eee9997facb437146a5b.jpg",
+    src: "/pictures/color_surface/image7.jpg",
     alt: "Surface 7",
   },
   {
-    src: "/pictures/color_surface/z7671208567006_16c4abe95bebba49c07f4da33e9856f8.jpg",
+    src: "/pictures/color_surface/image8.jpg",
     alt: "Surface 8",
   },
   {
-    src: "/pictures/color_surface/z7671208574498_b816181bc378d73d89e733da12aa5c19.jpg",
+    src: "/pictures/color_surface/image9.jpg",
     alt: "Surface 9",
   },
   {
-    src: "/pictures/color_surface/z7671208575094_ae8151701645fa8acd379aacd9ee406c.jpg",
+    src: "/pictures/color_surface/image10.jpg",
     alt: "Surface 10",
   },
   {
-    src: "/pictures/color_surface/z7671209872835_1bc0e35ea10496f50d0967e84458020a.jpg",
+    src: "/pictures/color_surface/image11.jpg",
     alt: "Surface 11",
   },
   {
-    src: "/pictures/color_surface/z7671209878695_d997c2348add34078e374f13eec2599b.jpg",
+    src: "/pictures/color_surface/image12.jpg",
     alt: "Surface 12",
   },
   {
-    src: "/pictures/color_surface/z7671209882860_66430a92f1f7cded18ce8d912b3420bb.jpg",
+    src: "/pictures/color_surface/image13.jpg",
     alt: "Surface 13",
   },
   {
-    src: "/pictures/color_surface/z7671209887174_87d9cc1542013b60885372b3e2631135.jpg",
+    src: "/pictures/color_surface/image14.jpg",
     alt: "Surface 14",
-
   },
   {
-    src: "/pictures/color_surface/z7671213763205_026414e6ad84db6a52e62e6701be7b6e.jpg",
+    src: "/pictures/color_surface/image15.jpg",
     alt: "Surface 15",
   },
   {
-    src: "/pictures/color_surface/z7671213768995_cf398e9a1120020464671890a726ad33.jpg",
+    src: "/pictures/color_surface/image16.jpg",
     alt: "Surface 16",
   },
   {
-    src: "/pictures/color_surface/z7671213773769_a375baa4d71d7c2bd82deb4d18558d4f.jpg",
+    src: "/pictures/color_surface/image17.jpg",
     alt: "Surface 17",
   },
 ];
 
-
-
 export default function ColorsSurfacePage() {
   const [currentImage, setCurrentImage] = useState(0);
-  const t = useTranslations("common.navigation");
+  const t = useTranslations("colorsSurface");
 
   const nextImage = () => {
     setCurrentImage((prev) => (prev + 1) % surfaceImages.length);
@@ -183,17 +178,17 @@ export default function ColorsSurfacePage() {
             >
               <div>
                 <h1 className="text-4xl lg:text-5xl font-bold text-[#5c4a3d] leading-tight mb-4">
-                  Signature
+                  {t("title1")}
                   <br />
-                  <span className="text-[#8b6914]">Colors & Surfaces</span>
+                  <span className="text-[#8b6914]">{t("title2")}</span>
                 </h1>
                 <div className="w-20 h-1 bg-[#8b6914] rounded-full" />
               </div>
 
               <p className="text-lg text-[#5c4a3d] leading-relaxed">
-               Supported by a team of experienced professionals at every stage, VAD offers a diverse range of unique surface textures and color palettes. We prioritize your vision, actively listening to your suggestions to develop custom finishes that meet your specific aesthetic criteria.
+                {t("description")}
               </p>
-              <ContactButton text="Request Custom Catalog" showIcon={true} />
+              <ContactButton text={t("requestCatalog")} showIcon={true} />
             </motion.div>
           </div>
         </div>

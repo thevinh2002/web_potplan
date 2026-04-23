@@ -1,7 +1,7 @@
 export interface Categories {
   id: string;
   name: string;
-  count: number;
+  count?: number;
 }
 
 export interface Sort {
@@ -14,9 +14,10 @@ export interface Product {
   name: string;
   code: string;
   category: string;
-  image: string;
+  image_cover: string;
   isNew: boolean;
   new: string;
   rating: number;
   reviews: number;
+  slug: string;
 }

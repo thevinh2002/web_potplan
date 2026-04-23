@@ -629,6 +629,12 @@
     "category": "Danh mục",
     "contact": "Liên hệ"
   },
+  "colorsSurface": {
+    "title1": "Đặc Trưng",
+    "title2": "Màu Sắc & Bề Mặt",
+    "description": "Được hỗ trợ bởi đội ngũ chuyên gia giàu kinh nghiệm ở từng giai đoạn, VAD mang đến sự đa dạng về các kết cấu bề mặt và bảng màu độc đáo. Chúng tôi luôn ưu tiên ý tưởng của bạn, tích cực lắng nghe những đóng góp để phát triển các lớp hoàn thiện tùy chỉnh nhằm đáp ứng chính xác các tiêu chí thẩm mỹ riêng của bạn.",
+    "requestCatalog": "Yêu Cầu Catalog Tùy Chỉnh"
+  },
   "metadata": {
     "introduction": {
       "title": "Giới thiệu - Việt Anh Dũng",
