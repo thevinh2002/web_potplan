@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -10,6 +11,8 @@ interface CategoryModalProps {
   onClose: () => void;
   onSubmit: (data: CategoryInput) => void;
   isPending: boolean;
+  category?: any;
+  isEdit?: boolean;
 }
 
 export default function CategoryModal({
@@ -17,6 +20,8 @@ export default function CategoryModal({
   onClose,
   onSubmit,
   isPending,
+  category,
+  isEdit,
 }: CategoryModalProps) {
   const categoryForm = useForm<CategoryInput>({
     resolver: zodResolver(CategorySchema),
@@ -25,6 +30,21 @@ export default function CategoryModal({
       translations: { vi: { name: "" }, en: { name: "" } },
     },
   });
+
+  useEffect(() => {
+    if (category && isEdit) {
+      categoryForm.reset({
+        code: category.code,
+        count: category.count,
+        translations: category.translations,
+      });
+    } else {
+      categoryForm.reset({
+        count: 0,
+        translations: { vi: { name: "" }, en: { name: "" } },
+      });
+    }
+  }, [category, isEdit, categoryForm]);
 
   const handleFormSubmit = async (data: CategoryInput) => {
     onSubmit(data);
@@ -38,7 +58,7 @@ export default function CategoryModal({
       <div className="bg-white rounded-lg shadow-xl w-full max-w-md overflow-hidden">
         <div className="p-6 border-b flex justify-between items-center bg-gray-50 rounded-t-lg">
           <h2 className="text-xl font-bold text-[#5c4a3d]">
-            Thêm Danh Mục Mới
+            {isEdit ? "Cập Nhật Danh Mục" : "Thêm Danh Mục Mới"}
           </h2>
         </div>
         <form
@@ -125,6 +145,8 @@ export default function CategoryModal({
             >
               {categoryForm.formState.isSubmitting || isPending
                 ? "Đang xử lý..."
+                : isEdit
+                ? "Cập Nhật"
                 : "Lưu Danh Mục"}
             </button>
           </div>

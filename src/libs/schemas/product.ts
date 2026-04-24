@@ -15,6 +15,8 @@ export const ProductSchema = z.object({
   is_new: z.boolean().default(false),
   rating: z.number().default(0),
   review: z.number().default(0),
+  colors: z.string().default("Freedom"),
+  sizes: z.string().default("Freedom"),
   translations: z.object({
     en: TranslationSchema,
     vi: TranslationSchema,

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useRouter, useParams, usePathname } from "next/navigation";
 import {
   LayoutDashboard,
@@ -10,12 +10,14 @@ import {
   FileText,
   User,
   LogOut,
+  Folder,
 } from "lucide-react";
 
 const menuItems = [
   { icon: LayoutDashboard, label: "Dashboard", href: "dashboard" },
   { icon: Package, label: "Inventory", href: "inventory" },
-  { icon: PlusCircle, label: "Add Product", href: "add-product" },
+  // { icon: PlusCircle, label: "Add Product", href: "add-product" },
+  { icon: Folder, label: "Categories", href: "categories" },
 ];
 
 const accountItems = [
@@ -31,20 +33,58 @@ export default function AdminLayoutClient({
   const router = useRouter();
   const params = useParams();
   const pathname = usePathname();
-  const locale = (params.locale as string) || "en";
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (pathname.includes("/login") || pathname.includes("/signup")) return;
-    
-    const session = localStorage.getItem("admin_session");
-    if (!session) {
-      router.push(`/${locale}/admin/login`);
-    }
-  }, [router, locale, pathname]);
+    const checkAuth = async () => {
+      if (pathname.includes("/login") || pathname.includes("/signup")) {
+        setIsLoading(false);
+        return;
+      }
 
-  const handleLogout = () => {
-    localStorage.removeItem("admin_session");
-    router.push(`/${locale}/admin/login`);
+      try {
+        const response = await fetch('/api/auth/session');
+        const data = await response.json();
+        
+        if (!data.authenticated) {
+          router.push(`/admin/login`);
+        } else {
+          setIsAuthenticated(true);
+        }
+      } catch (error) {
+        console.error("Auth check error:", error);
+        router.push(`/admin/login`);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    checkAuth();
+  }, [router, pathname]);
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="text-gray-500">Đang tải...</div>
+      </div>
+    );
+  }
+
+  const handleLogout = async () => {
+    try {
+      const response = await fetch('/api/auth/logout', { method: 'POST' });
+      if (response.ok) {
+        // Use window.location.replace to ensure full page reload and clear any client-side state
+        window.location.replace('/admin/login');
+      } else {
+        console.error('Logout failed');
+        alert('Không thể đăng xuất. Vui lòng thử lại.');
+      }
+    } catch (error) {
+      console.error('Logout error:', error);
+      alert('Không thể đăng xuất. Vui lòng thử lại.');
+    }
   };
 
   const handleMenuClick = (href: string) => {

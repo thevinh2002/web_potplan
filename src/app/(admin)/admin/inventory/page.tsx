@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import {
   PlusCircle,
@@ -15,29 +15,27 @@ import {
   ArrowUpDown,
   RefreshCw,
 } from "lucide-react";
+import ProductModal from "@/src/components/admin/ProductModal";
+import { ProductInput } from "@/src/libs/schemas/product";
 
 interface Product {
-  id: number;
-  name: string;
+  id: string;
   code: string;
   category: string;
-  brand: string;
-  price: number;
-  unit: string;
-  quantity: number;
-  image: string;
+  image_cover: string;
+  images: string[];
+  colors: string;
+  sizes: string;
+  is_new: boolean;
+  rating: number;
+  review: number;
+  translations: {
+    vi: { name: string; description: string; new?: string; slug?: string };
+    en: { name: string; description: string; new?: string; slug?: string };
+  };
+  createdAt: string;
+  updatedAt: string;
 }
-
-const sampleProducts: Product[] = [
-  { id: 1, name: "Gaming Joy Stick", code: "PRD001", category: "Electronics", brand: "Brand Name", price: 99.99, unit: "pcs", quantity: 150, image: "https://via.placeholder.com/40" },
-  { id: 2, name: "Wireless Earphones", code: "PRD002", category: "Electronics", brand: "Tech Pro", price: 89.99, unit: "pcs", quantity: 320, image: "https://via.placeholder.com/40" },
-  { id: 3, name: "Smart Watch Pro", code: "PRD003", category: "Electronics", brand: "Tech Pro", price: 98.00, unit: "pcs", quantity: 200, image: "https://via.placeholder.com/40" },
-  { id: 4, name: "USB-C Fast Charger", code: "PRD004", category: "Electronics", brand: "Tech Pro", price: 86.00, unit: "pcs", quantity: 80, image: "https://via.placeholder.com/40" },
-  { id: 5, name: "Portable Bluetooth Speaker", code: "PRD005", category: "Electronics", brand: "Tech Pro", price: 32.00, unit: "pcs", quantity: 110, image: "https://via.placeholder.com/40" },
-  { id: 6, name: "Magic Keyboard", code: "PRD006", category: "Electronics", brand: "Tech Pro", price: 49.00, unit: "pcs", quantity: 10, image: "https://via.placeholder.com/40" },
-  { id: 7, name: 'MacBook Pro 16"', code: "PRD007", category: "Electronics", brand: "Tech Pro", price: 99.00, unit: "pcs", quantity: 10, image: "https://via.placeholder.com/40" },
-  { id: 8, name: "Wireless Earphones", code: "PRD008", category: "Electronics", brand: "Tech Pro", price: 109.00, unit: "pcs", quantity: 200, image: "https://via.placeholder.com/40" },
-];
 
 export default function InventoryPage() {
   const router = useRouter();
@@ -45,11 +43,48 @@ export default function InventoryPage() {
   const locale = (params.locale as string) || "en";
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [products, setProducts] = useState<Product[]>(sampleProducts);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingProduct, setEditingProduct] = useState<Product | null>(null);
+  const [isPending, setIsPending] = useState(false);
+  const [categories, setCategories] = useState<any>([]);
+
+  useEffect(() => {
+    fetchProducts();
+    fetchCategories();
+  }, []);
+
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch("/api/products");
+      const data = await response.json();
+      setProducts(data.products || []);
+    } catch (error) {
+      console.error("Failed to fetch products:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const fetchCategories = async () => {
+    try {
+      const response = await fetch("/api/categories");
+      const data = await response.json();
+      setCategories(data.categories || []);
+    } catch (error) {
+      console.error("Failed to fetch categories:", error);
+    }
+  };
+
+  const categoryOptions = categories.map((cat: any) => ({
+    value: cat.code,
+    label: cat.translations.vi.name,
+  }));
 
   const filteredProducts = products.filter(
     (p) =>
-      p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      p.translations.vi.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       p.code.toLowerCase().includes(searchTerm.toLowerCase()) ||
       p.category.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -61,15 +96,70 @@ export default function InventoryPage() {
     currentPage * itemsPerPage
   );
 
-  const handleEditProduct = (productId: number) => {
-    router.push(`/${locale}/admin/edit-product/${productId}`);
+  const handleOpenModal = (product?: Product) => {
+    if (product) {
+      setEditingProduct(product);
+    } else {
+      setEditingProduct(null);
+    }
+    setIsModalOpen(true);
   };
 
-  const handleDeleteProduct = (productId: number) => {
-    if (confirm("Are you sure you want to delete this product?")) {
-      setProducts(products.filter((product) => product.id !== productId));
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setEditingProduct(null);
+  };
+
+  const handleSubmit = async (data: ProductInput) => {
+    setIsPending(true);
+    try {
+      const url = editingProduct
+        ? `/api/products/${editingProduct.id}`
+        : "/api/products";
+      const method = editingProduct ? "PUT" : "POST";
+
+      const response = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) throw new Error("Failed to save product");
+
+      await fetchProducts();
+      handleCloseModal();
+    } catch (error) {
+      console.error("Failed to save product:", error);
+      alert("Không thể lưu sản phẩm. Vui lòng thử lại.");
+    } finally {
+      setIsPending(false);
     }
   };
+
+  const handleDeleteProduct = async (productId: string) => {
+    if (!confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) return;
+
+    try {
+      const response = await fetch(`/api/products/${productId}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) throw new Error("Failed to delete product");
+
+      await fetchProducts();
+    } catch (error) {
+      console.error("Failed to delete product:", error);
+      alert("Không thể xóa sản phẩm. Vui lòng thử lại.");
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <div className="text-gray-500">Đang tải...</div>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -80,7 +170,7 @@ export default function InventoryPage() {
           <p className="text-sm text-gray-500 mt-1">Manage your product inventory</p>
         </div>
         <button
-          onClick={() => router.push(`/${locale}/admin/add-product`)}
+          onClick={() => handleOpenModal()}
           className="flex items-center gap-2 bg-[#e85d04] text-white px-4 py-2.5 rounded-lg hover:bg-[#d45504] transition-colors text-sm font-medium"
         >
           <PlusCircle size={18} />
@@ -130,49 +220,69 @@ export default function InventoryPage() {
           <table className="w-full">
             <thead className="bg-gray-50 border-b border-gray-200">
               <tr>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Image</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Code</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Category</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Brand</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Price</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Unit</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Quantity</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Action</th>
+                <th className="px-4 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Image Cover</th>
+                <th className="px-4 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Images</th>
+                <th className="px-4 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Code</th>
+                <th className="px-4 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Category</th>
+                <th className="px-4 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Name</th>
+                <th className="px-4 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Name Translation</th>
+                <th className="px-4 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Color</th>
+                <th className="px-4 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Size</th>
+                <th className="px-4 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Action</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
-              {paginatedProducts.map((product) => (
-                <tr key={product.id} className="hover:bg-gray-50">
-                  <td className="px-6 py-4">
-                    <div className="flex items-center gap-3">
-                      <img src={product.image} alt={product.name} className="w-10 h-10 rounded-lg object-cover bg-gray-100" />
-                      <span className="text-sm font-medium text-gray-900">{product.name}</span>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 text-sm text-gray-600">{product.code}</td>
-                  <td className="px-6 py-4 text-sm text-gray-600">{product.category}</td>
-                  <td className="px-6 py-4 text-sm text-gray-600">{product.brand}</td>
-                  <td className="px-6 py-4 text-sm font-medium text-gray-900">${product.price.toFixed(2)}</td>
-                  <td className="px-6 py-4 text-sm text-gray-600">{product.unit}</td>
-                  <td className="px-6 py-4 text-sm text-gray-600">{product.quantity}</td>
-                  <td className="px-6 py-4">
-                    <div className="flex items-center gap-2">
-                      <button
-                        onClick={() => handleEditProduct(product.id)}
-                        className="p-1.5 text-gray-400 hover:text-[#e85d04] hover:bg-[#fff5f0] rounded transition-colors"
-                      >
-                        <Edit2 size={16} />
-                      </button>
-                      <button
-                        onClick={() => handleDeleteProduct(product.id)}
-                        className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded transition-colors"
-                      >
-                        <Trash2 size={16} />
-                      </button>
-                    </div>
+              {paginatedProducts.length === 0 ? (
+                <tr>
+                  <td colSpan={9} className="px-6 py-12 text-center text-gray-500">
+                    Chưa có sản phẩm nào. Nhấn "Add Product" để tạo mới.
                   </td>
                 </tr>
-              ))}
+              ) : (
+                paginatedProducts.map((product) => (
+                  <tr key={product.id} className="hover:bg-gray-50">
+                    <td className="px-4 py-4">
+                      <img src={product.image_cover} alt={product.translations.vi.name} className="w-12 h-12 rounded-lg object-cover bg-gray-100" />
+                    </td>
+                    <td className="px-4 py-4">
+                      <div className="flex gap-1">
+                        {product.images && product.images.length > 0 ? (
+                          product.images.slice(0, 3).map((img, idx) => (
+                            <img key={idx} src={img} alt={`secondary-${idx}`} className="w-10 h-10 rounded object-cover bg-gray-100" />
+                          ))
+                        ) : (
+                          <span className="text-sm text-gray-400">-</span>
+                        )}
+                        {product.images && product.images.length > 3 && (
+                          <span className="text-xs text-gray-500 self-center">+{product.images.length - 3}</span>
+                        )}
+                      </div>
+                    </td>
+                    <td className="px-4 py-4 text-sm text-gray-600">{product.code}</td>
+                    <td className="px-4 py-4 text-sm text-gray-600">{product.category}</td>
+                    <td className="px-4 py-4 text-sm font-medium text-gray-900">{product.translations.vi.name}</td>
+                    <td className="px-4 py-4 text-sm text-gray-600">{product.translations.en.name}</td>
+                    <td className="px-4 py-4 text-sm text-gray-600">{product.colors || '-'}</td>
+                    <td className="px-4 py-4 text-sm text-gray-600">{product.sizes || '-'}</td>
+                    <td className="px-4 py-4">
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => handleOpenModal(product)}
+                          className="p-1.5 text-gray-400 hover:text-[#e85d04] hover:bg-[#fff5f0] rounded transition-colors"
+                        >
+                          <Edit2 size={16} />
+                        </button>
+                        <button
+                          onClick={() => handleDeleteProduct(product.id)}
+                          className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded transition-colors"
+                        >
+                          <Trash2 size={16} />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>
@@ -209,6 +319,15 @@ export default function InventoryPage() {
           </div>
         </div>
       </div>
+
+      <ProductModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        onSubmit={handleSubmit}
+        editingProduct={editingProduct}
+        categoryOptions={categoryOptions}
+        isPending={isPending}
+      />
     </div>
   );
 }

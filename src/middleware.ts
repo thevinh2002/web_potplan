@@ -5,28 +5,14 @@ import type { NextRequest } from "next/server";
 
 const intlMiddleware = createMiddleware(routing);
 
-const adminRoutes = [
-  "/admin",
-  "/admin/dashboard",
-  "/admin/login",
-  "/admin/products",
-];
-
 export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const isAdminRoute = adminRoutes.some((route) => pathname.startsWith(route));
-  if (isAdminRoute) {
-    const session = request.cookies.get("__session")?.value;
 
-    if (pathname.startsWith("/admin/*") && !session) {
-      return NextResponse.redirect(new URL("/admin/login", request.url));
-    }
-    if (pathname.startsWith("/admin/login") && session) {
-      return NextResponse.redirect(new URL("/admin/dashboard", request.url));
-    }
-
+  // Skip middleware for admin routes - let AdminLayout handle auth with localStorage
+  if (pathname.startsWith("/admin")) {
     return NextResponse.next();
   }
+
   return intlMiddleware(request);
 }
 
