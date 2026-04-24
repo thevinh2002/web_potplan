@@ -48,7 +48,7 @@ export default function AdminLayoutClient({
   };
 
   const handleMenuClick = (href: string) => {
-    router.push(`/${locale}/admin/${href}`);
+    router.push(`/admin/${href}`);
   };
 
   const isActive = (href: string) => pathname.includes(href);

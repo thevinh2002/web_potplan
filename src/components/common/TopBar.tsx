@@ -1,8 +1,8 @@
 "use client";
 
 import { useLanguageSwitcher } from "@/src/hooks/useLanguageSwitcher";
-import { Link } from "@/src/i18n/routing";
 import { User } from "lucide-react";
+import Link from "next/link";
 
 export default function TopBar() {
   const { currentLocale, switchLanguage, isPending } = useLanguageSwitcher();

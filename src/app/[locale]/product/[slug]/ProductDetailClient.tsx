@@ -93,7 +93,7 @@ export default function ProductDetailClient({
               <div className="flex items-center gap-3 mb-4">
                 {product.isNew && (
                   <span className="bg-[#8b6914] text-white text-xs font-bold px-3 py-1 rounded-full">
-                    {product.new}
+                    {product.newLabel}
                   </span>
                 )}
                 <span className="text-sm text-gray-500 uppercase tracking-wide">
@@ -124,7 +124,7 @@ export default function ProductDetailClient({
                   <span className="w-32 font-semibold text-[#5c4a3d]">
                     {codeText}
                   </span>
-                  <span className="text-[#5c4a3d]">{product.productCode}</span>
+                  <span className="text-[#5c4a3d]">{product.code}</span>
                 </div>
                 <div className="flex">
                   <span className="w-32 font-semibold text-[#5c4a3d]">

@@ -1,4 +1,5 @@
 import AdminLayoutClient from "./AdminLayout";
+import "@/src/app/index.css";
 
 export const metadata = {
   title: "Admin - Aurora Pots",
@@ -10,5 +11,11 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <AdminLayoutClient>{children}</AdminLayoutClient>;
+  return (
+    <html>
+      <body>
+        <AdminLayoutClient>{children}</AdminLayoutClient>
+      </body>
+    </html>
+  );
 }

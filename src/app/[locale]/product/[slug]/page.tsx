@@ -1,34 +1,28 @@
-import { ProductDetail } from "@/src/types/product";
 import ProductDetailClient from "./ProductDetailClient";
-import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
-
+import { getProductsPublic } from "@/src/server/queries/product";
 interface GenerateParamsProps {
   params: { locale: string };
 }
-
 export async function generateStaticParams({
   params: { locale },
 }: GenerateParamsProps) {
   const t = await getTranslations({ locale, namespace: "product" });
-
-  const products: ProductDetail[] = t.raw("productsDetail");
-
-  return products.map((product) => ({
-    id: String(product.id),
-  }));
+  const products = await getProductsPublic(locale);
+  return products.map((product) => ({ slug: String(product.slug) }));
 }
-
 interface PageProps {
-  params: { id: string; locale: string };
+  params: { slug: string; locale: string };
 }
-
-export default function ProductDetailPage({ params }: PageProps) {
-  const t = useTranslations("product");
-
-  const productCategories: ProductDetail[] = t.raw("productsDetail");
-  const product = productCategories.find((p) => String(p.id) === params.id);
-
+export default async function ProductDetailPage({ params }: PageProps) {
+  const t = await getTranslations({
+    locale: params.locale,
+    namespace: "product",
+  });
+  const productCategories = (await getProductsPublic(params.locale)) as any;
+  const product = productCategories.find(
+    (p: any) => String(p.slug) === params.slug,
+  );
   return (
     <>
       <ProductDetailClient
