@@ -38,7 +38,8 @@ export default function AdminLayoutClient({
 
   useEffect(() => {
     const checkAuth = async () => {
-      if (pathname.includes("/login") || pathname.includes("/signup")) {
+      // Skip auth check for login, signup, and root admin page (to allow redirect)
+      if (pathname.includes("/login") || pathname.includes("/signup") || pathname === "/admin") {
         setIsLoading(false);
         return;
       }
@@ -46,7 +47,7 @@ export default function AdminLayoutClient({
       try {
         const response = await fetch('/api/auth/session');
         const data = await response.json();
-        
+
         if (!data.authenticated) {
           router.push(`/admin/login`);
         } else {

@@ -2,7 +2,7 @@ import AdminLayoutClient from "./AdminLayout";
 import "@/src/app/index.css";
 
 export const metadata = {
-  title: "Admin - Aurora Pots",
+  title: "Admin - VAD pottery",
   description: "Admin dashboard for managing products",
 };
 
