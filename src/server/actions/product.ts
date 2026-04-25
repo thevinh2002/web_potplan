@@ -9,6 +9,12 @@ import { revalidatePath } from "next/cache";
 const COLLECTION_NAME = "products";
 const CAT_COLLECTION = "categories";
 
+import { getAllProductsForAdmin } from "@/src/server/queries/product";
+
+export async function getProductsAction() {
+  return await getAllProductsForAdmin();
+}
+
 export async function createProduct(formData: any) {
   const validatedFields = ProductSchema.safeParse(formData);
 

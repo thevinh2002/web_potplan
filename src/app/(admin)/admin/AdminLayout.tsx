@@ -16,7 +16,6 @@ import {
 const menuItems = [
   { icon: LayoutDashboard, label: "Dashboard", href: "dashboard" },
   { icon: Package, label: "Inventory", href: "inventory" },
-  // { icon: PlusCircle, label: "Add Product", href: "add-product" },
   { icon: Folder, label: "Categories", href: "categories" },
 ];
 
@@ -39,13 +38,17 @@ export default function AdminLayoutClient({
   useEffect(() => {
     const checkAuth = async () => {
       // Skip auth check for login, signup, and root admin page (to allow redirect)
-      if (pathname.includes("/login") || pathname.includes("/signup") || pathname === "/admin") {
+      if (
+        pathname.includes("/login") ||
+        pathname.includes("/signup") ||
+        pathname === "/admin"
+      ) {
         setIsLoading(false);
         return;
       }
 
       try {
-        const response = await fetch('/api/auth/session');
+        const response = await fetch("/api/auth/session");
         const data = await response.json();
 
         if (!data.authenticated) {
@@ -74,17 +77,17 @@ export default function AdminLayoutClient({
 
   const handleLogout = async () => {
     try {
-      const response = await fetch('/api/auth/logout', { method: 'POST' });
+      const response = await fetch("/api/auth/logout", { method: "POST" });
       if (response.ok) {
         // Use window.location.replace to ensure full page reload and clear any client-side state
-        window.location.replace('/admin/login');
+        window.location.replace("/admin/login");
       } else {
-        console.error('Logout failed');
-        alert('Không thể đăng xuất. Vui lòng thử lại.');
+        console.error("Logout failed");
+        alert("Không thể đăng xuất. Vui lòng thử lại.");
       }
     } catch (error) {
-      console.error('Logout error:', error);
-      alert('Không thể đăng xuất. Vui lòng thử lại.');
+      console.error("Logout error:", error);
+      alert("Không thể đăng xuất. Vui lòng thử lại.");
     }
   };
 
@@ -137,9 +140,7 @@ export default function AdminLayoutClient({
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 p-6 overflow-auto">
-        {children}
-      </main>
+      <main className="flex-1 p-6 overflow-auto">{children}</main>
     </div>
   );
 }

@@ -3,7 +3,15 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Trash2, Image as ImageIcon, Upload, X, FolderOpen, Plus, Check } from "lucide-react";
+import {
+  Trash2,
+  Image as ImageIcon,
+  Upload,
+  X,
+  FolderOpen,
+  Plus,
+  Check,
+} from "lucide-react";
 
 import { uploadImageToCloudinary } from "@/src/libs/utils";
 import { ProductSchema, ProductInput } from "@/src/libs/schemas/product";
@@ -34,8 +42,8 @@ export default function ProductModal({
   const productForm = useForm<ProductInput>({
     resolver: zodResolver(ProductSchema),
     values: editingProduct
-      ? { 
-          ...editingProduct, 
+      ? {
+          ...editingProduct,
           images: editingProduct.images || [],
           colors: editingProduct.colors || "Freedom, available, etc.",
           sizes: editingProduct.sizes || "Freedom, avilable, etc.",
@@ -142,7 +150,9 @@ export default function ProductModal({
               {editingProduct ? "Chỉnh sửa sản phẩm" : "Thêm sản phẩm mới"}
             </h2>
             <p className="text-white/70 text-sm mt-1">
-              {editingProduct ? "Cập nhật thông tin sản phẩm" : "Tạo sản phẩm mới vào kho"}
+              {editingProduct
+                ? "Cập nhật thông tin sản phẩm"
+                : "Tạo sản phẩm mới vào kho"}
             </p>
           </div>
           <button
@@ -175,7 +185,8 @@ export default function ProductModal({
                   className="w-full px-3 py-2.5 text-sm border border-amber-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent bg-white shadow-sm"
                 />
                 <p className="text-xs text-amber-600 mt-2">
-                  💡 Nếu để trống, ảnh sẽ tự động lưu vào <span className="font-semibold">products/covers</span>
+                  💡 Nếu để trống, ảnh sẽ tự động lưu vào{" "}
+                  <span className="font-semibold">products/covers</span>
                 </p>
               </div>
 
@@ -188,24 +199,33 @@ export default function ProductModal({
                     Ảnh bìa *
                   </label>
                   <div className="relative group">
-                    <div className={`border-2 border-dashed rounded-xl overflow-hidden transition-all duration-300 ${
-                      coverPreviewLocal || productForm.watch("image_cover")
-                        ? "border-amber-300 bg-amber-50"
-                        : "border-gray-300 hover:border-amber-400 hover:bg-amber-50"
-                    }`}>
+                    <div
+                      className={`border-2 border-dashed rounded-xl overflow-hidden transition-all duration-300 ${
+                        coverPreviewLocal || productForm.watch("image_cover")
+                          ? "border-amber-300 bg-amber-50"
+                          : "border-gray-300 hover:border-amber-400 hover:bg-amber-50"
+                      }`}
+                    >
                       <div className="relative h-40 flex flex-col items-center justify-center">
-                        {coverPreviewLocal || productForm.watch("image_cover") ? (
+                        {coverPreviewLocal ||
+                        productForm.watch("image_cover") ? (
                           <img
                             src={
-                              coverPreviewLocal || productForm.watch("image_cover")
+                              coverPreviewLocal ||
+                              productForm.watch("image_cover")
                             }
                             alt="Preview Cover"
                             className="w-full h-full object-cover"
                           />
                         ) : (
                           <div className="text-center p-2">
-                            <Upload className="mx-auto text-gray-400 mb-1" size={24} />
-                            <p className="text-xs text-gray-500 font-medium">Tải ảnh</p>
+                            <Upload
+                              className="mx-auto text-gray-400 mb-1"
+                              size={24}
+                            />
+                            <p className="text-xs text-gray-500 font-medium">
+                              Tải ảnh
+                            </p>
                           </div>
                         )}
 
@@ -242,7 +262,9 @@ export default function ProductModal({
                   <div className="border-2 border-dashed border-gray-300 rounded-xl p-3 text-center hover:border-amber-400 hover:bg-amber-50 transition-all duration-300 relative">
                     <div className="flex flex-col items-center justify-center h-40">
                       <Upload className="text-gray-400 mb-1" size={24} />
-                      <span className="text-xs text-gray-500 font-medium">Thêm ảnh</span>
+                      <span className="text-xs text-gray-500 font-medium">
+                        Thêm ảnh
+                      </span>
                     </div>
                     <input
                       type="file"
@@ -326,7 +348,7 @@ export default function ProductModal({
                     </label>
                     <select
                       {...productForm.register("category")}
-                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200 bg-white"
+                      className="w-full px-4 py-2.5 border text-black border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200 bg-white"
                     >
                       <option value="" disabled>
                         -- Chọn danh mục --
@@ -377,7 +399,6 @@ export default function ProductModal({
 
           {/* Translations Section */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-
             {/* Vietnamese */}
             <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-5 rounded-xl border border-blue-200 shadow-sm">
               <h3 className="font-bold text-blue-800 mb-4 flex items-center gap-2">
@@ -392,7 +413,7 @@ export default function ProductModal({
                   <input
                     {...productForm.register("translations.vi.name")}
                     placeholder="Nhập tên sản phẩm..."
-                    className="w-full px-4 py-2.5 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white"
+                    className="w-full px-4 py-2.5 border border-blue-200 text-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white"
                   />
                   {productForm.formState.errors.translations?.vi?.name && (
                     <p className="text-red-500 text-xs mt-1.5 flex items-center gap-1">
@@ -412,7 +433,7 @@ export default function ProductModal({
                     {...productForm.register("translations.vi.description")}
                     rows={5}
                     placeholder="Nhập mô tả sản phẩm..."
-                    className="w-full px-4 py-2.5 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white resize-none"
+                    className="w-full px-4 py-2.5 border border-blue-200 text-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white resize-none"
                   />
                 </div>
               </div>
@@ -432,7 +453,7 @@ export default function ProductModal({
                   <input
                     {...productForm.register("translations.en.name")}
                     placeholder="Enter product name..."
-                    className="w-full px-4 py-2.5 border border-red-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 bg-white"
+                    className="w-full px-4 py-2.5 border border-red-200 text-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 bg-white"
                   />
                   {productForm.formState.errors.translations?.en?.name && (
                     <p className="text-red-500 text-xs mt-1.5 flex items-center gap-1">
@@ -452,7 +473,7 @@ export default function ProductModal({
                     {...productForm.register("translations.en.description")}
                     rows={5}
                     placeholder="Enter product description..."
-                    className="w-full px-4 py-2.5 border border-red-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 bg-white resize-none"
+                    className="w-full px-4 py-2.5 border border-red-200 text-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 bg-white resize-none"
                   />
                 </div>
               </div>
@@ -475,7 +496,9 @@ export default function ProductModal({
               }
               className="px-8 py-2.5 bg-gradient-to-r from-[#8b6914] to-[#a67c1e] text-white rounded-xl hover:from-[#6d5210] hover:to-[#8b6914] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-medium shadow-lg hover:shadow-xl flex items-center gap-2"
             >
-              {productForm.formState.isSubmitting || isPending || isUploading ? (
+              {productForm.formState.isSubmitting ||
+              isPending ||
+              isUploading ? (
                 <>
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                   Đang xử lý...

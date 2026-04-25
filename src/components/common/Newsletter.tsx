@@ -1,36 +1,42 @@
 "use client";
 
+import { useState, useTransition } from "react";
 import { motion } from "framer-motion";
 import Map from "@/src/components/common/Map";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { subscribeNewsletter } from "@/src/server/actions/email";
 
 export default function Newsletter() {
   const t = useTranslations("home.newsletter");
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [isPending, startTransition] = useTransition();
+  const [status, setStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({
+    type: null,
+    message: "",
+  });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
 
-    setStatus("loading");
-    try {
-      const res = await fetch("/api/newsletter", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
+    setStatus({ type: null, message: "" });
 
-      if (res.ok) {
-        setStatus("success");
+    startTransition(async () => {
+      const result = await subscribeNewsletter(email);
+
+      if (result.success) {
+        setStatus({
+          type: "success",
+          message: "Đăng ký thành công! Cảm ơn bạn.",
+        });
         setEmail("");
       } else {
-        setStatus("error");
+        setStatus({ type: "error", message: result.error || "Có lỗi xảy ra." });
       }
-    } catch (error) {
-      setStatus("error");
-    }
+    });
   };
 
   return (
@@ -45,7 +51,6 @@ export default function Newsletter() {
           }}
           className="grid lg:grid-cols-2 gap-10 items-center"
         >
-          {/* Newsletter Signup */}
           <motion.div
             variants={{
               hidden: { opacity: 0, x: -30 },
@@ -56,35 +61,49 @@ export default function Newsletter() {
             <h2 className="text-3xl font-bold mb-4">{t("title")}</h2>
             <p className="text-white/80 mb-6 text-lg">{t("description")}</p>
 
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row max-w-md gap-3">
-              <div className="flex-1 w-full">
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col max-w-md gap-2"
+            >
+              <div className="flex flex-col sm:flex-row gap-3">
                 <input
                   type="email"
+                  required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  disabled={isPending}
                   placeholder={t("placeholder")}
-                  disabled={status === "loading" || status === "success"}
-                  className="w-full px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-[#c9a87c] text-black outline-none disabled:opacity-70"
-                  required
+                  className="flex-1 w-full px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-[#c9a87c] outline-none disabled:opacity-70"
                 />
+                <button
+                  type="submit"
+                  disabled={isPending}
+                  className="w-full sm:w-auto bg-[#5c4a3d] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#4a3d32] transition-colors whitespace-nowrap disabled:opacity-70 flex items-center justify-center min-w-[120px]"
+                >
+                  {isPending ? (
+                    <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                  ) : (
+                    t("button")
+                  )}
+                </button>
               </div>
-              <button 
-                type="submit"
-                disabled={status === "loading" || status === "success"}
-                className="w-full sm:w-auto bg-[#5c4a3d] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#4a3d32] transition-colors whitespace-nowrap disabled:opacity-70"
-              >
-                {status === "loading" ? "..." : t("button")}
-              </button>
+
+              {status.message && (
+                <motion.p
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`text-sm font-medium ${
+                    status.type === "success"
+                      ? "text-green-300"
+                      : "text-red-300"
+                  }`}
+                >
+                  {status.message}
+                </motion.p>
+              )}
             </form>
-            {status === "success" && (
-              <p className="mt-2 text-green-300">Successfully subscribed!</p>
-            )}
-            {status === "error" && (
-              <p className="mt-2 text-red-300">Failed to subscribe. Please try again.</p>
-            )}
           </motion.div>
 
-          {/* Map Embed */}
           <motion.div
             variants={{
               hidden: { opacity: 0, x: 30, scale: 0.95 },

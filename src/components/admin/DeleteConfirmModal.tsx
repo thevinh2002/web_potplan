@@ -23,7 +23,7 @@ export default function DeleteConfirmModal({
 
   return (
     <div
-      className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-[60]"
+      className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-[60] m-0 fix-margin"
       style={{ animation: "fadeIn 0.2s ease-out" }}
       onClick={(e) => {
         if (e.target === e.currentTarget && !isPending) onClose();
@@ -84,6 +84,9 @@ export default function DeleteConfirmModal({
       </div>
 
       <style jsx>{`
+        .fix-margin {
+          margin: 0 !important;
+        }
         @keyframes fadeIn {
           from {
             opacity: 0;

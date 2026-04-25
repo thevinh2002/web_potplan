@@ -1,16 +1,47 @@
-"use client";
+import { Package, Folder, Sparkles, Star } from "lucide-react";
+import { getAllProductsForAdmin } from "@/src/server/queries/product";
+import { getAllCategoriesForAdmin } from "@/src/server/queries/category";
 
-import { Package, ShoppingCart, Users, TrendingUp } from "lucide-react";
+export default async function AdminDashboardPage() {
+  const [products, categories] = await Promise.all([
+    getAllProductsForAdmin(),
+    getAllCategoriesForAdmin(),
+  ]);
 
-const statisticsData = [
-  { id: 1, category: "Electronics", totalProducts: 150, inStock: 120, outOfStock: 30, lowStock: 15 },
-  { id: 2, category: "Clothing", totalProducts: 200, inStock: 180, outOfStock: 20, lowStock: 25 },
-  { id: 3, category: "Food & Beverages", totalProducts: 80, inStock: 60, outOfStock: 20, lowStock: 10 },
-  { id: 4, category: "Home & Garden", totalProducts: 95, inStock: 85, outOfStock: 10, lowStock: 8 },
-  { id: 5, category: "Sports", totalProducts: 60, inStock: 50, outOfStock: 10, lowStock: 5 },
-];
+  // Build a map of category code -> category name (Vietnamese)
+  const categoryMap = new Map<string, { name: string; count: number }>();
+  categories.forEach((cat: any) => {
+    const name = cat.translations?.vi?.name || cat.code || "Không xác định";
+    categoryMap.set(cat.code, { name, count: cat.count ?? 0 });
+  });
 
-export default function AdminDashboardPage() {
+  // Count products per category from actual product data
+  const productsByCategory = new Map<string, number>();
+  let totalNewProducts = 0;
+  let totalReviews = 0;
+
+  products.forEach((product: any) => {
+    const catCode = product.category || "unknown";
+    productsByCategory.set(catCode, (productsByCategory.get(catCode) || 0) + 1);
+    if (product.is_new) totalNewProducts++;
+    totalReviews += product.review ?? 0;
+  });
+
+  // Build statistics rows for the table
+  const statisticsData = Array.from(categoryMap.entries()).map(
+    ([code, cat]) => {
+      const actualCount = productsByCategory.get(code) || 0;
+      return {
+        code,
+        name: cat.name,
+        productCount: actualCount,
+      };
+    }
+  );
+
+  const totalProducts = products.length;
+  const totalCategories = categories.length;
+
   return (
     <div>
       {/* Header */}
@@ -24,38 +55,34 @@ export default function AdminDashboardPage() {
         <SummaryCard
           icon={Package}
           label="Total Products"
-          value="585"
-          change="+12%"
+          value={totalProducts.toString()}
           bgColor="bg-[#fff5f0]"
           iconColor="text-[#e85d04]"
           iconBg="bg-[#e85d04]"
         />
         <SummaryCard
-          icon={ShoppingCart}
-          label="In Stock"
-          value="495"
-          change="+8%"
+          icon={Folder}
+          label="Total Categories"
+          value={totalCategories.toString()}
           bgColor="bg-[#f0fdf4]"
           iconColor="text-[#22c55e]"
           iconBg="bg-[#22c55e]"
         />
         <SummaryCard
-          icon={Users}
-          label="Out of Stock"
-          value="90"
-          change="-5%"
-          bgColor="bg-[#fef2f2]"
-          iconColor="text-[#ef4444]"
-          iconBg="bg-[#ef4444]"
-        />
-        <SummaryCard
-          icon={TrendingUp}
-          label="Low Stock"
-          value="63"
-          change="+3%"
+          icon={Sparkles}
+          label="New Products"
+          value={totalNewProducts.toString()}
           bgColor="bg-[#fefce8]"
           iconColor="text-[#eab308]"
           iconBg="bg-[#eab308]"
+        />
+        <SummaryCard
+          icon={Star}
+          label="Total Reviews"
+          value={totalReviews.toString()}
+          bgColor="bg-[#fef2f2]"
+          iconColor="text-[#ef4444]"
+          iconBg="bg-[#ef4444]"
         />
       </div>
 
@@ -69,37 +96,43 @@ export default function AdminDashboardPage() {
             <thead className="bg-gray-50 border-b border-gray-200">
               <tr>
                 <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Category</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Total Products</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">In Stock</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Out of Stock</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Low Stock</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Stock Rate</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Code</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Products</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Distribution</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
-              {statisticsData.map((item) => {
-                const stockRate = ((item.inStock / item.totalProducts) * 100).toFixed(1);
-                return (
-                  <tr key={item.id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 text-sm font-medium text-gray-900">{item.category}</td>
-                    <td className="px-6 py-4 text-sm text-gray-600">{item.totalProducts}</td>
-                    <td className="px-6 py-4 text-sm text-gray-600">{item.inStock}</td>
-                    <td className="px-6 py-4 text-sm text-gray-600">{item.outOfStock}</td>
-                    <td className="px-6 py-4 text-sm text-gray-600">{item.lowStock}</td>
-                    <td className="px-6 py-4">
-                      <div className="flex items-center gap-2">
-                        <div className="w-24 h-2 bg-gray-200 rounded-full overflow-hidden">
-                          <div
-                            className="h-full bg-[#e85d04] rounded-full"
-                            style={{ width: `${stockRate}%` }}
-                          />
+              {statisticsData.length === 0 ? (
+                <tr>
+                  <td colSpan={4} className="px-6 py-8 text-center text-sm text-gray-400">
+                    No categories found
+                  </td>
+                </tr>
+              ) : (
+                statisticsData.map((item) => {
+                  const percentage = totalProducts > 0
+                    ? ((item.productCount / totalProducts) * 100).toFixed(1)
+                    : "0.0";
+                  return (
+                    <tr key={item.code} className="hover:bg-gray-50">
+                      <td className="px-6 py-4 text-sm font-medium text-gray-900">{item.name}</td>
+                      <td className="px-6 py-4 text-sm text-gray-500 font-mono">{item.code}</td>
+                      <td className="px-6 py-4 text-sm text-gray-600">{item.productCount}</td>
+                      <td className="px-6 py-4">
+                        <div className="flex items-center gap-2">
+                          <div className="w-24 h-2 bg-gray-200 rounded-full overflow-hidden">
+                            <div
+                              className="h-full bg-[#e85d04] rounded-full"
+                              style={{ width: `${percentage}%` }}
+                            />
+                          </div>
+                          <span className="text-sm text-gray-600">{percentage}%</span>
                         </div>
-                        <span className="text-sm text-gray-600">{stockRate}%</span>
-                      </div>
-                    </td>
-                  </tr>
-                );
-              })}
+                      </td>
+                    </tr>
+                  );
+                })
+              )}
             </tbody>
           </table>
         </div>
@@ -112,7 +145,6 @@ interface SummaryCardProps {
   icon: React.ElementType;
   label: string;
   value: string;
-  change: string;
   bgColor: string;
   iconColor: string;
   iconBg: string;
@@ -122,7 +154,6 @@ function SummaryCard({
   icon: Icon,
   label,
   value,
-  change,
   bgColor,
   iconColor,
   iconBg,
@@ -138,9 +169,6 @@ function SummaryCard({
           <Icon className={`w-5 h-5 ${iconColor}`} />
         </div>
       </div>
-      <p className="text-xs mt-3 font-medium text-[#22c55e]">
-        {change} since last month
-      </p>
     </div>
   );
 }

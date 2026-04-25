@@ -54,7 +54,10 @@ export default function CategoryModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+    <div
+      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
+      style={{ margin: 0 }}
+    >
       <div className="bg-white rounded-lg shadow-xl w-full max-w-md overflow-hidden">
         <div className="p-6 border-b flex justify-between items-center bg-gray-50 rounded-t-lg">
           <h2 className="text-xl font-bold text-[#5c4a3d]">
@@ -92,13 +95,9 @@ export default function CategoryModal({
                 {...categoryForm.register("translations.vi.name")}
                 className="w-full px-3 py-2 border border-blue-200 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-colors"
               />
-              {categoryForm.formState.errors.translations?.vi
-                ?.name && (
+              {categoryForm.formState.errors.translations?.vi?.name && (
                 <p className="text-red-500 text-xs mt-1">
-                  {
-                    categoryForm.formState.errors.translations.vi
-                      .name.message
-                  }
+                  {categoryForm.formState.errors.translations.vi.name.message}
                 </p>
               )}
             </div>
@@ -116,13 +115,9 @@ export default function CategoryModal({
                 {...categoryForm.register("translations.en.name")}
                 className="w-full px-3 py-2 border border-red-200 rounded-lg focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-colors"
               />
-              {categoryForm.formState.errors.translations?.en
-                ?.name && (
+              {categoryForm.formState.errors.translations?.en?.name && (
                 <p className="text-red-500 text-xs mt-1">
-                  {
-                    categoryForm.formState.errors.translations.en
-                      .name.message
-                  }
+                  {categoryForm.formState.errors.translations.en.name.message}
                 </p>
               )}
             </div>
@@ -138,16 +133,14 @@ export default function CategoryModal({
             </button>
             <button
               type="submit"
-              disabled={
-                categoryForm.formState.isSubmitting || isPending
-              }
+              disabled={categoryForm.formState.isSubmitting || isPending}
               className="px-6 py-2 bg-[#8b6914] text-white rounded-lg hover:bg-[#6d5210] transition-colors disabled:opacity-50 font-medium"
             >
               {categoryForm.formState.isSubmitting || isPending
                 ? "Đang xử lý..."
                 : isEdit
-                ? "Cập Nhật"
-                : "Lưu Danh Mục"}
+                  ? "Cập Nhật"
+                  : "Lưu Danh Mục"}
             </button>
           </div>
         </form>

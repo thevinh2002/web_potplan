@@ -7,6 +7,12 @@ import { revalidatePath } from "next/cache";
 
 const COLLECTION_NAME = "categories";
 
+import { getAllCategoriesForAdmin } from "@/src/server/queries/category";
+
+export async function getCategoriesAction() {
+  return await getAllCategoriesForAdmin();
+}
+
 export async function createCategory(formData: any) {
   const validatedFields = CategorySchema.safeParse(formData);
 
@@ -46,3 +52,67 @@ export async function createCategory(formData: any) {
     return { error: "Lỗi kết nối database" };
   }
 }
+
+export async function updateCategory(id: string, formData: any) {
+  const validatedFields = CategorySchema.safeParse(formData);
+
+  if (!validatedFields.success) {
+    return {
+      error: "Dữ liệu không hợp lệ",
+      details: validatedFields.error.flatten().fieldErrors,
+    };
+  }
+
+  const data = validatedFields.data;
+
+  const existingCode = await db
+    .collection(COLLECTION_NAME)
+    .where("code", "==", data.code)
+    .get();
+  
+  const isDuplicate = !existingCode.empty && existingCode.docs.some(doc => doc.id !== id);
+  if (isDuplicate) {
+    return { error: "Mã danh mục này đã tồn tại!" };
+  }
+
+  const categoryData = {
+    ...data,
+    translations: {
+      vi: { ...data.translations.vi, slug: slugify(data.translations.vi.name) },
+      en: { ...data.translations.en, slug: slugify(data.translations.en.name) },
+    },
+    updatedAt: new Date(),
+  };
+
+  try {
+    await db.collection(COLLECTION_NAME).doc(id).update(categoryData);
+
+    revalidatePath("/admin/dashboard", "page");
+    return { success: true, message: "Cập nhật danh mục thành công" };
+  } catch (error) {
+    return { error: "Lỗi kết nối database" };
+  }
+}
+
+export async function deleteCategory(id: string) {
+  try {
+    const categoryRef = db.collection(COLLECTION_NAME).doc(id);
+    const categoryDoc = await categoryRef.get();
+
+    if (!categoryDoc.exists) {
+      return { error: "Danh mục không tồn tại" };
+    }
+
+    if (categoryDoc.data()?.count > 0) {
+      return { error: "Không thể xóa danh mục đang có sản phẩm" };
+    }
+
+    await categoryRef.delete();
+
+    revalidatePath("/admin/dashboard", "page");
+    return { success: true, message: "Xóa danh mục thành công" };
+  } catch (error) {
+    return { error: "Lỗi kết nối database" };
+  }
+}
+
