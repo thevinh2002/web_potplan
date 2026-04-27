@@ -10,4 +10,7 @@ export interface ProductDetail {
   images: string[];
   description?: string;
   slug: string;
+  colors?: string;
+  sizes?: string;
+  ingredients?: string;
 }

@@ -30,6 +30,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
         reviewText={t("review")}
         categoryText={t("category")}
         contactText={t("contact")}
+        colorText={t("colortext")}
+        SizeText={t("sizetext")}
+        ingredientText={t("ingredienttext")}
         product={product}
       />
     </>

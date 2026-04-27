@@ -627,7 +627,10 @@
     "code": "Product Code",
     "review": "reviews",
     "category": "Category",
-    "contact": "Contact us"
+    "contact": "Contact us",
+    "colortext": "Color",
+    "sizetext": "Size",
+    "ingredienttext": "Ingredient"
   },
   "colorsSurface": {
     "title1": "Signature",

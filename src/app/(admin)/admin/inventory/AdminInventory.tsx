@@ -34,6 +34,7 @@ interface Product {
   images: string[];
   colors: string;
   sizes: string;
+  ingredients: string;
   is_new: boolean;
   rating: number;
   review: number;
@@ -265,6 +266,9 @@ export default function AdminInventory({
                   Size
                 </th>
                 <th className="px-4 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                  Ingredient
+                </th>
+                <th className="px-4 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
                   Action
                 </th>
               </tr>
@@ -273,7 +277,7 @@ export default function AdminInventory({
               {paginatedProducts.length === 0 ? (
                 <tr>
                   <td
-                    colSpan={9}
+                    colSpan={10}
                     className="px-6 py-12 text-center text-gray-500"
                   >
                     Chưa có sản phẩm nào. Nhấn "Add Product" để tạo mới.
@@ -329,6 +333,9 @@ export default function AdminInventory({
                     </td>
                     <td className="px-4 py-4 text-sm text-gray-600">
                       {product.sizes || "-"}
+                    </td>
+                    <td className="px-4 py-4 text-sm text-gray-600">
+                      {product.ingredients || "-"}
                     </td>
                     <td className="px-4 py-4">
                       <div className="flex items-center gap-2">

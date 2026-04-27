@@ -1,12 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Pagination from "@/src/components/common/Pagination";
 import ProductCard from "@/src/components/common/ProductCard";
 import SidebarFilter from "@/src/components/common/SidebarFilter";
 import SearchInput from "@/src/components/common/SearchInput";
 import SortAndToggleBar from "@/src/components/common/SortAndToggleBar";
-import { usePagination } from "@/src/hooks/usePagination";
 import { Search } from "lucide-react";
 import { Categories, Product, Sort } from "@/src/types/production";
 import { useTranslations } from "next-intl";
@@ -23,6 +22,7 @@ export default function ProductionClient({
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [searchQuery, setSearchQuery] = useState("");
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const t = useTranslations("production");
   const sortOptions: Sort[] = t.raw("sort.options");
@@ -61,8 +61,26 @@ export default function ProductionClient({
     }
   });
 
-  const { currentPage, totalPages, currentData, goToPage, nextPage, prevPage } =
-    usePagination({ data: sortedProducts, itemsPerPage: 6 });
+  const itemsPerPage = 6;
+  const totalPages = Math.ceil(sortedProducts.length / itemsPerPage);
+  
+  const currentData = useMemo(() => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return sortedProducts.slice(startIndex, endIndex);
+  }, [sortedProducts, currentPage]);
+
+  const goToPage = (page: number) => {
+    setCurrentPage(Math.max(1, Math.min(page, totalPages)));
+  };
+
+  const nextPage = () => {
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  };
+
+  const prevPage = () => {
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
+  };
 
   return (
     <div className="min-h-screen bg-[#faf8f5]">

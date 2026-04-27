@@ -47,6 +47,7 @@ export default function ProductModal({
           images: editingProduct.images || [],
           colors: editingProduct.colors || "Freedom, available, etc.",
           sizes: editingProduct.sizes || "Freedom, avilable, etc.",
+          ingredients: editingProduct.ingredients || "",
         }
       : {
           code: "",
@@ -58,6 +59,7 @@ export default function ProductModal({
           images: [],
           colors: "Freedom, avilable, etc.",
           sizes: "Freedom, avilable, etc.",
+          ingredients: "",
           translations: {
             vi: { name: "", description: "" },
             en: { name: "", description: "" },
@@ -387,11 +389,32 @@ export default function ProductModal({
                     <span className="w-2 h-2 bg-green-500 rounded-full"></span>
                     Kích thước
                   </label>
-                  <input
+                  
+                  <textarea
                     {...productForm.register("sizes")}
                     placeholder="VD: Freedom, available, etc."
+                    rows={3}
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 resize-none"
+                  />
+                </div>
+
+                {/* Ingredients Section */}
+                <div>
+                  <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-1.5">
+                    <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+                    Thành phần
+                  </label>
+                  <input
+                    {...productForm.register("ingredients")}
+                    placeholder="VD: Cement, Sand, Water, Fiberglass..."
                     className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
                   />
+                  {/* <textarea
+                    {...productForm.register("ingredients")}
+                    placeholder="VD: Cement, Sand, Water, Fiberglass..."
+                    rows={3}
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 resize-none"
+                  /> */}
                 </div>
               </div>
             </div>

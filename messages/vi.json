@@ -627,7 +627,10 @@
     "code": "Mã sản phẩm",
     "review": "đánh giá",
     "category": "Danh mục",
-    "contact": "Liên hệ"
+    "contact": "Liên hệ",
+    "colortext": "Màu sắc",
+    "sizetext": "Kích thước",
+    "ingredienttext": "Thành phần"
   },
   "colorsSurface": {
     "title1": "Đặc Trưng",

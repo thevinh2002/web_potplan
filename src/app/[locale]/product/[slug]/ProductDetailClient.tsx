@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { ProductDetail } from "@/src/types/product";
 import ContactButton from "@/src/components/ui/ContactButton";
@@ -10,6 +10,9 @@ interface ProductDetailClientProps {
   reviewText: string;
   categoryText: string;
   contactText: string;
+  colorText:String;
+  SizeText:String;
+  ingredientText: string;
   product: ProductDetail | undefined;
 }
 
@@ -18,9 +21,24 @@ export default function ProductDetailClient({
   reviewText,
   categoryText,
   contactText,
+  colorText,
+  SizeText,
+  ingredientText,
   product,
 }: ProductDetailClientProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    if (!product || product.images.length === 0) return;
+
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) =>
+        prev === product.images.length - 1 ? 0 : prev + 1
+      );
+    }, 5000); // Chuyển hình mỗi 5 giây
+
+    return () => clearInterval(interval);
+  }, [product]);
 
   if (!product) {
     return (
@@ -57,11 +75,11 @@ export default function ProductDetailClient({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12">
             <div className="relative">
-              <div className="relative overflow-hidden rounded-lg aspect-square bg-white">
+              <div className="relative overflow-hidden rounded-lg aspect-[4/5] bg-[#faf8f5] flex items-center justify-center">
                 <img
                   src={product.images[currentImageIndex]}
                   alt={product.name}
-                  className="w-full h-full object-cover transition-opacity duration-300"
+                  className="w-full h-full object-contain transition-opacity duration-300"
                 />
               </div>
               <div className="flex items-center justify-between mt-4">
@@ -126,14 +144,43 @@ export default function ProductDetailClient({
                   </span>
                   <span className="text-[#5c4a3d]">{product.code}</span>
                 </div>
-                <div className="flex">
+                {/* <div className="flex">
                   <span className="w-32 font-semibold text-[#5c4a3d]">
                     {categoryText}
                   </span>
                   <span className="text-[#5c4a3d] capitalize">
                     {product.category}
                   </span>
-                </div>
+                </div> */}
+                {product.ingredients && (
+                  <div className="flex">
+                    <span className="w-32 font-semibold text-[#5c4a3d] ">
+                      {ingredientText}
+                    </span>
+                    <span className="text-[#5c4a3d]">
+                      {product.ingredients}
+                    </span>
+                  </div>
+                )}
+                {product.colors && (
+                  <div className="flex">
+                    <span className="w-32 font-semibold text-[#5c3d3d]">
+                      {colorText}
+                    </span>
+                    <span className="text-[#f30000]">{product.colors}</span>
+                  </div>
+                )}
+                {product.sizes && (
+                  <div className="flex flex-col">
+                    <span className="font-semibold text-[#5c4a3d] mb-1">
+                      {SizeText}
+                    </span>
+                    <span className="text-[#f30000] text-sm whitespace-pre-wrap">
+                      {product.sizes}
+                    </span>
+                  </div>
+                )}
+                
               </div>
 
               <ContactButton text={contactText} className="mb-6 w-fit px-8" />

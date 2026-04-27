@@ -47,6 +47,17 @@ export async function getProductsPublic(locale: string) {
       .orderBy("createdAt", "desc")
       .get();
 
+    // Lấy tất cả categories
+    const categoriesSnapshot = await db.collection("categories").get();
+    const categoriesMap = new Map();
+    categoriesSnapshot.docs.forEach((doc) => {
+      const data = doc.data();
+      categoriesMap.set(
+        data.code,
+        data.translations?.[locale]?.name || data.code
+      );
+    });
+
     return snapshot.docs.map((doc) => {
       const rawData = doc.data();
 
@@ -55,14 +66,16 @@ export async function getProductsPublic(locale: string) {
 
       return {
         id: doc.id,
-        category: rawData.category,
+        category: categoriesMap.get(rawData.category) || rawData.category,
         code: rawData.code,
         image_cover: rawData.image_cover,
         is_new: rawData.is_new,
         rating: rawData.rating,
         review: rawData.review,
         images: rawData.images,
-
+        colors: rawData.colors,
+        sizes: rawData.sizes,
+        ingredients: rawData.ingredients,
         name: localizedData.name || "",
         slug: localizedData.slug || "",
         description: localizedData.description || "",
@@ -88,15 +101,32 @@ export async function getProductBySlugPublic(slug: string, locale: string) {
     const rawData = snapshot.docs[0].data();
     const localizedData = rawData.translations[locale];
 
+    // Lấy tên category theo ngôn ngữ hiện tại
+    const categoryDoc = await db
+      .collection("categories")
+      .where("code", "==", rawData.category)
+      .limit(1)
+      .get();
+
+    let categoryName = rawData.category;
+    if (!categoryDoc.empty) {
+      const categoryData = categoryDoc.docs[0].data();
+      categoryName =
+        categoryData.translations?.[locale]?.name || rawData.category;
+    }
+
     return {
       id: snapshot.docs[0].id,
-      category: rawData.category,
+      category: categoryName,
       code: rawData.code,
       image_cover: rawData.image_cover,
       images: rawData.images,
       is_new: rawData.is_new,
       rating: rawData.rating,
       review: rawData.review,
+      colors: rawData.colors,
+      sizes: rawData.sizes,
+      ingredients: rawData.ingredients,
       name: localizedData.name,
       description: localizedData.description,
       newLabel: localizedData.new,
