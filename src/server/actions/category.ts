@@ -103,13 +103,23 @@ export async function deleteCategory(id: string) {
       return { error: "Danh mục không tồn tại" };
     }
 
-    if (categoryDoc.data()?.count > 0) {
+    const categoryCode = categoryDoc.data()?.code;
+
+    // Đếm số sản phẩm thực tế thuộc category này
+    const productsSnapshot = await db
+      .collection("products")
+      .where("category", "==", categoryCode)
+      .limit(1)
+      .get();
+
+    if (!productsSnapshot.empty) {
       return { error: "Không thể xóa danh mục đang có sản phẩm" };
     }
 
     await categoryRef.delete();
 
     revalidatePath("/admin/dashboard", "page");
+    revalidatePath("/admin/categories", "page");
     return { success: true, message: "Xóa danh mục thành công" };
   } catch (error) {
     return { error: "Lỗi kết nối database" };

@@ -53,6 +53,7 @@ export async function createProduct(formData: any) {
     }
 
     revalidatePath("/admin/dashboard", "page");
+    revalidatePath("/admin/categories", "page");
     revalidatePath("/[locale]/production", "page");
 
     return { success: true, message: "Thêm sản phẩm thành công" };
@@ -115,6 +116,7 @@ export async function updateProduct(id: string, formData: any) {
     }
 
     revalidatePath("/admin/dashboard", "page");
+    revalidatePath("/admin/categories", "page");
     revalidatePath("/[locale]/production", "page");
     revalidatePath("/[locale]/product/[slug]", "page");
 
@@ -147,6 +149,7 @@ export async function deleteProduct(id: string) {
     }
 
     revalidatePath("/admin/dashboard", "page");
+    revalidatePath("/admin/categories", "page");
     revalidatePath("/[locale]/production", "page");
 
     return { success: true, message: "Xóa sản phẩm thành công" };

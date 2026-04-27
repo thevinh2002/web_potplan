@@ -44,7 +44,7 @@ export default function ProductionClient({
 
   const filteredProducts = initialProducts.filter((product) => {
     const matchesCategory =
-      selectedCategory === "all" || product.category === selectedCategory;
+      selectedCategory === "all" || product.categoryCode === selectedCategory;
     const matchesSearch =
       (product.name || "").toLowerCase().includes(searchQuery.toLowerCase()) ||
       (product.code || "").toLowerCase().includes(searchQuery.toLowerCase());

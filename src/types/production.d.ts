@@ -14,6 +14,7 @@ export interface Product {
   name: string;
   code: string;
   category: string;
+  categoryCode: string;
   image_cover: string;
   isNew: boolean;
   new: string;

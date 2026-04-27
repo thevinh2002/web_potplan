@@ -67,6 +67,7 @@ export async function getProductsPublic(locale: string) {
       return {
         id: doc.id,
         category: categoriesMap.get(rawData.category) || rawData.category,
+        categoryCode: rawData.category,
         code: rawData.code,
         image_cover: rawData.image_cover,
         is_new: rawData.is_new,
