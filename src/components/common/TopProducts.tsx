@@ -1,37 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { HomeTopProducts } from "@/src/types/home";
 import { useTranslations } from "next-intl";
 
-const topProducts: HomeTopProducts[] = [
-  {
-    name: "Big Round Brown Rustic Jar",
-    code: "AUP050",
-    price: "$65.00",
-    image: "https://images.unsplash.com/photo-1562690868-60bbe7293e94?w=300",
-  },
-  {
-    name: "Brushed Stainless Steel Planter",
-    code: "AUM007",
-    price: "$89.00",
-    image: "https://images.unsplash.com/photo-1518882605630-8eb565f5e673?w=300",
-  },
-  {
-    name: "Ceramic Decorative Stool",
-    code: "AUD079",
-    price: "$75.00",
-    image: "https://images.unsplash.com/photo-1459156212016-c812468e2115?w=300",
-  },
-  {
-    name: "Classic Terracotta Pots",
-    code: "AUT022",
-    price: "$22.00",
-    image: "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=300",
-  },
-];
+interface Product {
+  id: string;
+  name: string;
+  code: string;
+  image_cover: string;
+  slug: string;
+}
 
-export default function TopProducts() {
+export default function TopProducts({ products }: { products: Product[] }) {
   const t = useTranslations("home.topProducts");
 
   return (
@@ -60,9 +40,9 @@ export default function TopProducts() {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 perspective-[1000px]">
-          {topProducts.map((product, idx) => (
+          {products.slice(0, 4).map((product, idx) => (
             <motion.div
-              key={idx}
+              key={product.id}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.2, margin: "-50px" }}
@@ -101,8 +81,8 @@ export default function TopProducts() {
             >
               <div className="aspect-square overflow-hidden relative">
                 <img
-                  src={product.image}
-                  alt={t(`items.${product.code}`)}
+                  src={product.image_cover}
+                  alt={product.name}
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
@@ -110,10 +90,9 @@ export default function TopProducts() {
                 <div>
                   <p className="text-xs text-gray-500 mb-1">{product.code}</p>
                   <h3 className="font-medium text-[#5c4a3d] mb-2 line-clamp-2">
-                    {t(`items.${product.code}`)}
+                    {product.name}
                   </h3>
                 </div>
-                <p className="text-[#8b6914] font-bold">{product.price}</p>
               </div>
             </motion.div>
           ))}
