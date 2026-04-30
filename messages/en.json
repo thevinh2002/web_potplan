@@ -446,6 +446,23 @@
       "weekdayHours": "8:00 AM - 6:00 PM",
       "saturdayHours": "8:00 AM - 12:00 PM",
       "closed": "Closed"
+    },
+    "form": {
+      "title": "Send Us a Message",
+      "name": "Your Full Name",
+      "namePlaceholder": "Enter your full name",
+      "email": "Email Address",
+      "emailPlaceholder": "example@gmail.com",
+      "phone": "Phone Number",
+      "phonePlaceholder": "Enter your phone number (optional)",
+      "subject": "Message Subject",
+      "subjectPlaceholder": "Enter a brief subject",
+      "message": "Message Content",
+      "messagePlaceholder": "Describe your inquiry in detail...",
+      "success": "Message sent successfully! We will contact you soon.",
+      "error": "An error occurred. Please try again later.",
+      "sending": "Sending...",
+      "submit": "Send Message"
     }
   },
   "product": {

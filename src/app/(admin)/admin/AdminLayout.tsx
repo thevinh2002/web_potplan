@@ -11,12 +11,14 @@ import {
   User,
   LogOut,
   Folder,
+  Mail,
 } from "lucide-react";
 
 const menuItems = [
   { icon: LayoutDashboard, label: "Dashboard", href: "dashboard" },
   { icon: Package, label: "Inventory", href: "inventory" },
   { icon: Folder, label: "Categories", href: "categories" },
+  { icon: Mail, label: "Contacts", href: "contacts" },
 ];
 
 const accountItems = [

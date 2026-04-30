@@ -446,6 +446,23 @@
       "weekdayHours": "8:00 SA - 6:00 CH",
       "saturdayHours": "8:00 SA - 12:00 CH",
       "closed": "Đóng cửa"
+    },
+    "form": {
+      "title": "Gửi Tin Nhắn Liên Hệ",
+      "name": "Họ và tên của bạn",
+      "namePlaceholder": "Nhập họ và tên đầy đủ",
+      "email": "Địa chỉ email",
+      "emailPlaceholder": "example@gmail.com",
+      "phone": "Số điện thoại",
+      "phonePlaceholder": "Nhập số điện thoại (không bắt buộc)",
+      "subject": "Tiêu đề tin nhắn",
+      "subjectPlaceholder": "Nhập tiêu đề ngắn gọn",
+      "message": "Nội dung tin nhắn",
+      "messagePlaceholder": "Mô tả chi tiết nội dung bạn muốn gửi...",
+      "success": "Gửi tin nhắn thành công! Chúng tôi sẽ liên hệ lại sớm.",
+      "error": "Có lỗi xảy ra. Vui lòng thử lại sau.",
+      "sending": "Đang gửi...",
+      "submit": "Gửi tin nhắn"
     }
   },
   "product": {
