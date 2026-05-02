@@ -170,16 +170,16 @@ export default function AdminInventory({
   return (
     <div>
       {/* Page Header */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Inventory</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Inventory</h1>
           <p className="text-sm text-gray-500 mt-1">
             Manage your product inventory
           </p>
         </div>
         <button
           onClick={() => handleOpenModal()}
-          className="flex items-center gap-2 bg-[#e85d04] text-white px-4 py-2.5 rounded-lg hover:bg-[#d45504] transition-colors text-sm font-medium"
+          className="flex items-center justify-center gap-2 bg-[#e85d04] text-white px-4 py-2.5 rounded-lg hover:bg-[#d45504] transition-colors text-sm font-medium"
         >
           <PlusCircle size={18} />
           Add Product
@@ -187,8 +187,8 @@ export default function AdminInventory({
       </div>
 
       {/* Toolbar */}
-      <div className="flex items-center justify-between mb-4">
-        <div className="relative w-72">
+      <div className="flex flex-col lg:flex-row gap-4 lg:items-center lg:justify-between mb-4">
+        <div className="relative w-full lg:w-72">
           <Search
             className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
             size={18}
@@ -201,36 +201,36 @@ export default function AdminInventory({
             className="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#e85d04] focus:ring-1 focus:ring-[#e85d04] text-gray-900"
           />
         </div>
-        <div className="flex items-center gap-2">
-          <button className="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:bg-gray-50 transition-colors">
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 lg:pb-0">
+          <button className="flex items-center gap-2 px-3 lg:px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:bg-gray-50 transition-colors whitespace-nowrap">
             <Filter size={18} />
-            Filter
+            <span className="hidden sm:inline">Filter</span>
           </button>
-          <button className="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:bg-gray-50 transition-colors">
+          <button className="flex items-center gap-2 px-3 lg:px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:bg-gray-50 transition-colors whitespace-nowrap">
             <ArrowUpDown size={18} />
-            Sort
+            <span className="hidden sm:inline">Sort</span>
           </button>
           <button
             onClick={() => startTransition(() => router.refresh())}
             disabled={isRefreshing}
-            className="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:bg-gray-50 transition-colors disabled:opacity-50"
+            className="flex items-center gap-2 px-3 lg:px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:bg-gray-50 transition-colors disabled:opacity-50 whitespace-nowrap"
           >
             <RefreshCw size={18} className={isRefreshing ? "animate-spin" : ""} />
-            Refresh
+            <span className="hidden sm:inline">Refresh</span>
           </button>
           <button
             onClick={() => exportToCSV(filteredProducts, "inventory")}
-            className="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:bg-gray-50 transition-colors"
+            className="flex items-center gap-2 px-3 lg:px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:bg-gray-50 transition-colors whitespace-nowrap"
           >
             <FileSpreadsheet size={18} />
-            Excel
+            <span className="hidden sm:inline">Excel</span>
           </button>
           <button
             onClick={() => exportToPDF(filteredProducts, "inventory")}
-            className="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:bg-gray-50 transition-colors"
+            className="flex items-center gap-2 px-3 lg:px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-600 hover:bg-gray-50 transition-colors whitespace-nowrap"
           >
             <FileText size={18} />
-            PDF
+            <span className="hidden sm:inline">PDF</span>
           </button>
         </div>
       </div>

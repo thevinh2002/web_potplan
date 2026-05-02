@@ -134,9 +134,9 @@ export default function AdminCategory({
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[#5c4a3d]">
+          <h1 className="text-xl sm:text-2xl font-bold text-[#5c4a3d]">
             Quản Lý Danh Mục
           </h1>
           <p className="text-gray-600 mt-1">
@@ -145,10 +145,11 @@ export default function AdminCategory({
         </div>
         <button
           onClick={() => handleOpenModal()}
-          className="flex items-center gap-2 px-4 py-2 bg-[#8b6914] text-white rounded-lg hover:bg-[#6d5210] transition-colors font-medium"
+          className="flex items-center justify-center gap-2 px-4 py-2 bg-[#8b6914] text-white rounded-lg hover:bg-[#6d5210] transition-colors font-medium"
         >
           <Plus size={20} />
-          Thêm Danh Mục
+          <span className="hidden sm:inline">Thêm Danh Mục</span>
+          <span className="sm:hidden">Thêm</span>
         </button>
       </div>
 

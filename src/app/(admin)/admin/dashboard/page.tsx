@@ -88,17 +88,17 @@ export default async function AdminDashboardPage() {
 
       {/* Statistics Table */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-        <div className="p-5 border-b border-gray-200">
-          <h3 className="font-semibold text-gray-900">Quantity Statistics by Category</h3>
+        <div className="p-4 lg:p-5 border-b border-gray-200">
+          <h3 className="font-semibold text-gray-900 text-sm lg:text-base">Quantity Statistics by Category</h3>
         </div>
         <div className="overflow-x-auto">
-          <table className="w-full">
+          <table className="w-full min-w-[600px]">
             <thead className="bg-gray-50 border-b border-gray-200">
               <tr>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Category</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Code</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Products</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Distribution</th>
+                <th className="px-4 lg:px-6 py-3 lg:py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Category</th>
+                <th className="px-4 lg:px-6 py-3 lg:py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Code</th>
+                <th className="px-4 lg:px-6 py-3 lg:py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Products</th>
+                <th className="px-4 lg:px-6 py-3 lg:py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Distribution</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
@@ -115,12 +115,12 @@ export default async function AdminDashboardPage() {
                     : "0.0";
                   return (
                     <tr key={item.code} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 text-sm font-medium text-gray-900">{item.name}</td>
-                      <td className="px-6 py-4 text-sm text-gray-500 font-mono">{item.code}</td>
-                      <td className="px-6 py-4 text-sm text-gray-600">{item.productCount}</td>
-                      <td className="px-6 py-4">
+                      <td className="px-4 lg:px-6 py-3 lg:py-4 text-sm font-medium text-gray-900">{item.name}</td>
+                      <td className="px-4 lg:px-6 py-3 lg:py-4 text-sm text-gray-500 font-mono">{item.code}</td>
+                      <td className="px-4 lg:px-6 py-3 lg:py-4 text-sm text-gray-600">{item.productCount}</td>
+                      <td className="px-4 lg:px-6 py-3 lg:py-4">
                         <div className="flex items-center gap-2">
-                          <div className="w-24 h-2 bg-gray-200 rounded-full overflow-hidden">
+                          <div className="w-16 lg:w-24 h-2 bg-gray-200 rounded-full overflow-hidden">
                             <div
                               className="h-full bg-[#e85d04] rounded-full"
                               style={{ width: `${percentage}%` }}

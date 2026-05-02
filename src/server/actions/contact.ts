@@ -2,7 +2,7 @@
 
 import { db } from "@/src/libs/firebase-admin";
 import { revalidatePath } from "next/cache";
-
+import { subscribeNewsletter } from "./email";
 const COLLECTION_NAME = "contacts";
 
 export interface ContactFormData {
@@ -32,7 +32,7 @@ export async function submitContactForm(formData: ContactFormData) {
       createdAt: new Date(),
       updatedAt: new Date(),
     };
-
+    await subscribeNewsletter(formData.email);
     await db.collection(COLLECTION_NAME).add(contactData);
 
     revalidatePath("/admin/contacts", "page");

@@ -79,22 +79,23 @@ export default function AddProductPage() {
   return (
     <div>
       {/* Header */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Add Product</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Add Product</h1>
           <p className="text-sm text-gray-500 mt-1">Add new product to inventory</p>
         </div>
         <button
           onClick={() => router.push(`/${locale}/admin/inventory`)}
-          className="flex items-center gap-2 bg-[#e85d04] text-white px-4 py-2.5 rounded-lg hover:bg-[#d45504] transition-colors text-sm font-medium"
+          className="flex items-center justify-center gap-2 bg-[#e85d04] text-white px-4 py-2.5 rounded-lg hover:bg-[#d45504] transition-colors text-sm font-medium"
         >
           <Package size={18} />
-          Go to Inventory List
+          <span className="hidden sm:inline">Go to Inventory List</span>
+          <span className="sm:hidden">Inventory</span>
         </button>
       </div>
 
       {/* Form */}
-      <div className="bg-white rounded-xl shadow-sm p-6">
+      <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6">
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Product Name */}
@@ -242,17 +243,17 @@ export default function AddProductPage() {
           </div>
 
           {/* Buttons */}
-          <div className="flex items-center gap-3 mt-6">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mt-6">
             <button
               type="submit"
-              className="flex items-center gap-2 bg-[#e85d04] text-white px-6 py-2.5 rounded-lg hover:bg-[#d45504] transition-colors text-sm font-medium"
+              className="flex items-center justify-center gap-2 bg-[#e85d04] text-white px-6 py-2.5 rounded-lg hover:bg-[#d45504] transition-colors text-sm font-medium"
             >
               Add Product
             </button>
             <button
               type="button"
               onClick={handleClearForm}
-              className="flex items-center gap-2 bg-white border border-gray-200 text-gray-700 px-6 py-2.5 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
+              className="flex items-center justify-center gap-2 bg-white border border-gray-200 text-gray-700 px-6 py-2.5 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
             >
               Clear
             </button>

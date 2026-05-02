@@ -15,7 +15,8 @@ import {
   Filter,
   Eye,
   X,
-  MessageSquare
+  MessageSquare,
+  RefreshCw
 } from "lucide-react";
 import { updateContactStatus, deleteContact } from "@/src/server/actions/contact";
 
@@ -62,6 +63,10 @@ export default function AdminContacts({ initialContacts }: AdminContactsProps) {
     setIsUpdating(false);
   };
 
+  const handleRefresh = () => {
+    window.location.reload();
+  };
+
   const handleDelete = async (id: string) => {
     if (!confirm("Bạn có chắc muốn xóa tin nhắn này?")) return;
     
@@ -106,16 +111,25 @@ export default function AdminContacts({ initialContacts }: AdminContactsProps) {
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
-          <Mail className="w-6 h-6 text-[#8b6914]" />
-          Quản Lý Liên Hệ
-        </h1>
-        <p className="text-gray-500 mt-1">Quản lý tin nhắn từ khách hàng</p>
+      <div className="mb-6 flex items-start justify-between">
+        <div>
+          <h1 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
+            <Mail className="w-6 h-6 text-[#8b6914]" />
+            Quản Lý Liên Hệ
+          </h1>
+          <p className="text-gray-500 mt-1">Quản lý tin nhắn từ khách hàng</p>
+        </div>
+        <button
+          onClick={handleRefresh}
+          className="flex items-center gap-2 px-4 py-2 bg-[#8b6914] text-white rounded-lg hover:bg-[#7a5c12] transition-colors"
+        >
+          <RefreshCw className="w-4 h-4" />
+          Làm mới
+        </button>
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         {[
           { label: "Tổng", value: contacts.length, color: "bg-gray-100 text-gray-700" },
           { label: "Mới", value: contacts.filter((c) => c.status === "new").length, color: "bg-blue-100 text-blue-700" },

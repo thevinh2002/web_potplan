@@ -12,6 +12,8 @@ import {
   LogOut,
   Folder,
   Mail,
+  Menu,
+  X,
 } from "lucide-react";
 
 const menuItems = [
@@ -36,6 +38,7 @@ export default function AdminLayoutClient({
   const pathname = usePathname();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -95,6 +98,7 @@ export default function AdminLayoutClient({
 
   const handleMenuClick = (href: string) => {
     router.push(`/admin/${href}`);
+    setSidebarOpen(false);
   };
 
   const isActive = (href: string) => pathname.includes(href);
@@ -105,44 +109,81 @@ export default function AdminLayoutClient({
   }
 
   return (
-    <div className="flex min-h-screen bg-[#f5f5f5]">
-      {/* Sidebar */}
-      <aside className="w-64 bg-white border-r border-gray-200 flex flex-col">
-        <div className="p-4 flex-1 overflow-auto">
-          <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
-            Main
-          </span>
-          <nav className="mt-4 space-y-1">
-            {menuItems.map((item) => (
-              <button
-                key={item.label}
-                onClick={() => handleMenuClick(item.href)}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                  isActive(item.href)
-                    ? "bg-[#fff5f0] text-[#e85d04]"
-                    : "text-gray-600 hover:bg-gray-50"
-                }`}
-              >
-                <item.icon size={20} />
-                {item.label}
-              </button>
-            ))}
-          </nav>
-        </div>
+    <div className="min-h-screen bg-[#f5f5f5]">
+      {/* Mobile Header */}
+      <header className="lg:hidden bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between sticky top-0 z-40">
+        <button
+          onClick={() => setSidebarOpen(true)}
+          className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+        >
+          <Menu size={24} className="text-gray-600" />
+        </button>
+        <span className="font-semibold text-gray-800">Admin</span>
+        <div className="w-10" /> {/* Spacer for balance */}
+      </header>
 
-        <div className="p-4 border-t border-gray-200">
-          <button
-            onClick={handleLogout}
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-red-600 hover:bg-red-50 transition-colors"
-          >
-            <LogOut size={20} />
-            Logout
-          </button>
-        </div>
-      </aside>
+      <div className="flex min-h-[calc(100vh-56px)] lg:min-h-screen">
+        {/* Sidebar - Desktop: always visible, Mobile: slide-over */}
+        <aside
+          className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-200 flex flex-col transform transition-transform duration-300 ease-in-out lg:transform-none ${
+            sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+          }`}
+        >
+          {/* Mobile close button */}
+          <div className="lg:hidden p-4 border-b border-gray-200 flex items-center justify-between">
+            <span className="font-semibold text-gray-800">Menu</span>
+            <button
+              onClick={() => setSidebarOpen(false)}
+              className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            >
+              <X size={20} className="text-gray-600" />
+            </button>
+          </div>
 
-      {/* Main Content */}
-      <main className="flex-1 p-6 overflow-auto">{children}</main>
+          <div className="p-4 flex-1 overflow-auto">
+            <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider hidden lg:block">
+              Main
+            </span>
+            <nav className="mt-4 space-y-1">
+              {menuItems.map((item) => (
+                <button
+                  key={item.label}
+                  onClick={() => handleMenuClick(item.href)}
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
+                    isActive(item.href)
+                      ? "bg-[#fff5f0] text-[#e85d04]"
+                      : "text-gray-600 hover:bg-gray-50"
+                  }`}
+                >
+                  <item.icon size={20} />
+                  {item.label}
+                </button>
+              ))}
+            </nav>
+          </div>
+
+          <div className="p-4 border-t border-gray-200">
+            <button
+              onClick={handleLogout}
+              className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-red-600 hover:bg-red-50 transition-colors"
+            >
+              <LogOut size={20} />
+              Logout
+            </button>
+          </div>
+        </aside>
+
+        {/* Mobile overlay */}
+        {sidebarOpen && (
+          <div
+            className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+            onClick={() => setSidebarOpen(false)}
+          />
+        )}
+
+        {/* Main Content */}
+        <main className="flex-1 p-4 lg:p-6 overflow-auto">{children}</main>
+      </div>
     </div>
   );
 }
