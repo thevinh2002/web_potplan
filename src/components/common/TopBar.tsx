@@ -56,14 +56,14 @@ export default function TopBar() {
           B2B Vietnam Pottery Manufacturer & Exporter
         </span>
         <div className="flex gap-4 items-center flex-shrink-0">
-          <Link
+          {/* <Link
             href="/admin"
             className="flex items-center gap-1 text-white/80 hover:text-white transition-colors py-1 px-2 rounded hover:bg-white/10"
             title="Admin"
           >
             <User className="w-4 h-4" />
             <span className="hidden md:inline font-medium">Admin</span>
-          </Link>
+          </Link> */}
           <div className="w-px h-4 bg-white/20" />
           {languages.map((l) => (
             <button
