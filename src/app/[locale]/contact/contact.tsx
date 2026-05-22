@@ -72,8 +72,8 @@ export default function Contact() {
     {
       icon: Mail,
       title: t("info.items.email.title"),
-      content: "vietanhdungpottery@gmail.com",
-      href: "mailto:vietanhdungpottery@gmail.com",
+      content: "vietanhdungpots@gmail.com",
+      href: "mailto:vietanhdungpots@gmail.com",
     },
   ];
 

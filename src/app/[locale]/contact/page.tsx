@@ -47,7 +47,7 @@ export default function ContactPage() {
     "@id": "https://vietanhdung.com",
     url: "https://vietanhdung.com",
     telephone: "+84855632984",
-    email: "vietanhdungpottery@gmail.com",
+    email: "vietanhdungpots@gmail.com",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Địa chỉ showroom hoặc xưởng cụ thể của bạn",

@@ -10,7 +10,7 @@ export async function subscribeNewsletter(email: string) {
   try {
     const { data, error } = await resend.emails.send({
       from: "Xưởng Gốm Newsletter <onboarding@resend.dev>",
-      to: [process.env.EMAIL_TO || "hatran12387@gmail.com"],
+      to: [process.env.EMAIL_TO || "vietanhdungpots@gmail.com"],
       subject: "🎉 Có người đăng ký nhận bản tin mới",
       html: `
         <div style="font-family: Arial, sans-serif; padding: 20px; color: #333;">
