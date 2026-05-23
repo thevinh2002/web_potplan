@@ -46,13 +46,13 @@ export default function ProductCard({
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider bg-gray-100 px-2.5 py-1 rounded-md">
               {product.code}
             </p>
-            {product.rating > 0 && (
+            {/* {product.rating > 0 && (
               <div className="flex items-center gap-1.5 bg-amber-50 px-2.5 py-1 rounded-md">
                 <span className="text-yellow-500 text-sm">★</span>
                 <span className="text-gray-700 font-semibold text-sm">{product.rating}</span>
                 <span className="text-gray-400 text-xs">({product.reviews})</span>
               </div>
-            )}
+            )} */}
           </div>
           <h3 className="font-bold text-[#5c4a3d] mb-2 line-clamp-2 group-hover:text-[#8b6914] transition-colors text-sm">
             {product.name}

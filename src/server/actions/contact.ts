@@ -55,7 +55,12 @@ export async function getAllContacts() {
       const data = doc.data();
       return {
         id: doc.id,
-        ...data,
+        name: data.name || "",
+        email: data.email || "",
+        phone: data.phone || "",
+        subject: data.subject || "",
+        message: data.message || "",
+        status: data.status || "new",
         createdAt: data.createdAt?.toDate
           ? data.createdAt.toDate().toISOString()
           : null,

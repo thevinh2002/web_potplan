@@ -32,7 +32,7 @@ export default function TopProducts({ products }: { products: Product[] }) {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            href="#"
+            href="/production"
             className="text-[#8b6914] hover:underline font-medium"
           >
             {t("viewAll")}

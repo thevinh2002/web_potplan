@@ -124,7 +124,7 @@ export default function ProductDetailClient({
               </h1>
 
               {/* Rating */}
-              <div className="flex items-center gap-2 mb-6">
+              {/* <div className="flex items-center gap-2 mb-6">
                 <div className="flex items-center gap-1">
                   <span className="text-yellow-500 text-lg">★</span>
                   <span className="font-semibold text-[#5c4a3d]">
@@ -135,7 +135,7 @@ export default function ProductDetailClient({
                 <span className="text-gray-500">
                   {product.reviews} {reviewText}
                 </span>
-              </div>
+              </div> */}
 
               <div className="space-y-3 mb-6">
                 <div className="flex">
