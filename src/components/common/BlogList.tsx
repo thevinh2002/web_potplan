@@ -17,30 +17,30 @@ export default function BlogList() {
   }>;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
       {posts.map((post, index) => {
-        // Determine grid area based on index
+        // Determine grid area based on index - only apply on larger screens
         let gridArea = "";
         let size: "small" | "medium" | "large" = "medium";
 
         if (index === 0) {
-          gridArea = "row-span-3 col-span-2";
+          gridArea = "lg:row-span-3 lg:col-span-2";
           size = "large";
         } else if (index === 1) {
-          gridArea = "row-span-1 col-span-1";
+          gridArea = "lg:row-span-1 lg:col-span-1";
           size = "small";
         } else if (index === 2) {
-          gridArea = "row-span-1 col-span-1";
+          gridArea = "lg:row-span-1 lg:col-span-1";
           size = "small";
         } else if (index === 3) {
-          gridArea = "row-span-1 col-span-1";
+          gridArea = "lg:row-span-1 lg:col-span-1";
           size = "small";
         } else if (index === 4) {
-          gridArea = "row-span-3 col-span-1";
+          gridArea = "lg:row-span-3 lg:col-span-1";
           size = "large";
         } else {
           // For additional posts, use medium size
-          gridArea = "row-span-1 col-span-1";
+          gridArea = "lg:row-span-1 lg:col-span-1";
           size = "medium";
         }
 

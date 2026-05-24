@@ -26,7 +26,7 @@ export default function BlogPost({ slug }: BlogPostProps) {
     return (
       <div className="text-center py-12">
         <h1 className="text-2xl font-semibold text-gray-900 mb-4">Post not found</h1>
-        <Link href="/blog" className="text-amber-600 hover:text-amber-700">
+        <Link href="/blogs" className="text-amber-600 hover:text-amber-700">
           {t("backToBlog")}
         </Link>
       </div>
@@ -50,7 +50,7 @@ export default function BlogPost({ slug }: BlogPostProps) {
   return (
     <article className="max-w-4xl mx-auto">
       <Link
-        href="/blog"
+        href="/blogs"
         className="inline-flex items-center gap-2 text-amber-600 hover:text-amber-700 mb-6"
       >
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -92,7 +92,7 @@ export default function BlogPost({ slug }: BlogPostProps) {
           {relatedPosts.map((relatedPost) => (
             <Link
               key={relatedPost.id}
-              href={`/blog/${relatedPost.slug}`}
+              href={`/blogs/${relatedPost.slug}`}
               className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
             >
               <div className="relative h-40 overflow-hidden">

@@ -98,7 +98,7 @@ export default function AboutAndBlogs() {
                 }}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                href="/blog"
+                href="/blogs"
                 className="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
               >
                 <h3 className="font-bold text-[#5c4a3d] mb-2">
@@ -120,7 +120,7 @@ export default function AboutAndBlogs() {
                 }}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                href="/blog"
+                href="/blogs"
                 className="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
               >
                 <h3 className="font-bold text-[#5c4a3d] mb-2">
