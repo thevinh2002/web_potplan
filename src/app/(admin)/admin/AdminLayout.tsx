@@ -20,6 +20,7 @@ const menuItems = [
   { icon: LayoutDashboard, label: "Dashboard", href: "dashboard" },
   { icon: Package, label: "Inventory", href: "inventory" },
   { icon: Folder, label: "Categories", href: "categories" },
+  { icon: FileText, label: "Posts", href: "posts" },
   { icon: Mail, label: "Contacts", href: "contacts" },
 ];
 

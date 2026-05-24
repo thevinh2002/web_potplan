@@ -17,8 +17,7 @@ export default function BlogPost({ slug }: BlogPostProps) {
     content: string;
     image: string;
     date: string;
-    category: string;
-    readTime: string;
+    category: string
   }>;
 
   const post = posts.find((p) => p.slug === slug);
@@ -66,8 +65,6 @@ export default function BlogPost({ slug }: BlogPostProps) {
             {post.category}
           </span>
           <span>{formatDate(post.date)}</span>
-          <span>•</span>
-          <span>{post.readTime}</span>
         </div>
         <h1 className="text-4xl font-bold text-gray-900 mb-4">{post.title}</h1>
         <p className="text-xl text-gray-600">{post.excerpt}</p>
@@ -109,7 +106,6 @@ export default function BlogPost({ slug }: BlogPostProps) {
                 <h4 className="font-semibold text-gray-900 line-clamp-2 mb-2">
                   {relatedPost.title}
                 </h4>
-                <p className="text-sm text-gray-500">{relatedPost.readTime}</p>
               </div>
             </Link>
           ))}

@@ -679,8 +679,8 @@
         "content": "Pottery manufacturing is an art form that has been perfected over centuries. At Viet Anh Dung, we combine traditional techniques with modern innovation to create exceptional planters and pottery pieces. Our skilled artisans begin with carefully selected clay, which is then shaped using both wheel-throwing and hand-building techniques. Each piece undergoes a meticulous drying process before being fired in our kilns at precise temperatures to ensure durability and finish quality.",
         "image": "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=800",
         "date": "2024-01-15",
-        "category": "Manufacturing",
-        "readTime": "5 min read"
+        "category": "Manufacturing"
+        
       },
       {
         "id": 2,
@@ -690,8 +690,8 @@
         "content": "Selecting the right planter is crucial for both plant health and aesthetic appeal. Consider factors such as material durability, drainage requirements, size relative to your plant, and how it complements your existing decor. Our fiberglass planters offer lightweight durability perfect for balconies, while our ceramic pieces add elegance to indoor spaces. Fiberstone options provide the best of both worlds with natural stone appearance and modern durability.",
         "image": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800",
         "date": "2024-01-10",
-        "category": "Tips & Guides",
-        "readTime": "4 min read"
+        "category": "Tips & Guides"
+        
       },
       {
         "id": 3,
@@ -701,8 +701,8 @@
         "content": "Indoor gardening continues to evolve with new trends emerging each year. In 2024, we're seeing a shift towards sustainable materials, biophilic design integration, and multi-functional planters that serve as both decor and functional pieces. Large statement planters are becoming popular in living rooms, while compact options are perfect for home offices. Our collection reflects these trends with eco-friendly materials and versatile designs.",
         "image": "https://images.unsplash.com/photo-1459156212016-c812468e2115?w=800",
         "date": "2024-01-05",
-        "category": "Trends",
-        "readTime": "6 min read"
+        "category": "Trends"
+        
       },
       {
         "id": 4,
@@ -712,8 +712,8 @@
         "content": "Proper care and maintenance of your pottery pieces ensures they remain beautiful for years to come. For ceramic planters, regular cleaning with mild soap and water is sufficient. Avoid harsh chemicals that can damage the glaze. For outdoor pieces, consider bringing them indoors during extreme weather conditions. Our fiberglass and fiberstone pieces are more weather-resistant but still benefit from periodic cleaning to maintain their appearance.",
         "image": "https://images.unsplash.com/photo-1578500494198-246f12d3b3d?w=800",
         "date": "2023-12-28",
-        "category": "Care & Maintenance",
-        "readTime": "3 min read"
+        "category": "Care & Maintenance"
+        
       },
       {
         "id": 5,
@@ -723,8 +723,8 @@
         "content": "Sustainability is at the core of our manufacturing process. We source clay locally to reduce transportation emissions, implement water recycling systems in our production facility, and use energy-efficient kilns. Our composite materials are designed to be durable, reducing the need for frequent replacements. We also offer recycling programs for old planters and continuously research eco-friendly alternatives in our material development.",
         "image": "https://images.unsplash.com/photo-1509423350716-97f9360b4e09?w=800",
         "date": "2023-12-20",
-        "category": "Sustainability",
-        "readTime": "5 min read"
+        "category": "Sustainability"
+        
       },
       {
         "id": 6,
@@ -734,8 +734,8 @@
         "content": "Our custom design process begins with understanding your vision. Whether you need planters for a commercial project or have a specific aesthetic in mind for your home, our team works closely with you from concept to completion. We provide 3D renderings, material samples, and prototype development to ensure the final product meets your exact specifications. With flexible minimum order quantities and various customization options, we make custom design accessible to all our clients.",
         "image": "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=800",
         "date": "2023-12-15",
-        "category": "Custom Design",
-        "readTime": "4 min read"
+        "category": "Custom Design"
+        
       }
     ],
     "readMore": "Read More",

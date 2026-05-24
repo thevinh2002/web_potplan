@@ -9,8 +9,7 @@ interface BlogCardProps {
     excerpt: string;
     image: string;
     date: string;
-    category: string;
-    readTime: string;
+    category: string
   };
   size?: "small" | "medium" | "large";
 }
@@ -61,8 +60,6 @@ export default function BlogCard({ post, size = "medium" }: BlogCardProps) {
         <div className={`${padding} flex flex-col flex-grow`}>
           <div className="flex items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">
             <span>{formatDate(post.date)}</span>
-            <span>•</span>
-            <span>{post.readTime}</span>
           </div>
           {size !== "large" && (
             <h3 className={`${titleSize} font-semibold text-gray-900 mb-2 ${excerptLines} hover:text-amber-600 transition-colors`}>

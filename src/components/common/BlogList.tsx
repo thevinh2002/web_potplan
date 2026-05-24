@@ -13,8 +13,7 @@ export default function BlogList() {
     excerpt: string;
     image: string;
     date: string;
-    category: string;
-    readTime: string;
+    category: string
   }>;
 
   return (
