@@ -24,22 +24,22 @@ export default function Footer() {
             <h4 className="font-bold mb-4">{t("products.title")}</h4>
             <ul className="space-y-2 text-gray-400 text-sm">
               <li>
-                <a href="#" className="hover:text-[#c9a87c] transition-colors">
+                <a href="/production" className="hover:text-[#c9a87c] transition-colors">
                   {t("products.items.fiberglass")}
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-[#c9a87c] transition-colors">
+                <a href="/production" className="hover:text-[#c9a87c] transition-colors">
                   {t("products.items.fiberstone")}
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-[#c9a87c] transition-colors">
+                <a href="/production" className="hover:text-[#c9a87c] transition-colors">
                   {t("products.items.ceramic")}
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-[#c9a87c] transition-colors">
+                <a href="/production" className="hover:text-[#c9a87c] transition-colors">
                   {t("products.items.terracotta")}
                 </a>
               </li>
@@ -49,22 +49,17 @@ export default function Footer() {
             <h4 className="font-bold mb-4">{t("company.title")}</h4>
             <ul className="space-y-2 text-gray-400 text-sm">
               <li>
-                <a href="#" className="hover:text-[#c9a87c] transition-colors">
+                <a href="/introduction" className="hover:text-[#c9a87c] transition-colors">
                   {t("company.items.aboutUs")}
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-[#c9a87c] transition-colors">
-                  {t("company.items.factoryTour")}
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-[#c9a87c] transition-colors">
+                <a href="/production/colors-surface" className="hover:text-[#c9a87c] transition-colors">
                   {t("company.items.qualityControl")}
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-[#c9a87c] transition-colors">
+                <a href="/contact" className="hover:text-[#c9a87c] transition-colors">
                   {t("company.items.contact")}
                 </a>
               </li>
@@ -74,14 +69,20 @@ export default function Footer() {
             <h4 className="font-bold mb-4">{t("contactInfo.title")}</h4>
             <ul className="space-y-2 text-gray-400 text-sm">
               <li>{t("contactInfo.location")}</li>
-              <li>{t("contactInfo.email")}</li>
-              <li>{t("contactInfo.phone")}</li>
+              <li>
+                <a href={`mailto:${t("contactInfo.email")}`} className="hover:text-[#c9a87c] transition-colors">
+                  {t("contactInfo.email")}
+                </a>
+              </li>
+              <li>
+                <a href={`tel:${t("contactInfo.phone")}`} className="hover:text-[#c9a87c] transition-colors">
+                  {t("contactInfo.phone")}
+                </a>
+              </li>
             </ul>
           </div>
         </div>
-        {/* <div className="border-t border-gray-600 mt-8 pt-8 text-center text-gray-400 text-sm">
-          © 2024 Aurora Pots. All rights reserved.
-        </div> */}
+
       </div>
     </footer>
   );
