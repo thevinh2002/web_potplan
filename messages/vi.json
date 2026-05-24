@@ -85,7 +85,8 @@
       "home": "Trang chủ",
       "introduction": "Giới thiệu",
       "production": "Sản phẩm",
-      "contact": "Liên hệ"
+      "contact": "Liên hệ",
+      "blog": "Tin tức"
     },
     "breadcrumb": {
       "home": "Trang chủ",
@@ -111,6 +112,7 @@
         "items": {
           "aboutUs": "Về chúng tôi",
           "factoryTour": "Tham quan nhà máy",
+          "blog": "Blog",
           "qualityControl": "Kiểm soát chất lượng",
           "contact": "Liên hệ"
         }
@@ -664,5 +666,81 @@
       "title": "Liên hệ - Việt Anh Dũng",
       "description": "Liên hệ với Việt Anh Dũng để được tư vấn, hỗ trợ hoặc hợp tác. Chúng tôi luôn sẵn sàng lắng nghe bạn."
     }
+  },
+  "blog": {
+    "title": "Blog Của Chúng Tôi",
+    "description": "Khám phá những thông tin, mẹo và câu chuyện mới nhất về gốm sứ, làm vườn và trang trí nhà cửa từ đội ngũ chuyên gia của chúng tôi.",
+    "posts": [
+      {
+        "id": 1,
+        "slug": "pottery-manufacturing-techniques",
+        "title": "Sản xuất gốm sứ: Kỹ thuật thủ công tinh xảo",
+        "excerpt": "Khám phá các phương pháp truyền thống đằng sau gốm sứ thủ công của chúng tôi và cách chúng tôi duy trì chất lượng cho từng sản phẩm.",
+        "content": "Sản xuất gốm sứ là một nghệ thuật đã được hoàn thiện qua nhiều thế kỷ. Tại Việt Anh Dũng, chúng tôi kết hợp các kỹ thuật truyền thống với sự đổi mới hiện đại để tạo ra những chiếc chậu và sản phẩm gốm sứ xuất sắc. Các nghệ nhân lành nghề của chúng tôi bắt đầu với đất sét được chọn lọc cẩn thận, sau đó được định hình bằng cả kỹ thuật nặn bàn xoay và xây dựng thủ công. Mỗi sản phẩm đều trải qua quá trình sấy tỉ mỉ trước khi được nung trong lò của chúng tôi ở nhiệt độ chính xác để đảm bảo độ bền và chất lượng hoàn thiện.",
+        "image": "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=800",
+        "date": "2024-01-15",
+        "category": "Sản xuất",
+        "readTime": "5 phút đọc"
+      },
+      {
+        "id": 2,
+        "slug": "choosing-right-planter",
+        "title": "Chọn chậu cây phù hợp cho không gian của bạn",
+        "excerpt": "Hướng dẫn toàn diện để chọn chậu cây hoàn hảo cho không gian trong nhà và ngoài trời của bạn.",
+        "content": "Việc chọn chậu cây phù hợp rất quan trọng cho cả sức khỏe của cây và tính thẩm mỹ. Hãy cân nhắc các yếu tố như độ bền của vật liệu, yêu cầu thoát nước, kích thước tương đối so với cây của bạn, và cách nó bổ sung cho trang trí hiện có của bạn. Chậu sợi thủy tinh của chúng tôi mang lại độ bền nhẹ nhàng hoàn hảo cho ban công, trong khi các sản phẩm gốm sứ của chúng tôi thêm sự sang trọng cho không gian trong nhà. Các tùy chọn Fiberstone mang lại sự kết hợp tốt nhất của cả hai với vẻ ngoài đá tự nhiên và độ bền hiện đại.",
+        "image": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800",
+        "date": "2024-01-10",
+        "category": "Mẹo & Hướng dẫn",
+        "readTime": "4 phút đọc"
+      },
+      {
+        "id": 3,
+        "slug": "indoor-gardening-trends",
+        "title": "Xu hướng làm vườn trong nhà cho năm 2024",
+        "excerpt": "Khám phá các xu hướng mới nhất trong làm vườn trong nhà và cách tích hợp chúng vào ngôi nhà của bạn.",
+        "content": "Làm vườn trong nhà tiếp tục phát triển với các xu hướng mới xuất hiện mỗi năm. Vào năm 2024, chúng tôi thấy sự chuyển dịch sang vật liệu bền vững, tích hợp thiết kế sinh thái và các chậu đa chức năng vừa là trang trí vừa là sản phẩm chức năng. Các chậu lớn tạo điểm nhấn đang trở nên phổ biến trong phòng khách, trong khi các tùy chọn nhỏ gọn hoàn hảo cho văn phòng tại nhà. Bộ sưu tập của chúng tôi phản ánh các xu hướng này với vật liệu thân thiện với môi trường và thiết kế đa năng.",
+        "image": "https://images.unsplash.com/photo-1459156212016-c812468e2115?w=800",
+        "date": "2024-01-05",
+        "category": "Xu hướng",
+        "readTime": "6 phút đọc"
+      },
+      {
+        "id": 4,
+        "slug": "pottery-care-maintenance",
+        "title": "Hướng dẫn chăm sóc và bảo trì gốm sứ",
+        "excerpt": "Tìm hiểu cách chăm sóc gốm sứ đúng cách để đảm bảo nó tồn tại qua nhiều thế hệ.",
+        "content": "Chăm sóc và bảo trì đúng cách các sản phẩm gốm sứ của bạn đảm bảo chúng vẫn đẹp trong nhiều năm tới. Đối với chậu gốm, việc làm sạch thường xuyên với xà phòng nhẹ và nước là đủ. Tránh các hóa chất mạnh có thể làm hỏng lớp men. Đối với các sản phẩm ngoài trời, hãy cân nhắc mang chúng vào trong trong điều kiện thời tiết khắc nghiệt. Các sản phẩm sợi thủy tinh và fiberstone của chúng tôi chống chịu thời tiết tốt hơn nhưng vẫn được hưởng lợi từ việc làm sạch định kỳ để duy trì vẻ ngoài của chúng.",
+        "image": "https://images.unsplash.com/photo-1578500494198-246f12d3b3d?w=800",
+        "date": "2023-12-28",
+        "category": "Chăm sóc & Bảo trì",
+        "readTime": "3 phút đọc"
+      },
+      {
+        "id": 5,
+        "slug": "sustainable-pottery-practices",
+        "title": "Thực hành bền vững trong sản xuất gốm sứ",
+        "excerpt": "Cách chúng tôi cam kết với các phương pháp sản xuất gốm sứ thân thiện với môi trường.",
+        "content": "Tính bền vững là cốt lõi của quy trình sản xuất của chúng tôi. Chúng tôi nguồn đất sét tại địa phương để giảm lượng khí thải vận chuyển, triển khai hệ thống tái chế nước trong cơ sở sản xuất của mình và sử dụng lò nung tiết kiệm năng lượng. Các vật liệu composite của chúng tôi được thiết kế để bền, giảm nhu cầu thay thế thường xuyên. Chúng tôi cũng cung cấp chương trình tái chế cho các chậu cũ và liên tục nghiên cứu các lựa chọn thay thế thân thiện với môi trường trong phát triển vật liệu của mình.",
+        "image": "https://images.unsplash.com/photo-1509423350716-97f9360b4e09?w=800",
+        "date": "2023-12-20",
+        "category": "Tính bền vững",
+        "readTime": "5 phút đọc"
+      },
+      {
+        "id": 6,
+        "slug": "custom-planter-designs",
+        "title": "Tạo thiết kế chậu tùy chỉnh",
+        "excerpt": "Tìm hiểu về quy trình thiết kế tùy chỉnh của chúng tôi và cách chúng tôi hiện thực hóa tầm nhìn của bạn.",
+        "content": "Quy trình thiết kế tùy chỉnh của chúng tôi bắt đầu với việc hiểu tầm nhìn của bạn. Cho dù bạn cần chậu cho dự án thương mại hay có tính thẩm mỹ cụ thể trong tâm cho ngôi nhà của mình, đội ngũ của chúng tôi làm việc chặt chẽ với bạn từ khái niệm đến hoàn thành. Chúng tôi cung cấp bản vẽ 3D, mẫu vật liệu và phát triển nguyên mẫu để đảm bảo sản phẩm cuối cùng đáp ứng chính xác thông số kỹ thuật của bạn. Với số lượng đặt hàng tối thiểu linh hoạt và các tùy chọn tùy chỉnh khác nhau, chúng tôi làm cho thiết kế tùy chỉnh có thể tiếp cận với tất cả khách hàng của mình.",
+        "image": "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=800",
+        "date": "2023-12-15",
+        "category": "Thiết kế tùy chỉnh",
+        "readTime": "4 phút đọc"
+      }
+    ],
+    "readMore": "Đọc thêm",
+    "backToBlog": "Quay lại Blog",
+    "relatedPosts": "Bài viết liên quan",
+    "share": "Chia sẻ bài viết này"
   }
 }

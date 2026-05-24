@@ -54,6 +54,11 @@ export default function Footer() {
                 </a>
               </li>
               <li>
+                <a href="/blog" className="hover:text-[#c9a87c] transition-colors">
+                  {t("company.items.blog")}
+                </a>
+              </li>
+              <li>
                 <a href="/production/colors-surface" className="hover:text-[#c9a87c] transition-colors">
                   {t("company.items.qualityControl")}
                 </a>

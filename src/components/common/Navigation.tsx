@@ -23,6 +23,7 @@ export default function Navigation() {
       ],
     },
     { href: "/contact", label: t("contact") },
+    { href: "/blog", label: t("blog") },
   ];
 
   return (
