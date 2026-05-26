@@ -9,6 +9,7 @@ export interface Post {
   category: string;
   createdAt?: Date;
   updatedAt?: Date;
+  size:string;
 }
 
 export interface PostInput {
@@ -19,4 +20,5 @@ export interface PostInput {
   image: string;
   date: string;
   category: string;
+  size:string;
 }

@@ -45,6 +45,7 @@ export default function PostModal({
           image: "",
           date: new Date().toISOString().split('T')[0],
           category: "",
+          size: "medium",
         },
   });
 
@@ -170,22 +171,29 @@ export default function PostModal({
 
             {/* Right Column - Post Info */}
             <div className="space-y-5">
-              <div>
+              {/* <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">
                   Slug *
                 </label>
-                <input
+                {}
+                <select
                   {...postForm.register("slug")}
-                  placeholder="VD: pottery-manufacturing-techniques"
                   className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200"
-                />
+                >
+                  <option value="pottery-manufacturing-techniques">pottery-manufacturing-techniques</option>
+                  <option value="choosing-right-planter">choosing-right-planter</option>
+                  <option value="indoor-gardening-trends">indoor-gardening-trends</option>
+                  <option value="pottery-care-maintenance">pottery-care-maintenance</option>
+                  <option value="sustainable-pottery-practices">sustainable-pottery-practices</option>
+                  <option value="custom-planter-designs">custom-planter-designs</option>
+                </select>
                 {postForm.formState.errors.slug && (
                   <p className="text-red-500 text-xs mt-1.5 flex items-center gap-1">
                     <span className="font-semibold">⚠</span>
                     {postForm.formState.errors.slug.message}
                   </p>
                 )}
-              </div>
+              </div> */}
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">
@@ -234,6 +242,26 @@ export default function PostModal({
                   <p className="text-red-500 text-xs mt-1.5 flex items-center gap-1">
                     <span className="font-semibold">⚠</span>
                     {postForm.formState.errors.date.message}
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  Kích thước *
+                </label>
+                <select
+                  {...postForm.register("size")}
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200"
+                >
+                  <option value="small">Small</option>
+                  <option value="medium">Medium</option>
+                  <option value="large">Large</option>
+                </select>
+                {postForm.formState.errors.size && (
+                  <p className="text-red-500 text-xs mt-1.5 flex items-center gap-1">
+                    <span className="font-semibold">⚠</span>
+                    {postForm.formState.errors.size.message}
                   </p>
                 )}
               </div>

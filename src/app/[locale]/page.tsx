@@ -5,12 +5,14 @@ import OEMSection from "@/src/components/common/OEMSection";
 import ProductCategories from "@/src/components/common/ProductCategories";
 import SuitableFor from "@/src/components/common/SuitableFor";
 import TopProducts from "@/src/components/common/TopProducts";
+import { getPostsPublic } from "@/src/server/queries/post";
 import { getProductsPublic } from "@/src/server/queries/product";
 
 const TOP_PRODUCT_CODES = ["VAD 1019", "VAD RC1020", "VAD C90S4", "VAD S102S1021"];
 
 export default async function Home({ params: { locale } }: { params: { locale: string } }) {
   const products = await getProductsPublic(locale);
+  const blogs = await getPostsPublic(locale)
   const randomProducts = products.sort(() => 0.5 - Math.random()).slice(0, 6);
 
   // Lấy 4 sản phẩm cố định theo code
@@ -28,7 +30,7 @@ export default async function Home({ params: { locale } }: { params: { locale: s
       <OEMSection />
       {/* <OrderingProcess /> */}
       {/* <Materials /> */}
-      <AboutAndBlogs />
+      <AboutAndBlogs blogs={blogs} />
       <Newsletter />
     </div>
   );

@@ -3,13 +3,16 @@ import { Link } from "@/src/i18n/routing";
 
 interface BlogCardProps {
   post: {
-    id: number;
-    slug: string;
-    title: string;
-    excerpt: string;
-    image: string;
-    date: string;
-    category: string
+      id: string;
+      slug: string;
+      title: string;
+      excerpt: string;
+      content: string;
+      image: string;
+      date: string;
+      category: string;
+      createdAt?: Date;
+      updatedAt?: Date;
   };
   size?: "small" | "medium" | "large";
 }

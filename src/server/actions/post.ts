@@ -7,6 +7,7 @@ import { revalidatePath } from "next/cache";
 const COLLECTION_NAME = "posts";
 
 import { getAllPostsForAdmin } from "@/src/server/queries/post";
+import { slugify } from "@/src/libs/utils";
 
 export async function getPostsAction() {
   return await getAllPostsForAdmin();
@@ -26,6 +27,7 @@ export async function createPost(formData: any) {
 
   const postData = {
     ...data,
+    slug: slugify(data.title),
     createdAt: new Date(),
     updatedAt: new Date(),
   };

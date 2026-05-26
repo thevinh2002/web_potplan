@@ -5,9 +5,13 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Link } from "@/src/i18n/routing";
 
-const MotionLink = motion(Link);
 
-export default function AboutAndBlogs() {
+const MotionLink = motion(Link);
+interface Blog {
+  title: String;
+  excerpt: String;
+}
+export default function AboutAndBlogs({ blogs }: { blogs: Blog[] }) {
   const t = useTranslations("home.aboutBlogs");
   return (
     <section id="about" className="py-16 bg-[#f5f2ed] overflow-hidden">
@@ -65,6 +69,7 @@ export default function AboutAndBlogs() {
               <ChevronRight className="w-4 h-4" />
             </MotionLink>
           </motion.div>
+
           <motion.div
             id="blogs"
             initial="hidden"
@@ -76,6 +81,7 @@ export default function AboutAndBlogs() {
               },
             }}
           >
+
             <motion.h2
               variants={{
                 hidden: { opacity: 0, y: -20 },
@@ -86,50 +92,31 @@ export default function AboutAndBlogs() {
               {t("blogs.title")}
             </motion.h2>
             <div className="space-y-4">
-              <motion.a
-                variants={{
-                  hidden: { opacity: 0, x: 30, scale: 0.95 },
-                  visible: {
-                    opacity: 1,
-                    x: 0,
-                    scale: 1,
-                    transition: { type: "spring", bounce: 0.3, duration: 0.6 },
-                  },
-                }}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                href="/blogs"
-                className="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-              >
-                <h3 className="font-bold text-[#5c4a3d] mb-2">
-                  {t("blogs.posts.manufacturing.title")}
-                </h3>
-                <p className="text-sm text-gray-500">
-                  {t("blogs.posts.manufacturing.description")}
-                </p>
-              </motion.a>
-              <motion.a
-                variants={{
-                  hidden: { opacity: 0, x: 30, scale: 0.95 },
-                  visible: {
-                    opacity: 1,
-                    x: 0,
-                    scale: 1,
-                    transition: { type: "spring", bounce: 0.3, duration: 0.6 },
-                  },
-                }}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                href="/blogs"
-                className="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-              >
-                <h3 className="font-bold text-[#5c4a3d] mb-2">
-                  {t("blogs.posts.choosingPlanter.title")}
-                </h3>
-                <p className="text-sm text-gray-500">
-                  {t("blogs.posts.choosingPlanter.description")}
-                </p>
-              </motion.a>
+              {blogs.slice(0, 2).map((blog, index) => (
+                <motion.a
+                  key={index}
+                  variants={{
+                    hidden: { opacity: 0, x: 30, scale: 0.95 },
+                    visible: {
+                      opacity: 1,
+                      x: 0,
+                      scale: 1,
+                      transition: { type: "spring", bounce: 0.3, duration: 0.6 },
+                    },
+                  }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  href="/blogs"
+                  className="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <h3 className="font-bold text-[#5c4a3d] mb-2">
+                    {blog.title}
+                  </h3>
+                  <p className="text-sm text-gray-500">
+                    {blog.excerpt}
+                  </p>
+                </motion.a>
+              ))}
             </div>
           </motion.div>
         </div>

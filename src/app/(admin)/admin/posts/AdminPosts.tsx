@@ -22,6 +22,7 @@ interface Post {
   category: string;
   createdAt: string;
   updatedAt: string;
+  size: string;
 }
 
 export default function AdminPosts({
@@ -171,6 +172,7 @@ export default function AdminPosts({
               <th className="px-6 py-4 text-right text-xs font-semibold text-gray-600 uppercase tracking-wider">
                 Hành động
               </th>
+              
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">

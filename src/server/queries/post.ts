@@ -12,6 +12,7 @@ export async function getAllPostsForAdmin() {
       return {
         id: doc.id,
         ...data,
+        slug:data.slug,
         createdAt: data.createdAt?.toDate
           ? data.createdAt.toDate().toISOString()
           : null,
@@ -28,12 +29,21 @@ export async function getAllPostsForAdmin() {
 export async function getPostsPublic(locale: string = "en") {
   try {
     const snapshot = await db.collection(COLLECTION_NAME).orderBy("date", "desc").get();
-
+    
     return snapshot.docs.map((doc) => {
       const data = doc.data();
       return {
         id: doc.id,
         ...data,
+        slug:data.slug,
+        title:data.title,
+        excerpt:data.excerpt,
+        createdAt: data.createdAt?.toDate
+          ? data.createdAt.toDate().toISOString()
+          : null,
+        updatedAt: data.updatedAt?.toDate
+          ? data.updatedAt.toDate().toISOString()
+          : null,
       };
     });
   } catch (error) {
