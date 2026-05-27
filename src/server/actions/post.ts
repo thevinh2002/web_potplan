@@ -57,6 +57,7 @@ export async function updatePost(id: string, formData: any) {
 
   const postData = {
     ...data,
+    slug: slugify(data.title),
     updatedAt: new Date(),
   };
 

@@ -64,6 +64,7 @@ export default function AdminInventory({
   const [isDeletePending, setIsDeletePending] = useState(false);
   const router = useRouter();
   const [isRefreshing, startTransition] = useTransition();
+  // const filteredProducts: Product[] = [];
   const filteredProducts = products.filter(
     (p) =>
       p.translations.vi.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -73,7 +74,6 @@ export default function AdminInventory({
 
   const itemsPerPage = 8;
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
-
   useEffect(() => {
     if (currentPage > totalPages && totalPages > 0) {
       setCurrentPage(totalPages);

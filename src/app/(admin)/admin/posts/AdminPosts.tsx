@@ -10,20 +10,21 @@ import {
   updatePost,
   deletePost,
 } from "@/src/server/actions/post";
+import { Post } from "@/src/types/post";
 
-interface Post {
-  id: string;
-  slug: string;
-  title: string;
-  excerpt: string;
-  content: string;
-  image: string;
-  date: string;
-  category: string;
-  createdAt: string;
-  updatedAt: string;
-  size: string;
-}
+// interface Post {
+//   id: string;
+//   slug: string;
+//   title: string;
+//   excerpt: string;
+//   content: string;
+//   image: string;
+//   date: string;
+//   category: string;
+//   createdAt: string;
+//   updatedAt: string;
+//   size: string;
+// }
 
 export default function AdminPosts({
   initialPosts,
@@ -40,9 +41,9 @@ export default function AdminPosts({
   const [deletePostId, setDeletePostId] = useState<string | null>(null);
   const [isDeletePending, setIsDeletePending] = useState(false);
 
-  useEffect(() => {
-    setPosts(initialPosts || []);
-  }, [initialPosts]);
+  // useEffect(() => {
+  //   setPosts(initialPosts || []);
+  // }, [initialPosts]);
 
   const fetchPosts = async () => {
     try {

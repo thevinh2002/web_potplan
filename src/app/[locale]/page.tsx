@@ -19,7 +19,6 @@ export default async function Home({ params: { locale } }: { params: { locale: s
   const topProducts = TOP_PRODUCT_CODES.map(code =>
     products.find(p => p.code === code)
   ).filter((p): p is NonNullable<typeof p> => p !== undefined);
-
   return (
     <div className="min-h-screen bg-[#faf8f5]">
       <HeroSection />
