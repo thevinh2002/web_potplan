@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Plus, Pencil, Trash2 } from "lucide-react";
 import PostModal from "@/src/components/admin/PostModal";
 import DeleteConfirmModal from "@/src/components/admin/DeleteConfirmModal";
@@ -40,6 +41,7 @@ export default function AdminPosts({
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [deletePostId, setDeletePostId] = useState<string | null>(null);
   const [isDeletePending, setIsDeletePending] = useState(false);
+  const router = useRouter();
 
   // useEffect(() => {
   //   setPosts(initialPosts || []);
@@ -87,6 +89,7 @@ export default function AdminPosts({
 
       await fetchPosts();
       handleCloseModal();
+      router.refresh();
     } catch (error: any) {
       console.error("Failed to save post:", error);
       alert(error?.message || "Không thể lưu bài viết. Vui lòng thử lại.");
@@ -112,6 +115,7 @@ export default function AdminPosts({
       await fetchPosts();
       setIsDeleteModalOpen(false);
       setDeletePostId(null);
+      router.refresh();
     } catch (error: any) {
       console.error("Failed to delete post:", error);
       alert(error?.message || "Không thể xóa bài viết. Vui lòng thử lại.");

@@ -6,6 +6,8 @@ export const metadata = {
   description: "Admin dashboard for managing products",
 };
 
+export const dynamic = "force-dynamic";
+
 export default function AdminLayout({
   children,
 }: {

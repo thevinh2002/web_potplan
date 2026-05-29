@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const PostSchema = z.object({
-  // slug: z.string().min(1, "Vui lòng nhập slug"),
+  slug: z.string().min(1, "Slug sẽ được tạo tự động từ tiêu đề, bạn chỉ cần nhập tiêu đề"),
   title: z.string().min(1, "Vui lòng nhập tiêu đề"),
   excerpt: z.string().min(1, "Vui lòng nhập tóm tắt"),
   content: z.string().min(1, "Vui lòng nhập nội dung"),

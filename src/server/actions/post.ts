@@ -27,7 +27,6 @@ export async function createPost(formData: any) {
 
   const postData = {
     ...data,
-    slug: slugify(data.title),
     createdAt: new Date(),
     updatedAt: new Date(),
   };
@@ -36,7 +35,7 @@ export async function createPost(formData: any) {
     await db.collection(COLLECTION_NAME).add(postData);
 
     revalidatePath("/admin/posts", "page");
-    revalidatePath("/blogs", "page");
+    revalidatePath("/[locale]/blogs", "page");
     return { success: true, message: "Thêm bài viết thành công" };
   } catch (error) {
     return { error: "Lỗi kết nối database" };
@@ -57,7 +56,6 @@ export async function updatePost(id: string, formData: any) {
 
   const postData = {
     ...data,
-    slug: slugify(data.title),
     updatedAt: new Date(),
   };
 
@@ -65,9 +63,11 @@ export async function updatePost(id: string, formData: any) {
     await db.collection(COLLECTION_NAME).doc(id).update(postData);
 
     revalidatePath("/admin/posts", "page");
-    revalidatePath("/blogs", "page");
+    revalidatePath("/[locale]/blogs", "page");
+    revalidatePath("/[locale]/blogs/[slug]", "page");
     return { success: true, message: "Cập nhật bài viết thành công" };
   } catch (error) {
+    console.log(error);
     return { error: "Lỗi kết nối database" };
   }
 }
@@ -84,7 +84,8 @@ export async function deletePost(id: string) {
     await postRef.delete();
 
     revalidatePath("/admin/posts", "page");
-    revalidatePath("/blogs", "page");
+    revalidatePath("/[locale]/blogs", "page");
+    revalidatePath("/[locale]/blogs/[slug]", "page");
     return { success: true, message: "Xóa bài viết thành công" };
   } catch (error) {
     return { error: "Lỗi kết nối database" };

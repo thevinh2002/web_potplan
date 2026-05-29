@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -10,7 +10,7 @@ import {
   X,
 } from "lucide-react";
 
-import { uploadImageToCloudinary } from "@/src/libs/utils";
+import { uploadImageToCloudinary, slugify } from "@/src/libs/utils";
 import { PostSchema, PostInput } from "@/src/libs/schemas/post";
 
 interface PostModalProps {
@@ -36,6 +36,7 @@ export default function PostModal({
     values: editingPost
       ? {
           ...editingPost,
+          slug: editingPost.slug || slugify(editingPost.title || ""),
         }
       : {
           slug: "",
@@ -48,6 +49,14 @@ export default function PostModal({
           size: "medium",
         },
   });
+
+  // Tự động tạo slug từ title khi thêm mới bài viết
+  const titleWatch = postForm.watch("title");
+  useEffect(() => {
+    if (!editingPost) {
+      postForm.setValue("slug", titleWatch ? slugify(titleWatch) : "", { shouldValidate: true });
+    }
+  }, [titleWatch, editingPost, postForm]);
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -171,29 +180,31 @@ export default function PostModal({
 
             {/* Right Column - Post Info */}
             <div className="space-y-5">
-              {/* <div>
+              <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                  Slug *
+                  Slug (Đường dẫn) *
                 </label>
-                {}
-                <select
+                <input
                   {...postForm.register("slug")}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200"
-                >
-                  <option value="pottery-manufacturing-techniques">pottery-manufacturing-techniques</option>
-                  <option value="choosing-right-planter">choosing-right-planter</option>
-                  <option value="indoor-gardening-trends">indoor-gardening-trends</option>
-                  <option value="pottery-care-maintenance">pottery-care-maintenance</option>
-                  <option value="sustainable-pottery-practices">sustainable-pottery-practices</option>
-                  <option value="custom-planter-designs">custom-planter-designs</option>
-                </select>
-                {postForm.formState.errors.slug && (
+                  placeholder="VD: tieu-de-bai-viet"
+                  readOnly={!editingPost}
+                  className={`w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200 ${
+                    !editingPost 
+                      ? "opacity-60 cursor-not-allowed" 
+                      : ""
+                  }`}
+                />
+                {postForm.formState.errors.slug ? (
                   <p className="text-red-500 text-xs mt-1.5 flex items-center gap-1">
                     <span className="font-semibold">⚠</span>
                     {postForm.formState.errors.slug.message}
                   </p>
-                )}
-              </div> */}
+                ) : !editingPost ? (
+                  <p className="text-gray-500 text-xs mt-1.5 italic">
+                    * Đường dẫn được tự động tạo dựa trên tiêu đề.
+                  </p>
+                ) : null}
+              </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">

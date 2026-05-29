@@ -47,6 +47,10 @@ export async function createCategory(formData: any) {
     await db.collection(COLLECTION_NAME).add(categoryData);
 
     revalidatePath("/admin/dashboard", "page");
+    revalidatePath("/admin/categories", "page");
+    revalidatePath("/[locale]/production", "page");
+    revalidatePath("/[locale]/product/[slug]", "page");
+
     return { success: true, message: "Thêm danh mục thành công" };
   } catch (error) {
     return { error: "Lỗi kết nối database" };
@@ -88,6 +92,10 @@ export async function updateCategory(id: string, formData: any) {
     await db.collection(COLLECTION_NAME).doc(id).update(categoryData);
 
     revalidatePath("/admin/dashboard", "page");
+    revalidatePath("/admin/categories", "page");
+    revalidatePath("/[locale]/production", "page");
+    revalidatePath("/[locale]/product/[slug]", "page");
+
     return { success: true, message: "Cập nhật danh mục thành công" };
   } catch (error) {
     return { error: "Lỗi kết nối database" };
@@ -120,6 +128,9 @@ export async function deleteCategory(id: string) {
 
     revalidatePath("/admin/dashboard", "page");
     revalidatePath("/admin/categories", "page");
+    revalidatePath("/[locale]/production", "page");
+    revalidatePath("/[locale]/product/[slug]", "page");
+    
     return { success: true, message: "Xóa danh mục thành công" };
   } catch (error) {
     return { error: "Lỗi kết nối database" };
