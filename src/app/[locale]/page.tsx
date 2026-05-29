@@ -8,7 +8,7 @@ import TopProducts from "@/src/components/common/TopProducts";
 import { getPostsPublic } from "@/src/server/queries/post";
 import { getProductsPublic } from "@/src/server/queries/product";
 
-const TOP_PRODUCT_CODES = ["VAD 1019", "VAD RC1020", "VAD C90S4", "VAD S102S1021"];
+const TOP_PRODUCT_CODES = ["VAD 1019", "VAD S1021", "VAD C90S4", "VAD RC1022"];
 
 export default async function Home({ params: { locale } }: { params: { locale: string } }) {
   const products = await getProductsPublic(locale);

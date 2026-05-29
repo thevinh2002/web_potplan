@@ -22,3 +22,23 @@ export interface Product {
   reviews: number;
   slug: string;
 }
+
+// interface Product {
+//   id: string;
+//   code: string;
+//   category: string;
+//   image_cover: string;
+//   images: string[];
+//   colors: string;
+//   sizes: string;
+//   ingredients: string;
+//   is_new: boolean;
+//   rating: number;
+//   review: number;
+//   translations: {
+//     vi: { name: string; description: string; new?: string; slug?: string };
+//     en: { name: string; description: string; new?: string; slug?: string };
+//   };
+//   createdAt: string;
+//   updatedAt: string;
+// }

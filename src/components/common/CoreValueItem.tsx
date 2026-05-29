@@ -44,7 +44,9 @@ export default function CoreValueItem({
         <h3 className="text-2xl lg:text-3xl font-bold text-[#2c3e50]">
           {title}
         </h3>
-        <p className="text-[#5c4a3d] leading-relaxed">{description}</p>
+        <p className="text-[#5c4a3d] leading-relaxed whitespace-pre-line">
+  {description}
+</p>
       </motion.div>
     </div>
   );

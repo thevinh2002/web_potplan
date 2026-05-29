@@ -6,9 +6,9 @@
       "description": "Established in the early 2000s, Viet Anh Dung Enterprise (VAD Pottery) began its journey as a dedicated cement pot manufacturer. Through years of continuous growth and a steadfast commitment to quality, we have successfully expanded our expertise into the premium Composite pot market",
       "viewMore": "VIEW MORE",
       "features": {
-        "care": "Crafted with care and technical accuracy",
-        "heritage": "Inspired by Vietnam's ceramic heritage",
-        "design": "Evolving tradition into contemporary design"
+        "care": "Engineered with precision and technical accuracy",
+        "heritage": "Rooted in Vietnam's rich manufacturing expertise",
+        "design": "Ridging heavy-duty durability with modern aesthetics"
       }
     },
     "categories": {
@@ -34,8 +34,8 @@
       }
     },
     "oem": {
-      "title": "OEM/ODM PROJECTS ARE WARMLY WELCOMED",
-      "description1": "With 3 factories and a maximum output of 60 containers per month, we offer strong production capacity to support your OEM needs. Our experienced team of designers and engineers works closely with partners to turn ideas into high-quality, market-ready products.",
+      "title": "ELEVATE YOUR BUSINESS WITH OUR OEM/ODM/OBM CAPABILITIES",
+      "description1": "We are a dedicated manufacturer of premium poly fiberglass and cement planters, equipped with our own factories to deliver seamless OEM, ODM, and OBM services. From manufacturing your custom designs to offering our own branded, high-durability products, we cover the entire value chain. With a strict commitment to meticulous craftsmanship, uncompromising quality, and guaranteed on-time delivery, we are ready to scale your business globally",
       "description2": "OEM, ODM, and custom ceramic manufacturing solutions, let's bring your ideas to life.",
       "contactUs": "CONTACT US"
     },
@@ -185,21 +185,21 @@
       "items": [
         {
           "title": "Understanding",
-          "description": "We always listen to and prioritize your requirements regarding the shape, proportions, and surface finish of our plant pots. Our technical team collaborates closely with you to develop prototypes that perfectly align with your vision. Samples are ready to be dispatched as soon as we reach an agreement.",
+          "description": "Understanding – The Foundation of Every Perfect Product Going beyond standard manufacturing, our experienced technical team collaborates closely with you to develop prototypes that perfectly align with your vision, turning your concepts into reality. Samples are ready to be dispatched as soon as we reach an agreement. For us, your absolute satisfaction in every minor detail is the ultimate measure of our success.",
           "imageSrc": "/pictures/core_values/p1.png",
           "imageAlt": "Understanding - Crafting pots",
           "reverse": false
         },
         {
           "title": "Responsibility",
-          "description": "Our responsibility is to provide customers with a sense of security regarding quality and delivery time, and to build long-term relationships with them.",
+          "description": "Our responsibility is to ensure absolute peace of mind for our clients through unwavering commitments:\n\nUncompromising Quality: Strict quality control at every stage ensures every product meets your highest standards.\n\nOn-Time Delivery: Streamlined manufacturing processes guarantee that timelines are met, every single time.\n\nLong-Term Partnerships: We prioritize your peace of mind to foster enduring, collaborative, and trust-based relationships.",
           "imageSrc": "/pictures/core_values/p2.png",
           "imageAlt": "Responsibility - Quality pots",
           "reverse": true
         },
         {
           "title": "Innovation",
-          "description": "We are constantly researching new trends to develop new designs, optimize processes, and update according to customer requirements. Our goal is to provide you with the best possible experience.",
+          "description": "Innovation Drives Experience\n\nWe continuously evolve to provide our clients with cutting-edge products and an unmatched partnership experience:\n\nTrend-Driven Design: Constantly researching global markets to develop innovative, highly aesthetic new designs.\n\nProcess Optimization: Refining and optimizing our production lines to ensure precision, durability, and cost-efficiency.\n\nCustomer-Centric Evolution: Promptly updating and tailoring our solutions to fit your exact specifications and feedback.",
           "imageSrc": "/pictures/core_values/p3.jpg",
           "imageAlt": "Innovation - Modern designs",
           "reverse": false

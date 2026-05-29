@@ -28,6 +28,12 @@ export async function createPost(formData: any) {
   const postData = {
     ...data,
     slug: slugify(data.title),
+    size: data.size,
+    title: data.title,
+    excerpt: data.excerpt,
+    content: data.content,
+    image: data.image,
+    category: data.category,
     createdAt: new Date(),
     updatedAt: new Date(),
   };
@@ -57,6 +63,12 @@ export async function updatePost(id: string, formData: any) {
 
   const postData = {
     ...data,
+    size: data.size,
+    title: data.title,
+    excerpt: data.excerpt,
+    content: data.content,
+    image: data.image,
+    category: data.category,
     slug: slugify(data.title),
     updatedAt: new Date(),
   };
